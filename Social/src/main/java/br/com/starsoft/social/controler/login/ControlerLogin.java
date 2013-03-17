@@ -78,7 +78,7 @@ public class ControlerLogin extends HttpServlet {
 
             /*
              * 
-             * Verifica se o usario q fez login com facebook
+             * Verifica se o usuario q fez login com facebook
              * já esta cadastrado no sistema
              * se não estiver faz o cadastro basico
              * com os dados da rede social
@@ -87,7 +87,7 @@ public class ControlerLogin extends HttpServlet {
 
             if (controlercadastro.verificaCadastrado(profile.getEmail())) {
 
-                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile,facebook));
+                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile,facebook,(String)session.getAttribute("token")));
 
             } else {
 
