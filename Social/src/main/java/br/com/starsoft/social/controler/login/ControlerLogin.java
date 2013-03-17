@@ -5,7 +5,6 @@
 package br.com.starsoft.social.controler.login;
 
 import br.com.starsoft.social.model.logic.ControlerCadastro;
-import br.com.starsoft.social.model.dao.DAOUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
-import org.springframework.social.facebook.api.impl.FacebookTemplate;
 
 /**
  *
@@ -89,7 +87,7 @@ public class ControlerLogin extends HttpServlet {
 
             if (controlercadastro.verificaCadastrado(profile.getEmail())) {
 
-                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile.getEmail()));
+                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile,facebook));
 
             } else {
 
