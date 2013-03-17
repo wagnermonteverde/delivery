@@ -1,10 +1,9 @@
-package br.com.starsoft.social.model.utils;
+package br.com.starsoft.social.controler.facebook;
 
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.mail.Session;
@@ -37,15 +36,16 @@ public class Logof extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
-            
+
+
             HttpSession session = request.getSession();
-            
+
             session.removeAttribute("usuario");
             session.removeAttribute("facebook");
-            response.sendRedirect("index.jsp");
-            
-        } finally {            
+            response.sendRedirect("https://www.facebook.com/logout.php?next=http://localhost:8084/Social&access_token=" + session.getAttribute("token") + "");
+            session.removeAttribute("token");
+
+        } finally {
             out.close();
         }
     }

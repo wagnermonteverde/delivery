@@ -6,6 +6,7 @@ package br.com.starsoft.social.model.beans;
 
 import br.com.starsoft.social.model.utils.ByteToBase64;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -134,9 +135,37 @@ public class Usuario implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 5;
         return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
+            return false;
+        }
+        if (!Arrays.equals(this.fotoPerfil, other.fotoPerfil)) {
+            return false;
+        }
+        if ((this.lastName == null) ? (other.lastName != null) : !this.lastName.equals(other.lastName)) {
+            return false;
+        }
+       
+        return true;
+    }
+
+    
+    
+    
+    
+    
 
     public String retornaStringFoto(byte[] foto) {
         ByteToBase64 trans = new ByteToBase64(foto);
