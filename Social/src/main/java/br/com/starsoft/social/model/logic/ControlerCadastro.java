@@ -44,7 +44,7 @@ public class ControlerCadastro {
         
     }
     
-    public Usuario RetornaUsuarioCadastrado(FacebookProfile profile, Facebook facebook) {
+    public Usuario RetornaUsuarioCadastrado(FacebookProfile profile, Facebook facebook,String acessToken) {
         
         Usuario user = new DAOUsuario(Usuario.class).consultaEmail(profile.getEmail());
 
@@ -57,6 +57,7 @@ public class ControlerCadastro {
         userAtualizado.setLastName(profile.getLastName());
         byte[] foto = facebook.userOperations().getUserProfileImage();
         userAtualizado.setFotoPerfil(foto);
+        userAtualizado.setTokenAcesso(acessToken);
 
 
         /*
@@ -81,6 +82,7 @@ public class ControlerCadastro {
         user.setName(userAtualizado.getName());
         user.setLastName(userAtualizado.getLastName());
         user.setFotoPerfil(userAtualizado.getFotoPerfil());
+        user.setTokenAcesso(userAtualizado.getTokenAcesso());
         
         new DAOUsuario(Usuario.class).atualiza(user);
         

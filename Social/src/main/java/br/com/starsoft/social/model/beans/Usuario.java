@@ -157,6 +157,9 @@ public class Usuario implements Serializable {
         if ((this.lastName == null) ? (other.lastName != null) : !this.lastName.equals(other.lastName)) {
             return false;
         }
+        if ((this.tokenAcesso == null) ? (other.tokenAcesso != null) : !this.tokenAcesso.equals(other.tokenAcesso)) {
+            return false;
+        }
        
         return true;
     }
