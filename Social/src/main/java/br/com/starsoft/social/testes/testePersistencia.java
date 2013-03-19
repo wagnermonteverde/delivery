@@ -1,11 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template ins the editorBARTOSKI.
- */
+
 package br.com.starsoft.social.testes;
 
+import br.com.starsoft.social.model.beans.Nome;
 import br.com.starsoft.social.model.logic.ControlerCadastro;
 import br.com.starsoft.social.model.beans.Usuario;
+import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOUsuario;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookLink;
@@ -19,12 +18,12 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate;
 public class testePersistencia {
     
     public static void main(String[] args) {
-//        
-//        Nome nome = new Nome("wagner");
-//        
-//        DAO<Nome> dao = new DAO<Nome>(Nome.class);
-//        
-//        dao.adiciona(nome);
+        
+        Nome nome = new Nome("wagner");
+        
+        DAO<Nome> dao = new DAO<Nome>(Nome.class);
+        
+        dao.adiciona(nome);
         
         
 //        Usuario user = new Usuario();
@@ -45,14 +44,14 @@ public class testePersistencia {
         
         
         
-        
-        Facebook facebook = new FacebookTemplate("AAAGUmpOZAmYEBAPj0d1rNrTCueZBypGQGEIcZBZAR7LJ0cfLK6SvHW1S2VlLka2Ibpuq8ZCxVL0z9AJDXzNrdBLPNZBOLz5aZAMsIpAe2v4FQZDZD");
-        
-        FacebookLink link = new FacebookLink("http://www.fabiodurand.com.br/","Teste Postagem Link","Teste","Teste aplicação Java Web Postagen de Links");
-        
-        FacebookProfile profile =  facebook.userOperations().getUserProfile();
-        
-        facebook.feedOperations().postLink("Fabio Durand", link);
+//        
+//        Facebook facebook = new FacebookTemplate("AAAGUmpOZAmYEBAPj0d1rNrTCueZBypGQGEIcZBZAR7LJ0cfLK6SvHW1S2VlLka2Ibpuq8ZCxVL0z9AJDXzNrdBLPNZBOLz5aZAMsIpAe2v4FQZDZD");
+//        
+//        FacebookLink link = new FacebookLink("http://www.fabiodurand.com.br/","Teste Postagem Link","Teste","Teste aplicação Java Web Postagen de Links");
+//        
+//        FacebookProfile profile =  facebook.userOperations().getUserProfile();
+//        
+//        facebook.feedOperations().postLink("Fabio Durand", link);
         
         
 //        facebook.feedOperations().updateStatus("Teste 2 token armazenado Postagem Com Aplicação Java Web ! Uhuuuuuuuuuuuuuuuuuuuuul \n Spring Social \n"

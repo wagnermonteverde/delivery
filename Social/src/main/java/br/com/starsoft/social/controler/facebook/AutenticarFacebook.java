@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.controler.facebook;
 
+import br.com.starsoft.social.model.logic.UrlAplication;
 import br.com.starsoft.social.model.utils.SocialConnectionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -63,7 +64,7 @@ public class AutenticarFacebook extends HttpServlet {
              *
              * 
              */
-            params.setRedirectUri("http://localhost:8084/Social/ProcessFacebook");
+            params.setRedirectUri(""+UrlAplication.getUrlAplicacao()+"ProcessFacebook");
             params.add("display", "popup");
             String authorizeUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, params);
 
