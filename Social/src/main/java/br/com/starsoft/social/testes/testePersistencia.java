@@ -1,4 +1,3 @@
-
 package br.com.starsoft.social.testes;
 
 import br.com.starsoft.social.model.beans.Nome;
@@ -45,7 +44,7 @@ public class testePersistencia {
         
         
 //        
-//        Facebook facebook = new FacebookTemplate("AAAGUmpOZAmYEBAPj0d1rNrTCueZBypGQGEIcZBZAR7LJ0cfLK6SvHW1S2VlLka2Ibpuq8ZCxVL0z9AJDXzNrdBLPNZBOLz5aZAMsIpAe2v4FQZDZD");
+//        Facebook facebook = new FacebookTemplate("");
 //        
 //        FacebookLink link = new FacebookLink("http://www.fabiodurand.com.br/","Teste Postagem Link","Teste","Teste aplicação Java Web Postagen de Links");
 //        
