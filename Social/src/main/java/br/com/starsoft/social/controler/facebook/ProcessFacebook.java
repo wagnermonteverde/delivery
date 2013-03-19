@@ -78,12 +78,9 @@ public class ProcessFacebook extends HttpServlet {
              *
              * Instancia um template que provem toods os metodos de acesso
              * ao Facebook com necessidde do token de acesso
-             * 
+             * e seta na sessão
              * 
              */
-
-
-
 
 
 
