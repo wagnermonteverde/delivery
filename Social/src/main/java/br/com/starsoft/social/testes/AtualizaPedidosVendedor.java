@@ -39,13 +39,7 @@ public class AtualizaPedidosVendedor extends HttpServlet {
             out.println(Math.random()*100);
             out.println(Math.random()*100);
             out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
+            
             
         } finally {            
             out.close();
