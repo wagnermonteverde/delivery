@@ -16,6 +16,11 @@ public class Location {
     public Location() {
     }
 
+    public Location(String longitude, String latitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
     public String getLongitude() {
         return longitude;
     }
