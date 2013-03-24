@@ -109,7 +109,7 @@
                                     out.print("\" /></a></li>");
                                     out.print("<li class=\"dropdown \">");
                                     out.print("<a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" id=\"face\">");
-                                    out.print(user.getName()+" "+user.getLastName());
+                                    out.print(user.getName() + " " + user.getLastName());
                                     out.print("<strong class=\"caret\"></strong></a>");
                                     out.print("<div class=\"dropdown-menu \" style=\"padding: 15px; padding-bottom: 0px;\">");
                                     out.print("<form method=\"post\" action=\"login\" accept-charset=\"UTF-8\">");
@@ -126,7 +126,7 @@
                                 }
 
                             %>
-                            
+
                         </div>
                         <!--/.nav-collapse -->
                     </div>
@@ -203,7 +203,7 @@
                                     <div id="collapseOne" class="accordion-body collapse in " style="height: 0px; ">  
                                         <div class="accordion-inner ">  
                                             <img src="img/Ulogo3.png" alt="Delivery ta na mesa!" width="" height="80">
-            <%  if( user == null) {
+            <%  if (user == null) {
                     out.print("<a href=\"AutenticarFacebook\"class=\"pull-right\"><img src=\"img/facebook.png\"></a>"
                             + "                                                                                      <a href=\"AutenticarTwitter\"class=\"pull-right\"><img src=\"img/twitter.png\"></a> ");
                 } else {

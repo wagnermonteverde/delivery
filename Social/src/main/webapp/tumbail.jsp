@@ -133,7 +133,7 @@
             <!-- teste-->
 
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -182,13 +182,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -237,13 +237,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -292,13 +292,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -347,13 +347,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -402,10 +402,10 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
 
             <footer>  
