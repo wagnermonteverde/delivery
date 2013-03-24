@@ -15,7 +15,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Endereco implements Serializable {
+public class Endereco implements Serializable  {
     
     @Id @GeneratedValue
     private Integer id;
@@ -24,9 +24,28 @@ public class Endereco implements Serializable {
     private Integer numero;
     private String cidade;
     private String uf;
+    private Location location;
+  
 
     public Endereco() {
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    
 
     public String getRua() {
         return rua;
