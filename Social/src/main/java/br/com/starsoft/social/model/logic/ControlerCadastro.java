@@ -15,15 +15,15 @@ import org.springframework.social.facebook.api.FacebookProfile;
  * @author wagner
  */
 public class ControlerCadastro {
-    
+
     public ControlerCadastro() {
     }
-    
+
     public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken) {
         DAOUsuario daoUsuario = new DAOUsuario(Usuario.class);
         byte[] foto = facebook.userOperations().getUserProfileImage();
-        
-        
+
+
         Usuario user = new Usuario();
         user.setLastName(profile.getLastName());
         user.setName(profile.getFirstName());
@@ -31,21 +31,21 @@ public class ControlerCadastro {
         user.setFotoPerfil(foto);
         user.setTokenAcesso(acessToken);
         daoUsuario.adiciona(user);
-        
+
         return daoUsuario.consultaEmail(user.getMail());
-        
+
     }
-    
+
     public Boolean verificaCadastrado(String mail) {
-        
+
         Usuario user = new DAOUsuario(Usuario.class).consultaEmail(mail);
-        
+
         return user == null ? false : true;
-        
+
     }
-    
-    public Usuario RetornaUsuarioCadastrado(FacebookProfile profile, Facebook facebook,String acessToken) {
-        
+
+    public Usuario RetornaUsuarioCadastrado(FacebookProfile profile, Facebook facebook, String acessToken) {
+
         Usuario user = new DAOUsuario(Usuario.class).consultaEmail(profile.getEmail());
 
         /*
@@ -66,26 +66,26 @@ public class ControlerCadastro {
          * se houver atualiza e retorna o usuario
          * 
          */
-        
+
         if (!user.equals(userAtualizado)) {
-            
+
             return atualizaUsuario(user, userAtualizado);
-            
+
         }
-        
+
         return user;
-        
+
     }
-    
+
     private Usuario atualizaUsuario(Usuario user, Usuario userAtualizado) {
-        
+
         user.setName(userAtualizado.getName());
         user.setLastName(userAtualizado.getLastName());
         user.setFotoPerfil(userAtualizado.getFotoPerfil());
         user.setTokenAcesso(userAtualizado.getTokenAcesso());
-        
+
         new DAOUsuario(Usuario.class).atualiza(user);
-        
+
         return user;
     }
 }

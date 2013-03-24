@@ -15,16 +15,16 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate;
  * @author wagner
  */
 public class testePersistencia {
-    
+
     public static void main(String[] args) {
-        
+
         Nome nome = new Nome("wagner");
-        
+
         DAO<Nome> dao = new DAO<Nome>(Nome.class);
-        
+
         dao.adiciona(nome);
-        
-        
+
+
 //        Usuario user = new Usuario();
 //       
 //        ControlerCadastro cad = new ControlerCadastro();
@@ -40,9 +40,9 @@ public class testePersistencia {
 //        
 //        System.out.println(cad.verificaCadastrado("wagnermonteverde@hotmail.com"));
 //        System.out.println(cad.RetornaUsuarioCadastrado("wagnermonteverde@hotmail.com").toString());
-        
-        
-        
+
+
+
 //        
 //        Facebook facebook = new FacebookTemplate("");
 //        
@@ -51,12 +51,11 @@ public class testePersistencia {
 //        FacebookProfile profile =  facebook.userOperations().getUserProfile();
 //        
 //        facebook.feedOperations().postLink("Fabio Durand", link);
-        
-        
+
+
 //        facebook.feedOperations().updateStatus("Teste 2 token armazenado Postagem Com Aplicação Java Web ! Uhuuuuuuuuuuuuuuuuuuuuul \n Spring Social \n"
 //        + "Metodo de Autenticação OAuth2");
 
-        
+
     }
-    
 }

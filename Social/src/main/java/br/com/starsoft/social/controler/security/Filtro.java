@@ -73,7 +73,7 @@ public class Filtro implements Filter {
 
         if (req.getSession().getAttribute("usuario") == null) {
             resp.sendRedirect("error.jsp");
-            
+
         } else {
 
 

@@ -9,5 +9,4 @@ package br.com.starsoft.social.model.logic;
  * @author wagner
  */
 public class ControlerFacebookOperations {
-    
 }

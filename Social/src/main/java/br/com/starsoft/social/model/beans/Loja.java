@@ -11,7 +11,7 @@ import java.util.List;
  * @author wagner
  */
 public class Loja {
-    
+
     private Integer id;
     private Empresa empresa;
     private List<Produtos> listaProdutos;
@@ -81,9 +81,4 @@ public class Loja {
         }
         return true;
     }
-    
-    
-    
-    
-    
 }

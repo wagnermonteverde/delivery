@@ -26,7 +26,6 @@ public class Empresa {
     public Empresa() {
     }
 
-    
     public Integer getId() {
         return id;
     }
@@ -164,9 +163,4 @@ public class Empresa {
         }
         return true;
     }
-    
-    
-    
-    
-    
 }

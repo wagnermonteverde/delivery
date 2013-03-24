@@ -47,7 +47,7 @@ public class ProcessTwitter extends HttpServlet {
             OAuthToken accessToken = AutenticarTwitter.oauthOperations.exchangeForAccessToken(
                     new AuthorizedRequestToken(AutenticarTwitter.requestToken, oauthVerifier), null);
 
-   String consumerKey = "UMH2hkbnqLt6KK4F43nA"; // The application's consumer key
+            String consumerKey = "UMH2hkbnqLt6KK4F43nA"; // The application's consumer key
             String consumerSecret = "uYZWZPpCOpe2UqPYU87ca9owy6QuEEfp6DvwQ20vs"; // The application's consumer secr
 
             Twitter twitter = new TwitterTemplate(consumerKey, consumerSecret, accessToken.getValue(), accessToken.getSecret());
@@ -59,12 +59,12 @@ public class ProcessTwitter extends HttpServlet {
             session.setAttribute("usuario", twitter.userOperations().getUserProfile().getName());
 
             System.out.println(twitter.userOperations().getUserProfile().getProfileImageUrl());
-            
+
             session.setAttribute("foto", twitter.userOperations().getUserProfile().getProfileImageUrl());
-            
+
             String imagen = twitter.userOperations().getUserProfile().getProfileImageUrl();
-    
-       
+
+
             response.sendRedirect("index.jsp");
 //
 

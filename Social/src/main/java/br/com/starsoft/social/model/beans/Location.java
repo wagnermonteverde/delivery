@@ -14,7 +14,8 @@ import javax.persistence.Id;
  * @author wagner
  */
 @Entity
-public class Location implements Serializable{
+public class Location implements Serializable {
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -44,7 +45,4 @@ public class Location implements Serializable{
     public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
-    
-    
-    
 }

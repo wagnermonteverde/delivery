@@ -87,11 +87,11 @@ public class ControlerLogin extends HttpServlet {
 
             if (controlercadastro.verificaCadastrado(profile.getEmail())) {
 
-                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile,facebook,(String)session.getAttribute("token")));
+                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile, facebook, (String) session.getAttribute("token")));
 
             } else {
 
-                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile,facebook,(String)session.getAttribute("token")));
+                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token")));
 
             }
 

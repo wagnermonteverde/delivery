@@ -13,11 +13,11 @@ import javax.persistence.Id;
  *
  * @author wagner
  */
-
 @Entity
-public class Endereco implements Serializable  {
-    
-    @Id @GeneratedValue
+public class Endereco implements Serializable {
+
+    @Id
+    @GeneratedValue
     private Integer id;
     private String rua;
     private String cep;
@@ -25,7 +25,6 @@ public class Endereco implements Serializable  {
     private String cidade;
     private String uf;
     private Location location;
-  
 
     public Endereco() {
     }
@@ -45,7 +44,6 @@ public class Endereco implements Serializable  {
     public void setLocation(Location location) {
         this.location = location;
     }
-    
 
     public String getRua() {
         return rua;
@@ -91,8 +89,4 @@ public class Endereco implements Serializable  {
     public String toString() {
         return "Endereco{" + "rua=" + rua + ", cep=" + cep + ", numero=" + numero + ", cidade=" + cidade + ", uf=" + uf + '}';
     }
-    
-    
-          
-    
 }

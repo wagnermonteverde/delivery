@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
     @GeneratedValue
     private Integer id;
     private String name;
-    @Type(type="org.hibernate.type.PrimitiveByteArrayBlobType")
+    @Type(type = "org.hibernate.type.PrimitiveByteArrayBlobType")
     private byte[] fotoPerfil;
     private String lastName;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -160,15 +160,9 @@ public class Usuario implements Serializable {
         if ((this.tokenAcesso == null) ? (other.tokenAcesso != null) : !this.tokenAcesso.equals(other.tokenAcesso)) {
             return false;
         }
-       
+
         return true;
     }
-
-    
-    
-    
-    
-    
 
     public String retornaStringFoto(byte[] foto) {
         ByteToBase64 trans = new ByteToBase64(foto);
@@ -181,6 +175,4 @@ public class Usuario implements Serializable {
     public String toString() {
         return "Usuario{" + "id=" + id + ", name=" + name + ", fotoPerfil=" + fotoPerfil + ", lastName=" + lastName + ", dataNascimeto=" + dataNascimeto + ", mail=" + mail + ", oauthVerifierTwitter=" + oauthVerifierTwitter + ", tokenAcesso=" + tokenAcesso + ", cpf=" + cpf + ", endereco=" + endereco + '}';
     }
-
-  
 }

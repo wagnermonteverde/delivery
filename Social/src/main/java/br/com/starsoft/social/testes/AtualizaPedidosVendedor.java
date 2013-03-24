@@ -36,12 +36,12 @@ public class AtualizaPedidosVendedor extends HttpServlet {
         try {
             /* TODO output your page here. You may use following sample code. */
             out.println("henrique");
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            out.println(Math.random()*100);
-            
-            
-        } finally {            
+            out.println(Math.random() * 100);
+            out.println(Math.random() * 100);
+            out.println(Math.random() * 100);
+
+
+        } finally {
             out.close();
         }
     }

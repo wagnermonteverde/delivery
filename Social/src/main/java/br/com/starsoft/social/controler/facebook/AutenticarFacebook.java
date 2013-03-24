@@ -64,7 +64,7 @@ public class AutenticarFacebook extends HttpServlet {
              *
              * 
              */
-            params.setRedirectUri(""+UrlAplication.getUrlAplicacao()+"ProcessFacebook");
+            params.setRedirectUri("" + UrlAplication.getUrlAplicacao() + "ProcessFacebook");
             params.add("display", "popup");
             String authorizeUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, params);
 

@@ -9,5 +9,4 @@ package br.com.starsoft.social.model.beans;
  * @author wagner
  */
 public class Vendedor {
-    
 }

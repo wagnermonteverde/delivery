@@ -68,7 +68,7 @@ public class ProcessFacebook extends HttpServlet {
              *
              */
 
-            AccessGrant accessGrant = SocialConnectionFactory.facebookConnFactory().getOAuthOperations().exchangeForAccess(code, ""+UrlAplication.getUrlAplicacao()+"ProcessFacebook", null);
+            AccessGrant accessGrant = SocialConnectionFactory.facebookConnFactory().getOAuthOperations().exchangeForAccess(code, "" + UrlAplication.getUrlAplicacao() + "ProcessFacebook", null);
             String accessToken = accessGrant.getAccessToken();
 
 

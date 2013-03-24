@@ -60,7 +60,7 @@ public class MapsUtils {
                 + ",brasil&destinations="
                 + destino.replace(" ", "+")
                 + ",brasil&sensor=false");
-        
+
         JSONObject my_obj = new JSONObject(json);
 
         String get = my_obj.get("rows").toString();

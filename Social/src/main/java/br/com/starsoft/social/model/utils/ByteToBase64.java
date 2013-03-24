@@ -1,4 +1,3 @@
-
 package br.com.starsoft.social.model.utils;
 
 import sun.misc.BASE64Encoder;
@@ -17,17 +16,14 @@ public class ByteToBase64 {
 
     public ByteToBase64() {
     }
-    
 
     public String retornaBase64() {
 
-        if (this.foto!=null) {
+        if (this.foto != null) {
             BASE64Encoder encoder = new BASE64Encoder();
-            return "data:image/jpeg;base64,"+encoder.encode(foto);
+            return "data:image/jpeg;base64," + encoder.encode(foto);
         }
-         System.out.println("nda");
-         return "nda";
+        System.out.println("nda");
+        return "nda";
     }
-    
-   
 }
