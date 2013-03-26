@@ -20,6 +20,7 @@ public class ControlerCadastro {
     }
 
     public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken) {
+    
         DAOUsuario daoUsuario = new DAOUsuario(Usuario.class);
         byte[] foto = facebook.userOperations().getUserProfileImage();
 

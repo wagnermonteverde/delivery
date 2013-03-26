@@ -39,6 +39,8 @@ public class ControlerLogin extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
 
+
+
             HttpSession session = request.getSession();
 
 
@@ -84,25 +86,37 @@ public class ControlerLogin extends HttpServlet {
              * com os dados da rede social
              * 
              */
-
+            
+            
+            
+           
+            /*  
+             * 
+             * refatorar pra metodos do controler cadastro 
+             * passar verificações para controler cadastro
+             * 
+             * motivo usuario pde abortar cadastro de endereço
+             * ficando só com os dados do facebook
+             * 
+             */
             if (controlercadastro.verificaCadastrado(profile.getEmail())) {
 
                 session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile, facebook, (String) session.getAttribute("token")));
-
+                response.sendRedirect("index.jsp");
+                
             } else {
-
+                
                 session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token")));
 
             }
 
-
-            /**
-             *
-             * Redireciona para o inicio
-             *
-             *
+             /*  
+             * 
+             * refatorar pra metodos do controler cadastro 
+             * passar verificações para controler cadastro
+             * 
              */
-            response.sendRedirect("index.jsp");
+
 
 
 
