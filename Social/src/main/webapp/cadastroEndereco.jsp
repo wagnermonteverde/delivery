@@ -4,9 +4,6 @@
 <html>
     <head>
 
-
-
-
         <style>
 
             #face {
@@ -59,46 +56,23 @@
 
             <!-- inicio formulario   -->
 
-            <div class="accordion" id="accordion2">
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                            Collapsible Group Item #1
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="accordion-body collapse in">
-                        <div class="accordion-inner">
-                            Anim pariatur cliche...
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                            Collapsible Group Item #2
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            Anim pariatur cliche...
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <form class="well">  
+                <label>Label name</label>  
+                <input type="text" class="span3" placeholder="Type something…">  
+                </br>
+                <input type="text" class="span3" placeholder="Type something…">  
+                </br>
+                <input type="text" class="span3" placeholder="Type something…">  
+                
+                <button type="submit" class="btn success">Submit</button>  
+            </form>
+
 
             <!-- fim formulario   -->
 
-
-
-
-
-
-
-
-
-
-
-
+            
+            
             <!-- navbar   -->
 
             <div class="navbar navbar-fixed-top navbar-inverse">

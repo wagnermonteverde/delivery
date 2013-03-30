@@ -5,13 +5,21 @@
 package br.com.starsoft.social.model.beans;
 
 import java.util.Calendar;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author wagner
  */
+@Entity
 public class Empresa {
 
+    @Id
+    @GeneratedValue
     private Integer id;
     private String cnpj;
     private String nome;
@@ -20,7 +28,10 @@ public class Empresa {
     private String descricao;
     private String imagemMiniatura;
     private String imagemLogo;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataCadastro;
+    
+    @OneToOne
     private Endereco endereco;
 
     public Empresa() {
