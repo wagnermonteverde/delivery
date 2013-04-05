@@ -175,6 +175,8 @@
                             <div class="accordion-inner">
                                 <img src="img/Ulogo3.png" alt="Delivery ta na mesa!" width="" height="80">
                                 <%  if (user == null) {
+                                   
+                                   
                                         out.print("<a href=\"AutenticarFacebook\"class=\"pull-right\"><img src=\"img/facebook.png\"></a>"
                                                 + "                                                                                      <a href=\"AutenticarTwitter\"class=\"pull-right\"><img src=\"img/twitter.png\"></a> ");
                                     } else {
@@ -590,6 +592,39 @@ Fim acordion-->
         </br>
         </br>
         </br>
+
+
+        <!-- Modal -->
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Entre com seus dados:</h3>
+            </div>
+            <div class="modal-body">
+                <form action="AutenticarFacebook" method="POST">
+                    Rua<br />
+                    <input type="text" name="rua" id="rua" value="" /><br />
+                    Nº<br />
+                    <input type="text" name="n" value="" /><br />
+                    Cidade<br />
+                    <input type="text" name="cidade" value="" /><br />
+                    Estado<br />
+                    <input type="text" name="estado" value="" /><br />
+                    Cep<br />
+                    <input type="text" name="cep" value="" /><br />
+                   <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                  <button class="btn btn-primary" type="submit">Criar Conta</button>
+                
+                    
+                </form>
+                
+            </div>
+<!--            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                  <a href="AutenticarFacebook" class=\"pull-right\"><button class="btn btn-primary" type="submit">Save changes</button></a>
+                
+            </div>-->
+        </div>
 
         <script>
         jQuery(document).ready(function($) {
