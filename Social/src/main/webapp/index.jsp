@@ -177,7 +177,7 @@
                                 <%  if (user == null) {
                                    
                                    
-                                        out.print("<a href=\"AutenticarFacebook\"class=\"pull-right\"><img src=\"img/facebook.png\"></a>"
+                                        out.print("<a href=\"#myModal\" data-toggle=\"modal\" class=\"pull-right\"><img src=\"img/facebook.png\"></a>"
                                                 + "                                                                                      <a href=\"AutenticarTwitter\"class=\"pull-right\"><img src=\"img/twitter.png\"></a> ");
                                     } else {
                                         out.print("<form class=\"navbar-form pull-right\" action=\"tumbail.jsp\" method=\"POST\">");
