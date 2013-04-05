@@ -81,16 +81,7 @@ public class AutenticarFacebook extends HttpServlet {
 //           
             HttpSession session = request.getSession();
             
-            Endereco end = new Endereco();
-            end.setCep(request.getParameter("cep"));
-            end.setCidade(request.getParameter("cidade"));
-            end.setNumero(Integer.parseInt(request.getParameter("n")));
-            end.setRua(request.getParameter("rua"));
-            end.setUf(request.getParameter("estado"));
-            
-            
-            
-            session.setAttribute("endereco", end);
+           
             
             response.sendRedirect(authorizeUrl);
 

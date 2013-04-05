@@ -103,11 +103,9 @@ public class ControlerLogin extends HttpServlet {
             if (controlercadastro.verificaCadastrado(profile.getEmail())) {
 
                 session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile, facebook, (String) session.getAttribute("token")));
-                response.sendRedirect("index.jsp");
                 
             } else {
-                Endereco endereco = (Endereco) session.getAttribute("endereco");
-                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token"),endereco));
+                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token")));
 
             }
 
@@ -120,6 +118,7 @@ public class ControlerLogin extends HttpServlet {
 
 
 
+                response.sendRedirect("index.jsp");
 
 
 

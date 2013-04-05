@@ -25,29 +25,33 @@ public class ControlerCadastro {
     public ControlerCadastro() {
     }
 
-    public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken, Endereco endereco) {
+    public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken) {
 
         DAOUsuario daoUsuario = new DAOUsuario(Usuario.class);
+        
         DAO dao = new DAO(Object.class);
+        
+        
         byte[] foto = facebook.userOperations().getUserProfileImage();
         
-        Location location = new Location();
         
-        try {
-//            Criando uma string com o endereço para pesquisa da localização junto ao Google Maps
-            String endereço = endereco.getRua() + ", " + endereco.getNumero() + ", " + endereco.getCidade() + " - " + endereco.getUf() + ",  Brasil";
-//           Setando o resultado na busca no location
-            location = MapsUtils.getCoord(endereço);
-        } catch (JSONException ex) {
-            Logger.getLogger(ControlerCadastro.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        Location location = new Location();
+        
+//        try {
+////            Criando uma string com o endereço para pesquisa da localização junto ao Google Maps
+//            String endereço = endereco.getRua() + ", " + endereco.getNumero() + ", " + endereco.getCidade() + " - " + endereco.getUf() + ",  Brasil";
+////           Setando o resultado na busca no location
+//            location = MapsUtils.getCoord(endereço);
+//        } catch (JSONException ex) {
+//            Logger.getLogger(ControlerCadastro.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
-        dao.adiciona(location);
+//        dao.adiciona(location);
+//        endereco.setLocation(location);
+//        dao.adiciona(endereco);
 
 
-        endereco.setLocation(location);
 
-        dao.adiciona(endereco);
 
 
 
@@ -57,7 +61,6 @@ public class ControlerCadastro {
         user.setMail(profile.getEmail());
         user.setFotoPerfil(foto);
         user.setTokenAcesso(acessToken);
-        user.setEndereco(endereco);
 
 
         dao.adiciona(user);
