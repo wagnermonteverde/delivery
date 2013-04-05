@@ -4,15 +4,18 @@
  */
 package br.com.starsoft.social.controler.facebook;
 
+import br.com.starsoft.social.model.beans.Endereco;
 import br.com.starsoft.social.model.logic.UrlAplication;
 import br.com.starsoft.social.model.utils.SocialConnectionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
@@ -75,6 +78,20 @@ public class AutenticarFacebook extends HttpServlet {
              * 
              * 
              */
+//           
+            HttpSession session = request.getSession();
+            
+            Endereco end = new Endereco();
+            end.setCep(request.getParameter("cep"));
+            end.setCidade(request.getParameter("cidade"));
+            end.setNumero(Integer.parseInt(request.getParameter("n")));
+            end.setRua(request.getParameter("rua"));
+            end.setUf(request.getParameter("estado"));
+            
+            
+            
+            session.setAttribute("endereco", end);
+            
             response.sendRedirect(authorizeUrl);
 
 

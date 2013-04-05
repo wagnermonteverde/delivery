@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.controler.login;
 
+import br.com.starsoft.social.model.beans.Endereco;
 import br.com.starsoft.social.model.logic.ControlerCadastro;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -105,8 +106,8 @@ public class ControlerLogin extends HttpServlet {
                 response.sendRedirect("index.jsp");
                 
             } else {
-                
-                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token")));
+                Endereco endereco = (Endereco) session.getAttribute("endereco");
+                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token"),endereco));
 
             }
 

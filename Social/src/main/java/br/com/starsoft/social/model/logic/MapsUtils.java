@@ -9,15 +9,15 @@ import org.json.JSONObject;
 
 public class MapsUtils {
 
-//    public static void main(String[] args) throws JSONException {
-////        for (int i = 0; i < 100; i++) {
-////            System.out.println(getDistance("campina da lagoa",  "herveira"));
-////            System.out.println(getTemp("campina da lagoa", "curitiba"));
-//            System.out.println(getCoord("utfpr campo mourao"));
-////            System.err.println("tem uma parametro que passa pela url que faz ele retornar em portugues");
-////        }
-//
-//    }
+    public static void main(String[] args) throws JSONException {
+        //        for (int i = 0; i < 100; i++) {
+        //            System.out.println(getDistance("campina da lagoa",  "herveira"));
+        //            System.out.println(getTemp("campina da lagoa", "curitiba"));
+            System.out.println(getCoord("coamo, Campo Mourão, Paraná, Brasil").toString());
+//            System.err.println("tem uma parametro que passa pela url que faz ele retornar em portugues");
+//        }
+
+    }
     public static String getTemp(String origem, String destino) throws JSONException {
         String json = getJson("http://maps.googleapis.com/maps/api/distancematrix/json?origins="
                 + origem.replace(" ", "+")
@@ -35,21 +35,25 @@ public class MapsUtils {
 
     }
 
-    public static Location getCoord(String cidade) throws JSONException {
+    public static Location getCoord(String end) throws JSONException {
 
         //tem que passar uma segunda cidade no destination, aqui está setando uma qualquer
         String json = getJson("http://maps.googleapis.com/maps/api/directions/json?"
-                + "origin=" + cidade.replace(" ", "+")
+                + "origin=" + end.replace(" ", "+")
                 + "&destination=cascavel"
                 + "&sensor=false");
-
+        
         JSONObject my_obj = new JSONObject(json);
 
         String toString = my_obj.get("routes").toString();
         String[] split = toString.split("\"");
+        
+        for (String string : split) {
+            System.out.println(string);
+        }
 
-        String lon = split[16].replace(":", "").replace(",", "");
-        String lat = split[18].replace(":", "").replace(",", "").replace("}", "");
+        String lon = split[60].replace(":", "").replace(",", "");
+        String lat = split[62].replace(":", "").replace(",", "").replace("}", "");
 
         return new Location(lat, lon);
     }

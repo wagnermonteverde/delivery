@@ -4,9 +4,15 @@
  */
 package br.com.starsoft.social.model.logic;
 
+import br.com.starsoft.social.model.beans.Endereco;
+import br.com.starsoft.social.model.beans.Location;
 import br.com.starsoft.social.model.beans.Usuario;
+import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOUsuario;
 import br.com.starsoft.social.model.utils.ByteToBase64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.JSONException;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
 
@@ -19,10 +25,30 @@ public class ControlerCadastro {
     public ControlerCadastro() {
     }
 
-    public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken) {
-    
+    public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken, Endereco endereco) {
+
         DAOUsuario daoUsuario = new DAOUsuario(Usuario.class);
+        DAO dao = new DAO(Object.class);
         byte[] foto = facebook.userOperations().getUserProfileImage();
+        
+        Location location = new Location();
+        
+        try {
+//            Criando uma string com o endereço para pesquisa da localização junto ao Google Maps
+            String endereço = endereco.getRua() + ", " + endereco.getNumero() + ", " + endereco.getCidade() + " - " + endereco.getUf() + ",  Brasil";
+//           Setando o resultado na busca no location
+            location = MapsUtils.getCoord(endereço);
+        } catch (JSONException ex) {
+            Logger.getLogger(ControlerCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        dao.adiciona(location);
+
+
+        endereco.setLocation(location);
+
+        dao.adiciona(endereco);
+
 
 
         Usuario user = new Usuario();
@@ -31,10 +57,12 @@ public class ControlerCadastro {
         user.setMail(profile.getEmail());
         user.setFotoPerfil(foto);
         user.setTokenAcesso(acessToken);
-        daoUsuario.adiciona(user);
+        user.setEndereco(endereco);
+
+
+        dao.adiciona(user);
 
         return daoUsuario.consultaEmail(user.getMail());
-
     }
 
     public Boolean verificaCadastrado(String mail) {
