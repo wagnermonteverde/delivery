@@ -24,6 +24,7 @@ public class Produtos {
     @GeneratedValue
     private Integer id;
     private String nome;
+    private Categoria categoria;
     private Double preco;
     private String descricao;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -37,6 +38,14 @@ public class Produtos {
         this.preco = preco;
         this.descricao = descricao;
         this.dataInclusao = dataInclusao;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
     
 

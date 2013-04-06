@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.controler.crudsProdutos;
 
+import br.com.starsoft.social.model.beans.Categoria;
 import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,8 +38,15 @@ public class ControlerCadastroProdutos extends HttpServlet {
         try {
              
             String preco = (String) request.getParameter("valor");
+            String categoria = (String) request.getParameter("categoria");
+            Categoria categoria1 = null;
+            if (categoria.equalsIgnoreCase("bebida")) {
+                categoria1 = categoria1.Bebida;
+            }else{
+                categoria1 = categoria1.Comida;
+            }
 
-            ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"));
+            ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"), categoria1);
            
             response.sendRedirect("admin/index.jsp");
         } finally {

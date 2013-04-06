@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.model.logic;
 
+import br.com.starsoft.social.model.beans.Categoria;
 import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.dao.DAO;
 import java.util.Calendar;
@@ -17,7 +18,7 @@ import javax.xml.crypto.Data;
  */
 public class ControlerCRUDProdutos {
 
-    public static boolean cadastraProdutos(String titulo, String preco, String descricao) {
+    public static boolean cadastraProdutos(String titulo, String preco, String descricao, Categoria categoria) {
         try {
             DAO dao = new DAO(Object.class);
 
@@ -25,12 +26,13 @@ public class ControlerCRUDProdutos {
             p.setDescricao(descricao);
             p.setNome(titulo);
             p.setPreco(Double.parseDouble(preco));
+            p.setCategoria(categoria);
             
             Date data = new Date(System.currentTimeMillis());
             Calendar calendar = new GregorianCalendar();
              
             calendar.setTime(data);
-            
+                        
             p.setDataInclusao(calendar);
 
             dao.adiciona(p);
