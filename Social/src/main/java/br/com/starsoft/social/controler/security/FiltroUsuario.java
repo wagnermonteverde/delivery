@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author wagner
  */
 @WebFilter(filterName = "Filtro", urlPatterns = {"/tumbail.jsp"})
-public class Filtro implements Filter {
+public class FiltroUsuario implements Filter {
 
     private static final boolean debug = true;
     // The filter configuration object we are associated with.  If
@@ -31,7 +31,7 @@ public class Filtro implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public Filtro() {
+    public FiltroUsuario() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

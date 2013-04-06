@@ -33,7 +33,7 @@
                                         <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
                                             <form method="post" action="login" accept-charset="UTF-8">
                                                 <ul>
-                                                    <li><a>Configurações</a></li>
+                                                    <li><a href="perfil.jsp">Perfil</a></li>
                                                     <li><a href="Logof">Sair</a></li>
                                             </form>
                                             </form>

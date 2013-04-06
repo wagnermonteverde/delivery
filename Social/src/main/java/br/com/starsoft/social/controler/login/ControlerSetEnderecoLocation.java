@@ -5,24 +5,25 @@
 package br.com.starsoft.social.controler.login;
 
 import br.com.starsoft.social.model.beans.Endereco;
+import br.com.starsoft.social.model.beans.Usuario;
 import br.com.starsoft.social.model.logic.ControlerCadastro;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.FacebookProfile;
+import org.json.JSONException;
 
 /**
  *
  * @author wagner
  */
-@WebServlet(name = "ControlerLogin", urlPatterns = {"/ControlerLogin"})
-public class ControlerLogin extends HttpServlet {
+@WebServlet(name = "ControlerSetEnderecoLocation", urlPatterns = {"/ControlerSetEnderecoLocation"})
+public class ControlerSetEnderecoLocation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -35,94 +36,38 @@ public class ControlerLogin extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
 
 
 
-            HttpSession session = request.getSession();
+            /*
+             *
+             * Instancia um controler de cadastro
+             * 
+             */
+            ControlerCadastro controlerCadastro = new ControlerCadastro();
 
 
             /*
              *
-             * 
-             * Recupera o Facebook template da sessão
-             * 
+             * chama metodo do controler para setar Endereço
              * 
              */
-            Facebook facebook = (Facebook) session.getAttribute("facebook");
-
-
-            /*
-             *
-             * 
-             * Obtem o Perfil do Usario com todas as informações
-             * referentes ao perfil do usuario
-             * 
-             * 
-             */
-            FacebookProfile profile = facebook.userOperations().getUserProfile();
+            controlerCadastro.cadastraEndereco(request);
 
 
 
             /*
              *
-             * Instancia um controler para tratar operações de cadastro
-             * e verificação de usuarios cadastrados
+             * Redireciona para o inicio
              * 
              * 
              */
-            ControlerCadastro controlercadastro = new ControlerCadastro();
+            response.sendRedirect("index.jsp");
 
-
-
-
-            /*
-             * 
-             * Verifica se o usuario q fez login com facebook
-             * já esta cadastrado no sistema
-             * se não estiver faz o cadastro basico
-             * com os dados da rede social
-             * 
-             */
-
-
-
-
-            /*  
-             * 
-             * refatorar pra metodos do controler cadastro 
-             * passar verificações para controler cadastro
-             * 
-             * motivo usuario pde abortar cadastro de endereço
-             * ficando só com os dados do facebook
-             * 
-             */
-
-
-
-
-            if (controlercadastro.verificaCadastrado(profile.getEmail())) {
-
-                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile, facebook, (String) session.getAttribute("token")));
-                 
-            } else {
-                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token")));
-               
-            }
-
-            /*  
-             * 
-             * refatorar pra metodos do controler cadastro 
-             * passar verificações para controler cadastro
-             * 
-             */
-
-
-
-            response.sendRedirect("RedirecionamentoIndex");
 
 
 
@@ -145,7 +90,11 @@ public class ControlerLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -160,7 +109,11 @@ public class ControlerLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

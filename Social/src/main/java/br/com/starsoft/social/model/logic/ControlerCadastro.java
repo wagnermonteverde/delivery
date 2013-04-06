@@ -12,6 +12,7 @@ import br.com.starsoft.social.model.dao.DAOUsuario;
 import br.com.starsoft.social.model.utils.ByteToBase64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 import org.json.JSONException;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookProfile;
@@ -28,12 +29,12 @@ public class ControlerCadastro {
     public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken) {
 
         DAOUsuario daoUsuario = new DAOUsuario(Usuario.class);
-        
+
         DAO dao = new DAO(Object.class);
-        
-        
+
+
         byte[] foto = facebook.userOperations().getUserProfileImage();
-        
+
 
         Usuario user = new Usuario();
         user.setLastName(profile.getLastName());
@@ -99,5 +100,46 @@ public class ControlerCadastro {
         new DAOUsuario(Usuario.class).atualiza(user);
 
         return user;
+    }
+
+    public void cadastraEndereco(HttpServletRequest request) throws JSONException {
+        DAO<Location> daoLocation = new DAO<Location>(Location.class);
+        DAO<Usuario> daoUsuario = new DAO<Usuario>(Usuario.class);
+        DAO<Endereco> daoEndereco = new DAO<Endereco>(Endereco.class);
+
+
+        Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+        
+
+        String rua = request.getParameter("rua");
+        String cidade = request.getParameter("cidade");
+        String numero = request.getParameter("n");
+        String estado = request.getParameter("estado");
+        String cep = request.getParameter("cep");
+
+        Location location = MapsUtils.getCoord(rua + "," + numero + "," + cidade + "," + estado);
+     
+        daoLocation.adiciona(location);
+        System.out.println(location.toString());
+
+        Endereco endereco = new Endereco();
+
+        endereco.setCidade(cidade);
+        endereco.setCep(cep);
+        endereco.setLocation(location);
+        endereco.setRua(rua);
+        endereco.setUf(estado);
+        endereco.setNumero(Integer.parseInt(numero));
+        System.out.println(endereco.toString());
+
+        daoEndereco.adiciona(endereco);
+        
+        System.out.println(user.toString());
+        
+        user.setEndereco(endereco);
+
+        daoUsuario.atualiza(user);
+
+
     }
 }

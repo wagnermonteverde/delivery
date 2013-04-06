@@ -89,7 +89,7 @@ public class Usuario implements Serializable {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = " "+lastName;
     }
 
     public Calendar getDataNascimeto() {

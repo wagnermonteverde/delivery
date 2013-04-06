@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="br.com.starsoft.social.model.beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -70,8 +69,8 @@
 
 
 
-        <!--include barra menu-->
-          <%@include file="header.jsp" %>
+        <!--include barra menu--> 
+        <%@include file="header.jsp" %>
 
 
 

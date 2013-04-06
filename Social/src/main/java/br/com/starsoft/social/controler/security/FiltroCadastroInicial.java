@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.controler.security;
 
+import br.com.starsoft.social.model.beans.Usuario;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -15,12 +16,16 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.FacebookProfile;
 
 /**
  *
  * @author wagner
  */
-@WebFilter(filterName = "FiltroCadastroInicial", urlPatterns = {"/"})
+@WebFilter(filterName = "FiltroCadastroInicial", urlPatterns = {"/tumbail","/RedirecionamentoIndex"})
 public class FiltroCadastroInicial implements Filter {
     
     private static final boolean debug = true;
@@ -30,36 +35,16 @@ public class FiltroCadastroInicial implements Filter {
     private FilterConfig filterConfig = null;
     
     public FiltroCadastroInicial() {
-    }    
+    }
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
             log("FiltroCadastroInicial:DoBeforeProcessing");
         }
-
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-	/*
-         for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-         String name = (String)en.nextElement();
-         String values[] = request.getParameterValues(name);
-         int n = values.length;
-         StringBuffer buf = new StringBuffer();
-         buf.append(name);
-         buf.append("=");
-         for(int i=0; i < n; i++) {
-         buf.append(values[i]);
-         if (i < n-1)
-         buf.append(",");
-         }
-         log(buf.toString());
-         }
-         */
-    }    
+        
+        
+    }
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
@@ -97,40 +82,32 @@ public class FiltroCadastroInicial implements Filter {
      * @exception IOException if an input/output error occurs
      * @exception ServletException if a servlet error occurs
      */
+    
+    
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
         
-        if (debug) {
-            log("FiltroCadastroInicial:doFilter()");
-        }
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
         
-        doBeforeProcessing(request, response);
         
-        Throwable problem = null;
-        try {
+        Usuario user = (Usuario) req.getSession().getAttribute("usuario");
+        
+        if (user.getEndereco() == null) {
+            
+            resp.sendRedirect("cadastroEndereco.jsp");
+            
+        }else{
+         
             chain.doFilter(request, response);
-        } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
+        
         }
         
-        doAfterProcessing(request, response);
-
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
-        if (problem != null) {
-            if (problem instanceof ServletException) {
-                throw (ServletException) problem;
-            }
-            if (problem instanceof IOException) {
-                throw (IOException) problem;
-            }
-            sendProcessingError(problem, response);
-        }
+        
+        
+        
     }
 
     /**
@@ -152,16 +129,16 @@ public class FiltroCadastroInicial implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
+            if (debug) {
                 log("FiltroCadastroInicial:Initializing filter");
             }
         }
@@ -182,18 +159,18 @@ public class FiltroCadastroInicial implements Filter {
     }
     
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
+        String stackTrace = getStackTrace(t);
         
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -226,6 +203,6 @@ public class FiltroCadastroInicial implements Filter {
     }
     
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+        filterConfig.getServletContext().log(msg);
     }
 }
