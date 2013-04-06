@@ -4,23 +4,41 @@
  */
 package br.com.starsoft.social.model.beans;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author wagner
  */
+@Entity
+@Table(name = "Produtos")
 public class Produtos {
 
+    @Id
+    @GeneratedValue
     private Integer id;
     private String nome;
     private Double preco;
     private String descricao;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataInclusao;
-    private Integer quantidade;
 
     public Produtos() {
     }
+
+    public Produtos(String nome, Double preco, String descricao, Calendar dataInclusao, Integer quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.descricao = descricao;
+        this.dataInclusao = dataInclusao;
+    }
+    
 
     public Integer getId() {
         return id;
@@ -62,13 +80,6 @@ public class Produtos {
         this.dataInclusao = dataInclusao;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
 
     @Override
     public int hashCode() {
@@ -100,9 +111,11 @@ public class Produtos {
         if (this.dataInclusao != other.dataInclusao && (this.dataInclusao == null || !this.dataInclusao.equals(other.dataInclusao))) {
             return false;
         }
-        if (this.quantidade != other.quantidade && (this.quantidade == null || !this.quantidade.equals(other.quantidade))) {
-            return false;
-        }
+       
         return true;
+    }
+
+    public void setDataInclusao(DateFormat dateFormat) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

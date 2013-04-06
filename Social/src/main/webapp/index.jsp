@@ -369,7 +369,6 @@
             <!-- fim  barra secundaria-->
 
 
-
             <!-- Grid de Lojas on line-->
             <div class="row">
                 <div class="span12">
