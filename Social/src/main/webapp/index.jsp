@@ -70,88 +70,12 @@
 
 
 
-            <!-- navbar   -->
-
-            <div class="navbar navbar-fixed-top navbar-inverse">
-                <div class="navbar-inner">
-                    <div class="container-fluid">
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <a class="brand fluid" href="#" name="top" id="ze"><img src="img/logo.png" width="40" height="40"></a>
-                        <div class="nav-collapse collapse">
-                            <ul class="nav">
-                                <li ><a href="index.jsp"><i class="icon-home"></i> Inicio</a></li>
-                                <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-file"></i> Lojas</a></li>
-                                <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-envelope"></i> Messages</a></li>
-                                <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-shopping-cart"></i> Carrinho</a></li>
-                                <li class="divider-vertical"></li>
-                            </ul>
+        <!--include barra menu-->
+          <%@include file="header.jsp" %>
 
 
-                            <c:if test="${usuario!=null}">
 
-
-                                <ul class="nav pull-right">
-                                    <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src="<c:out value="${usuario.fotoString}"/>" /></a></li>
-
-                                    <li class="dropdown ">
-                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="face"><c:out value="${ usuario.name }"/>_<c:out value="${ usuario.lastName }"/><strong class="caret"></strong></a>
-                                        <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                                            <form method="post" action="login" accept-charset="UTF-8">
-                                                <ul>
-                                                    <li><a>Configurações</a></li>
-                                                    <li><a href="Logof">Sair</a></li>
-                                            </form>
-                                            </form>
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </c:if>
-
-                        </div>
-                        <!--/.nav-collapse -->
-                    </div>
-                    <!--/.container-fluid -->
-                </div>
-                <!--/.navbar-inner -->
-            </div>
-            <!--/.navbar -->
-
-            <!-- fim navbar   -->
-
-
-            <!-- barra secundaria-->
-            <!--            <div class="navbar">
-                            <div class="navbar-inner">
-                                <a><img src="img/promocao1.jpg"></a>
-                                <a href="AutenticarFacebook"class="pull-right"><img src="img/facebook.png"></a>
-                                <a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>
-            
-                                <ul class="nav">
-            
-                                    <li>
-            
-                                    </li>
-                                    <li>
-                                    </li>
-            
-                                </ul>
-            
-            
-                                  botao dois 
-                            </div>
-                        </div>-->
-            <!-- fim  barra secundaria-->
-
-            <!-- Teste acordion-->
+            <!--  acordion-->
             <div class="container-fluid">  
                 <div class="accordion" id="accordion2">
                     <div class="accordion-group">
@@ -167,8 +91,8 @@
                                 <c:choose>
 
                                     <c:when test="${usuario==null}">
-                                        <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>"
-                                        <a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>
+                                        <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
+                                        <!--<a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>-->
                                     </c:when>
 
                                     <c:otherwise>
@@ -185,8 +109,9 @@
                 </div>
 
             </div>
-          
 
+
+            <!-- Fim acordion -->
 
 
 
@@ -427,8 +352,8 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <a><img src="img/promocao1.jpg"></a>
-                    <a href="AutenticarFacebook"class="pull-right"><img src="img/facebook.png"></a>
-                    <a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>
+<!--                    <a href="AutenticarFacebook"class="pull-right"><img src="img/facebook.png"></a>
+                    <a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>-->
 
                     <ul class="nav">
 
@@ -517,41 +442,10 @@
         </div >
 
 
-        <!--Inicio do rodapé-->
-
-        <div class="navbar navbar-fixed-bottom navbar-inverse">
-            <div class="navbar-inner">
-                <div class="container">
-                    <form class="navbar-form pull-right" action="tumbail.jsp" method="POST">
-                        <input  name="textinput2" type="search" placeholder="Digite Aqui seu Endereço e veja as lojas perto de você!" class="span5">
-                    </form>
-                    <a class="brand" href="#">
-
-                    </a>
-                    <ul class="nav">
-                        <li>
-                            <a href="#">
-
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        </br>
-        </br>
-        </br>
+        
+        <!-- inclusão do footer -->
+        <%@include file="footer.jsp" %>
+        
 
 
         <!-- Modal -->
