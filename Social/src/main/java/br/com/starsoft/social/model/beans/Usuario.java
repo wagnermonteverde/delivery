@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Index;
 import org.hibernate.annotations.Type;
 
@@ -49,6 +50,8 @@ public class Usuario implements Serializable {
     private String cpf;
     @OneToOne
     private Endereco endereco;
+    @Transient
+    private String fotoString;
 
     public Usuario() {
     }
@@ -67,6 +70,10 @@ public class Usuario implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getFotoString() {
+        return retornaStringFoto(fotoPerfil);
     }
 
     public String getName() {

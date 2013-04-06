@@ -34,26 +34,6 @@ public class ControlerCadastro {
         
         byte[] foto = facebook.userOperations().getUserProfileImage();
         
-        
-//        Location location = new Location();
-        
-//        try {
-////            Criando uma string com o endereço para pesquisa da localização junto ao Google Maps
-//            String endereço = endereco.getRua() + ", " + endereco.getNumero() + ", " + endereco.getCidade() + " - " + endereco.getUf() + ",  Brasil";
-////           Setando o resultado na busca no location
-//            location = MapsUtils.getCoord(endereço);
-//        } catch (JSONException ex) {
-//            Logger.getLogger(ControlerCadastro.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-//        dao.adiciona(location);
-//        endereco.setLocation(location);
-//        dao.adiciona(endereco);
-
-
-
-
-
 
         Usuario user = new Usuario();
         user.setLastName(profile.getLastName());

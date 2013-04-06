@@ -1,12 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="br.com.starsoft.social.model.beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
     <head>
-
-
-
 
         <style>
 
@@ -66,11 +64,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
-        <%
-            Usuario user = null;
-            user = (Usuario) session.getAttribute("usuario");
 
-        %>
 
         <div class="container">
 
@@ -99,33 +93,28 @@
                                 <li class="divider-vertical"></li>
                             </ul>
 
-                            <%
 
-                                if (user != null) {
+                            <c:if test="${usuario!=null}">
 
-                                    out.print(" <ul class=\"nav pull-right\">");
-                                    out.print("<li><a href=\"#\" id=\"sair\"><img  style=\" width: 24px; height: 24px;\" alt=\"0\"src=\"");
-                                    out.print(user.retornaStringFoto(user.getFotoPerfil()));
-                                    out.print("\" /></a></li>");
-                                    out.print("<li class=\"dropdown \">");
-                                    out.print("<a class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" id=\"face\">");
-                                    out.print(user.getName() + " " + user.getLastName());
-                                    out.print("<strong class=\"caret\"></strong></a>");
-                                    out.print("<div class=\"dropdown-menu \" style=\"padding: 15px; padding-bottom: 0px;\">");
-                                    out.print("<form method=\"post\" action=\"login\" accept-charset=\"UTF-8\">");
-                                    out.print("<ul>");
-                                    out.print("<li><a>Configurações</a></li>");
-                                    out.print("<li><a href=\"Logof\">Sair</a></li>");
-                                    out.print("</ul>");
-                                    out.print(" </form>");
-                                    out.print(" </form>");
-                                    out.print(" </form>");
-                                    out.print(" </div>");
-                                    out.print(" </li>");
-                                    out.print(" </ul>");
-                                }
 
-                            %>
+                                <ul class="nav pull-right">
+                                    <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src="<c:out value="${usuario.fotoString}"/>" /></a></li>
+
+                                    <li class="dropdown ">
+                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="face"><c:out value="${ usuario.name }"/>_<c:out value="${ usuario.lastName }"/><strong class="caret"></strong></a>
+                                        <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                                            <form method="post" action="login" accept-charset="UTF-8">
+                                                <ul>
+                                                    <li><a>Configurações</a></li>
+                                                    <li><a href="Logof">Sair</a></li>
+                                            </form>
+                                            </form>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </c:if>
 
                         </div>
                         <!--/.nav-collapse -->
@@ -174,17 +163,21 @@
                         <div id="collapseOne" class="accordion-body collapse in">
                             <div class="accordion-inner">
                                 <img src="img/Ulogo3.png" alt="Delivery ta na mesa!" width="" height="80">
-                                <%  if (user == null) {
-                                   
-                                   
-                                        out.print("<a href=\"AutenticarFacebook\" class=\"pull-right\"><img src=\"img/facebook.png\"></a>"
-                                                + "                                                                                      <a href=\"AutenticarTwitter\"class=\"pull-right\"><img src=\"img/twitter.png\"></a> ");
-                                    } else {
-                                        out.print("<form class=\"navbar-form pull-right\" action=\"tumbail.jsp\" method=\"POST\">");
-                                        out.print("<input  name=\"textinput2\" type=\"search\" placeholder=\"Digite Aqui seu Endereço e veja as lojas perto de você!\" class=\"span5\">");
-                                        out.print("</form>");
-                                    }
-                                %>
+
+                                <c:choose>
+
+                                    <c:when test="${usuario==null}">
+                                        <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>"
+                                        <a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <form class="navbar-form pull-right" action="tumbail.jsp" method="POST">
+                                            <input  name="textinput2" type="search" placeholder="Digite Aqui seu Endereço e veja as lojas perto de você!" class="span5">
+                                        </form>
+                                    </c:otherwise>
+
+                                </c:choose>
                             </div>
                         </div>
                     </div>
@@ -192,40 +185,7 @@
                 </div>
 
             </div>
-            <!--            <div class="container-fluid">  
-                            <div class="accordion" id="accordion2">  
-                                <div class="accordion-group">  
-                                    <div class="accordion-heading ">  
-                                        <a class="accordion-toggle btn-success colapse in" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">  
-                                            Esta com Fome Faça Login E procure a comida mais perto de você com Nossa Busca por endereço
-                                        </a>  
-            
-            
-                                    </div>  
-                                    <div id="collapseOne" class="accordion-body collapse in " style="height: 0px; ">  
-                                        <div class="accordion-inner ">  
-                                            <img src="img/Ulogo3.png" alt="Delivery ta na mesa!" width="" height="80">
-            <%  if (user == null) {
-                    out.print("<a href=\"AutenticarFacebook\"class=\"pull-right\"><img src=\"img/facebook.png\"></a>"
-                            + "                                                                                      <a href=\"AutenticarTwitter\"class=\"pull-right\"><img src=\"img/twitter.png\"></a> ");
-                } else {
-                    out.print("<form class=\"navbar-form pull-right\" action=\"tumbail.jsp\" method=\"POST\">");
-                    out.print("<input  name=\"textinput2\" type=\"search\" placeholder=\"Digite Aqui seu Endereço e veja as lojas perto de você!\" class=\"span5\">");
-                    out.print("</form>");
-                }
-            %>
-
-
-
-
-        </div>  
-    </div>  
-</div>  
-
-</div>  
-</div>  
-
-Fim acordion-->
+          
 
 
 
@@ -612,18 +572,18 @@ Fim acordion-->
                     <input type="text" name="estado" value="" /><br />
                     Cep<br />
                     <input type="text" name="cep" value="" /><br />
-                   <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                  <button class="btn btn-primary" type="submit">Criar Conta</button>
-                
-                    
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                    <button class="btn btn-primary" type="submit">Criar Conta</button>
+
+
                 </form>
-                
+
             </div>
-<!--            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  <a href="AutenticarFacebook" class=\"pull-right\"><button class="btn btn-primary" type="submit">Save changes</button></a>
-                
-            </div>-->
+            <!--            <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                              <a href="AutenticarFacebook" class=\"pull-right\"><button class="btn btn-primary" type="submit">Save changes</button></a>
+                            
+                        </div>-->
         </div>
 
         <script>
