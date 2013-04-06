@@ -35,7 +35,7 @@ public class ControlerCadastroProdutos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
+             
             String preco = (String) request.getParameter("valor");
 
             ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"));

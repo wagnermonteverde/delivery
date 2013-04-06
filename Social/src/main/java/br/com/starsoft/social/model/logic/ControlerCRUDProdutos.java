@@ -28,7 +28,7 @@ public class ControlerCRUDProdutos {
             
             Date data = new Date(System.currentTimeMillis());
             Calendar calendar = new GregorianCalendar();
-            
+             
             calendar.setTime(data);
             
             p.setDataInclusao(calendar);

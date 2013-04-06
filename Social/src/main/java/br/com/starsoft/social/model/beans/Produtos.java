@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
  *
  * @author wagner
  */
-@Entity
+ @Entity
 @Table(name = "Produtos")
 public class Produtos {
 

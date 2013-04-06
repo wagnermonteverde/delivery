@@ -1,10 +1,15 @@
 package br.com.starsoft.social.testes;
 
 import br.com.starsoft.social.model.beans.Nome;
+import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.logic.ControlerCadastro;
 import br.com.starsoft.social.model.beans.Usuario;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOUsuario;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookLink;
 import org.springframework.social.facebook.api.FacebookProfile;
@@ -17,12 +22,23 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate;
 public class testePersistencia {
 
     public static void main(String[] args) {
-
-        Nome nome = new Nome("wagner");
-
-        DAO<Nome> dao = new DAO<Nome>(Nome.class);
-
-        dao.adiciona(nome);
+  
+        
+//         DAO dao = new DAO(Object.class);
+//            
+//            Produtos p = new Produtos();
+//            p.setDescricao("desc");
+//            p.setNome("teetee");
+//            p.setPreco(2.0);
+//            
+//            dao.adiciona(p);
+        
+        
+//        Nome nome = new Nome("wagner");
+//
+//        DAO<Nome> dao = new DAO<Nome>(Nome.class);
+//
+//        dao.adiciona(nome);
 
 
 //        Usuario user = new Usuario();
