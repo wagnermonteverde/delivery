@@ -6,13 +6,13 @@ package br.com.starsoft.social.model.beans;
 
 import br.com.starsoft.social.model.utils.ByteToBase64;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -92,8 +92,10 @@ public class Usuario implements Serializable {
         this.lastName = " "+lastName;
     }
 
-    public Calendar getDataNascimeto() {
-        return dataNascimeto;
+    public String getDataNascimeto() {
+      String  data = new SimpleDateFormat("dd/MM/yyyy").format(dataNascimeto.getTime()); 
+        
+        return data;
     }
 
     public void setDataNascimeto(Calendar dataNascimeto) {

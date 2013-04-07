@@ -10,6 +10,7 @@ import br.com.starsoft.social.model.beans.Usuario;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOUsuario;
 import br.com.starsoft.social.model.utils.ByteToBase64;
+import br.com.starsoft.social.model.utils.DataFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -46,8 +47,8 @@ public class ControlerCadastro {
         user.setMail(profile.getEmail());
         user.setFotoPerfil(foto);
         user.setTokenAcesso(acessToken);
+        user.setDataNascimeto(DataFormat.converte(profile.getBirthday()));
         
-        System.out.println(profile.getBirthday());
 
         dao.adiciona(user);
 
@@ -121,6 +122,10 @@ public class ControlerCadastro {
         String numero = request.getParameter("n");
         String estado = request.getParameter("estado");
         String cep = request.getParameter("cep");
+        
+        rua = rua.toUpperCase();
+        cidade = cidade.toUpperCase();
+        estado = estado.toUpperCase();
 
         Location location = MapsUtils.getCoord(rua + "," + numero + "," + cidade + "," + estado);
      
@@ -135,7 +140,7 @@ public class ControlerCadastro {
         endereco.setRua(rua);
         endereco.setUf(estado);
         endereco.setNumero(Integer.parseInt(numero));
-        System.out.println(endereco.toString());
+//        System.out.println(endereco.toString());
 
         daoEndereco.adiciona(endereco);
         

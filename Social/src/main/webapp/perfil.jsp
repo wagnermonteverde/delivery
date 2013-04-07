@@ -97,7 +97,7 @@
                                                 <td class="span5">CPF: xxx.xxx.xxx-63</td>
                                             </tr>-->
                                             <tr>
-                                                <td class="span5">Data Nascimento: </td>
+                                                <td class="span5">Data Nascimento: ${usuario.dataNascimeto} </td>
                                             </tr>
                                             
                                         </tbody>
