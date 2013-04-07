@@ -232,7 +232,7 @@
                                                 <tr>
                                                     <td><c:out value="${produto.nome}" /></td>
                                                     <td class="center"></td>
-                                                    <td class="center"><c:out value="${produto.preco}" /></td>
+                                                    <td class="center">R$ <c:out value="${produto.preco}" /></td>
                                                     <td class="center">
                                                         <span class="label"><c:out value="${produto.categoria}" /></span>
                                                     </td>
@@ -245,7 +245,7 @@
                                                             <i class="icon-edit icon-white"></i>  
                                                             Editar                                            
                                                         </a>
-                                                        <a class="btn btn-danger" href="#<c:out value="${produto.id}" />">
+                                                        <a class="btn btn-danger" href="../RemoveProdudos?id=<c:out value="${produto.id}" />">
                                                             <i class="icon-trash icon-white"></i> 
                                                             Apagar
                                                         </a>
