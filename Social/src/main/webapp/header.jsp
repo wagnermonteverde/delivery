@@ -17,7 +17,7 @@
                                 <li class="divider-vertical"></li>
                                 <li ><a href="#"><i class="icon-envelope"></i> Messages</a></li>
                                 <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-shopping-cart"></i> Carrinho</a></li>
+                                <li ><a href="#"><i class="icon-shopping-cart"></i> Pedidos</a></li>
                                 <li class="divider-vertical"></li>
                             </ul>
 

@@ -78,7 +78,7 @@
                         <div class="accordion-group">
                             <div class="accordion-heading">
                                 <a class="accordion-toggle btn-primary" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                    Dados Pessoais
+                                    Dados Pessoais<i class="icon-arrow-up active"></i>
                                 </a>
                             </div>
                             <div id="collapseOne" class="accordion-body collapse in">
@@ -123,7 +123,7 @@
                         <div class="accordion-group">
                             <div class="accordion-heading">
                                 <a class="accordion-toggle btn-success" data-toggle="collapse" data-parent="#accordion3" href="#collapset">
-                                   Endereço
+                                   Endereço <i class="icon-arrow-up active"></i>
                                 </a>
                             </div>
                             <div id="collapset" class="accordion-body collapse in">
@@ -172,7 +172,7 @@
                         <div class="accordion-group">
                             <div class="accordion-heading">
                                 <a class="accordion-toggle btn-warning" data-toggle="collapse" data-parent="#accordion4" href="#collapsed">
-                                   Pedidos Entregues (Finalizados) Clique para Abrir :)
+                                   Pedidos Entregues (Finalizados) Clique para Abrir :)<i class="icon-arrow-down active"></i>
                                 </a>
                             </div>
                             <div id="collapsed" class="accordion-body collapse">
