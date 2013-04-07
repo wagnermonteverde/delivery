@@ -83,7 +83,7 @@
                             },
                             submitHandler: function(form) {
                                 form.submit();
-                               // alert("Dados Enviados com Sucesso :)");
+                                // alert("Dados Enviados com Sucesso :)");
                                 
                             }
                         });

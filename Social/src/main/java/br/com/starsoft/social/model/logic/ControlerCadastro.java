@@ -10,6 +10,9 @@ import br.com.starsoft.social.model.beans.Usuario;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOUsuario;
 import br.com.starsoft.social.model.utils.ByteToBase64;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +34,7 @@ public class ControlerCadastro {
         DAOUsuario daoUsuario = new DAOUsuario(Usuario.class);
 
         DAO dao = new DAO(Object.class);
+        
 
 
         byte[] foto = facebook.userOperations().getUserProfileImage();
@@ -42,7 +46,8 @@ public class ControlerCadastro {
         user.setMail(profile.getEmail());
         user.setFotoPerfil(foto);
         user.setTokenAcesso(acessToken);
-
+        
+        System.out.println(profile.getBirthday());
 
         dao.adiciona(user);
 

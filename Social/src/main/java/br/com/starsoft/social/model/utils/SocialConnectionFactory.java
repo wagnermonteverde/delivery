@@ -16,7 +16,7 @@ public class SocialConnectionFactory {
      * 
      * 
      */
-    private static  FacebookConnectionFactory facebookConnectionFactory;
+    private static FacebookConnectionFactory facebookConnectionFactory;
 
     /*
      * 

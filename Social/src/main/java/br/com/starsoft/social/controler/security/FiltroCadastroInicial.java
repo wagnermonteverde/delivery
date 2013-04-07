@@ -100,7 +100,11 @@ public class FiltroCadastroInicial implements Filter {
             resp.sendRedirect("cadastroEndereco.jsp");
             
         }else{
-         
+  
+            HttpServletRequest request1 =(HttpServletRequest) request;
+            
+            request1.getDateHeader(null);
+            
             chain.doFilter(request, response);
         
         }
