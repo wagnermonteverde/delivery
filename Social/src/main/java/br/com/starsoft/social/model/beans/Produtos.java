@@ -81,8 +81,8 @@ public class Produtos {
         this.descricao = descricao;
     }
 
-    public Calendar getDataInclusao() {
-        return dataInclusao;
+    public String getDataInclusao() {
+        return dataInclusao.getTime().toString();
     }
 
     public void setDataInclusao(Calendar dataInclusao) {
@@ -127,4 +127,10 @@ public class Produtos {
     public void setDataInclusao(DateFormat dateFormat) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+    @Override
+    public String toString() {
+        return "Produtos{" + "id=" + id + ", nome=" + nome + ", categoria=" + categoria + ", preco=" + preco + ", descricao=" + descricao + ", dataInclusao=" + dataInclusao + '}';
+    }
+    
 }

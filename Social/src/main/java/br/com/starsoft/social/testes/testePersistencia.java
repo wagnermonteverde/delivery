@@ -1,5 +1,6 @@
 package br.com.starsoft.social.testes;
 
+import br.com.starsoft.social.model.beans.Categoria;
 import br.com.starsoft.social.model.beans.Nome;
 import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.logic.ControlerCadastro;
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.FacebookLink;
 import org.springframework.social.facebook.api.FacebookProfile;
@@ -22,7 +24,13 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate;
 public class testePersistencia {
 
     public static void main(String[] args) {
-  
+  DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
+        List<Produtos> listaTodos = dao.listaTodos();
+        for (Produtos produtos : listaTodos) {
+            System.out.println(produtos.toString());
+            
+        }
+
         
 //         DAO dao = new DAO(Object.class);
 //            
@@ -30,6 +38,7 @@ public class testePersistencia {
 //            p.setDescricao("desc");
 //            p.setNome("teetee");
 //            p.setPreco(2.0);
+//            p.setCategoria(Categoria.Bebida);
 //            
 //            dao.adiciona(p);
         
