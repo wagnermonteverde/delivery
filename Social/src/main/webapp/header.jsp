@@ -29,7 +29,7 @@
                                     <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src="<c:out value="${usuario.fotoString}"/>" /></a></li>
 
                                     <li class="dropdown ">
-                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="face"><c:out value="${ usuario.name }"/>_<c:out value="${ usuario.lastName }"/><strong class="caret"></strong></a>
+                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="face"><c:out value="${ usuario.name }"/><c:out value="${ usuario.lastName }"/><strong class="caret"></strong></a>
                                         <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
                                             <form method="post" action="login" accept-charset="UTF-8">
                                                 <ul>

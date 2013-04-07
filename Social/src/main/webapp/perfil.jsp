@@ -60,8 +60,7 @@
                         </li>
                     </ul>
                 </div>
-                <hr>
-                <hr>
+               
                 <h2>
                     <img class="img-circle" src="<c:out value="${usuario.fotoString}"/>">
                     &nbsp;${usuario.name}  ${usuario.lastName}

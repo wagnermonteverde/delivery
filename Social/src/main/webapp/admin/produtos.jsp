@@ -11,9 +11,10 @@
 <html lang="pt-br">
     <head>
         <c:if test="${empty listaProdutos}" >
-            <%
+            <c:redirect url="../ListaProdutosVendedor"/>
+            <%--
             response.sendRedirect("../ListaProdutosVendedor");
-            %>
+           --%>
         </c:if>
         <!--
                 Charisma v1.0.0
