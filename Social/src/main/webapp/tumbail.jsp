@@ -55,6 +55,18 @@
 
             <%@include file="header.jsp" %>
 
+            
+             <ul class="breadcrumb">
+                <li>
+                    <a href="index.jsp">Inicio</a>
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="#">Produtos</a>
+                    <span class="active">/</span>
+                </li>
+                
+            </ul>
 
             <!-- barra secundaria-->
             <div class="navbar">
