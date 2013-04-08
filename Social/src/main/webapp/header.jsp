@@ -11,13 +11,13 @@
                         <a class="brand fluid" href="#" name="top" id="ze"><img src="img/logo.png" width="40" height="40"></a>
                         <div class="nav-collapse collapse">
                             <ul class="nav">
-                                <li ><a href="index.jsp"><i class="icon-home"></i> Inicio</a></li>
+                                <li class="active"><a href="index.jsp"><i class="icon-home" ></i> Inicio</a></li>
                                 <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-file"></i> Lojas</a></li>
+                                <li class="active" ><a href="#"><i class="icon-file "></i> Lojas</a></li>
                                 <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-envelope"></i> Messages</a></li>
+                                <li class="active"><a href="#"><i class="icon-envelope "></i> Messages</a></li>
                                 <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-shopping-cart"></i> Pedidos</a></li>
+                                <li class="active"><a href="#"><i class="icon-shopping-cart "></i> Pedidos</a></li>
                                 <li class="divider-vertical"></li>
                             </ul>
 

@@ -7,6 +7,12 @@ package br.com.starsoft.social.model.logic;
 /**
  *
  * @author wagner
+ * 
+ * Classe que encapsula todas asoperaçõs com o facebook
+ * 
  */
 public class ControlerFacebookOperations {
+    
+    
+    
 }
