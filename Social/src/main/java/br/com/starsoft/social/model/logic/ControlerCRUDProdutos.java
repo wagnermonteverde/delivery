@@ -43,4 +43,31 @@ public class ControlerCRUDProdutos {
         }
 
     }
+    
+        public static boolean atualizaProdutos(Integer id,String titulo, String preco, String descricao, Categoria categoria) {
+        try {
+            DAO dao = new DAO(Object.class);
+
+            Produtos p = new Produtos();
+            p.setId(id);
+            p.setDescricao(descricao);
+            p.setNome(titulo);
+            p.setPreco(Double.parseDouble(preco));
+            p.setCategoria(categoria);
+            
+            Date data = new Date(System.currentTimeMillis());
+            Calendar calendar = new GregorianCalendar();
+             
+            calendar.setTime(data);
+                        
+            p.setDataInclusao(calendar);
+
+            dao.atualiza(p);
+
+            return true;
+        } catch (NumberFormatException numberFormatException) {
+            return false;
+        }
+
+    }
 }

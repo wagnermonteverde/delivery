@@ -3,11 +3,14 @@
     Created on : 17/03/2013, 13:53:26
     Author     : henrique
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+        <c:if test="${empty listaProdutos}" >
+            <c:redirect url="../ListaProdutosVendedor"/>
+        </c:if>
         <!--
                 Charisma v1.0.0
 
@@ -19,7 +22,7 @@
                 http://twitter.com/halalit_usman
         -->
         <meta charset="utf-8">
-        <title>Area do Vendedor</title>
+        <title>Novo Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
         <meta name="author" content="Muhammad Usman">
@@ -151,6 +154,7 @@
     </head>
 
     <body>
+        
         <!-- topbar starts -->
         <div class="navbar">
             <div class="navbar-inner">

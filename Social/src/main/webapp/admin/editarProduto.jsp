@@ -1,20 +1,19 @@
 <%-- 
-    Document   : produtos
-    Created on : 17/03/2013, 16:44:46
+    Document   : editarProduto
+    Created on : 08/04/2013, 00:29:13
     Author     : henrique
 --%>
-<%@page import="br.com.starsoft.social.controler.crudsProdutos.ListaProdutosVendedor"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <c:if test="${empty listaProdutos}" >
+        <c:if test="${empty edit}" >
             <c:redirect url="../ListaProdutosVendedor"/>
             <%--
             response.sendRedirect("../ListaProdutosVendedor");
-            --%>
+           --%>
         </c:if>
         <!--
                 Charisma v1.0.0
@@ -27,7 +26,7 @@
                 http://twitter.com/halalit_usman
         -->
         <meta charset="utf-8">
-        <title>Area do Vendedor- Meus produtos</title>
+        <title>Editar Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
         <meta name="author" content="Muhammad Usman">
@@ -103,7 +102,59 @@
                 setTimeout('Ajax()',1000); // aqui o tempo entre uma atualização e outra
             }
         </script>
-
+        <script language="javascript">
+            //-----------------------------------------------------
+            //Funcao: MascaraMoeda
+            //Sinopse: Mascara de preenchimento de moeda
+            //Parametro:
+            //   objTextBox : Objeto (TextBox)
+            //   SeparadorMilesimo : Caracter separador de milésimos
+            //   SeparadorDecimal : Caracter separador de decimais
+            //   e : Evento
+            //Retorno: Booleano
+            //Autor: Gabriel Fróes - www.codigofonte.com.br
+            //-----------------------------------------------------
+            function MascaraMoeda(objTextBox, SeparadorMilesimo, SeparadorDecimal, e){
+                var sep = 0;
+                var key = '';
+                var i = j = 0;
+                var len = len2 = 0;
+                var strCheck = '0123456789';
+                var aux = aux2 = '';
+                var whichCode = (window.Event) ? e.which : e.keyCode;
+                if (whichCode == 13) return true;
+                key = String.fromCharCode(whichCode); // Valor para o código da Chave
+                if (strCheck.indexOf(key) == -1) return false; // Chave inválida
+                len = objTextBox.value.length;
+                for(i = 0; i < len; i++)
+                    if ((objTextBox.value.charAt(i) != '0') && (objTextBox.value.charAt(i) != SeparadorDecimal)) break;
+                aux = '';
+                for(; i < len; i++)
+                    if (strCheck.indexOf(objTextBox.value.charAt(i))!=-1) aux += objTextBox.value.charAt(i);
+                aux += key;
+                len = aux.length;
+                if (len == 0) objTextBox.value = '';
+                if (len == 1) objTextBox.value = '0'+ SeparadorDecimal + '0' + aux;
+                if (len == 2) objTextBox.value = '0'+ SeparadorDecimal + aux;
+                if (len > 2) {
+                    aux2 = '';
+                    for (j = 0, i = len - 3; i >= 0; i--) {
+                        if (j == 3) {
+                            aux2 += SeparadorMilesimo;
+                            j = 0;
+                        }
+                        aux2 += aux.charAt(i);
+                        j++;
+                    }
+                    objTextBox.value = '';
+                    len2 = aux2.length;
+                    for (i = len2 - 1; i >= 0; i--)
+                        objTextBox.value += aux2.charAt(i);
+                    objTextBox.value += SeparadorDecimal + aux.substr(len - 2, len);
+                }
+                return false;
+            }
+        </script>
     </head>
 
     <body>
@@ -176,7 +227,7 @@
                             <li class="nav-header hidden-tablet">Menu</li>
                             <li><a class="ajax-link" href="index.jsp"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
                             <!--<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>-->
-                            <li><a class="ajax-link" href="../ListaProdutosVendedor"><i class="icon-font"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
+                            <li><a class="ajax-link" href="produtos.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
                         </ul>
                         <label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
                     </div><!--/.well -->
@@ -199,76 +250,75 @@
                                 <a href="#">Home</a> <span class="divider">/</span>
                             </li>
                             <li>
-                                <a href="#">Meus Produtos</a>
+                                <a href="#">Cadastro de Produtos</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="row-fluid sortable">
                         <div class="box span9">
-                            <div class="box-header well" data-original-title>
-                                <h2><i class="icon-cog"></i> Meus Produtos</h2>
-                                <a class="btn btn-success" href="formProdutos.jsp" />">
-                                    <i class="icon-zoom-in icon-white"></i>  
-                                    Novo Produto                                            
-                                </a>
-                                <div class="box-icon">
-
-                                    <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-                                    <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-                                </div>
-                            </div>
-                            <div class="box-content">
-                                <!--Todo conteudo deve ir nesta div-->
-
-                                <div class="box-content">
-                                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>Produto</th>
-                                                <th>Data de registro</th>
-                                                <th>Preço</th>
-                                                <th>Categoria</th>
-                                                <th>Ação</th>
-                                            </tr>
-                                        </thead>   
-                                        <tbody>
-                                            <c:forEach items="${listaProdutos}" var="produto" >
-                                                <tr>
-                                                    <td><c:out value="${produto.nome}" /></td>
-                                                    <td class="center"></td>
-                                                    <td class="center">R$ <c:out value="${produto.preco}" /></td>
-                                                    <td class="center">
-                                                        <span class="label"><c:out value="${produto.categoria}" /></span>
-                                                    </td>
-                                                    <td class="center">
-                                                        <a class="btn btn-success" href="#<c:out value="${produto.id}" />">
-                                                            <i class="icon-zoom-in icon-white"></i>  
-                                                            Ver                                            
-                                                        </a>
-                                                        <a class="btn btn-info" href="../FindProtutoForEdit?id=<c:out value="${produto.id}" />">
-                                                            <i class="icon-edit icon-white"></i>  
-                                                            Editar                                            
-                                                        </a>
-                                                        <a class="btn btn-danger" href="../RemoveProdudos?id=<c:out value="${produto.id}" />">
-                                                            <i class="icon-trash icon-white"></i> 
-                                                            Apagar
-                                                        </a>
-                                                    </td>
-                                                </tr> 
 
 
-                                            </c:forEach>
+                            <div class="row-fluid sortable">
+                                <div class="box span12">
+                                    <div class="box-header well" data-original-title>
+                                        <h2><i class="icon-edit"></i>Produto</h2>
+                                        <div class="box-icon">
+                                            <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+                                            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                                            <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="box-content">
+                                        <form class="form-horizontal" action="../AtualizaProduto?id=<c:out value="${edit.id}" />" method="post">
+                                            <fieldset>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="selectError">Categoria</label>
+                                                    <div class="controls">
+                                                        <select name="categoria" value="<c:out value="${edit.categoria}" />" id="selectError" data-rel="chosen">
+                                                            <option>Comida</option>
+                                                            <option>Bebida</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <legend>Adicione um novo produto</legend>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="typeahead">Titulo do Produto</label>
+                                                    <div class="controls">
+                                                        <input name="titulo" value="<c:out value="${edit.nome}" />" required type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" data-source='["Pizza","Cachorro Quente", "X Salada", Misto Quente","Pastel"]' />
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label" for="typeahead">Preço</label>
+                                                    <div class="controls">
+                                                        <input required type="text" value="<c:out value="${edit.preco}" />" name="valor"  onKeyPress="return(MascaraMoeda(this,'.',',',event))">
+                                                    </div>
+                                                </div>
 
+                                                <div class="control-group">
+                                                    <label class="control-label" for="fileInput">Foto</label>
+                                                    <div class="controls">
+                                                        <input class="input-file uniform_on" id="fileInput" type="file">
+                                                    </div>
+                                                </div>          
+                                                <div class="control-group">
+                                                    <label  class="control-label" for="textarea2">Descrição do Produto</label>
+                                                    <div class="controls">
+                                                        <textarea  required name="detalhes" id="textarea2" rows="8" ><c:out value="${edit.descricao}" /></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <button type="submit" class="btn btn-primary">Salvar Produto</button>
+                                                    <button type="reset" class="btn">Limpar</button>
+                                                </div>
+                                            </fieldset>
+                                        </form>   
 
+                                    </div>
+                                </div><!--/span-->
 
+                            </div><!--/row-->
 
-                                        </tbody>
-                                    </table>            
-                                </div>
-
-
-                            </div>
                         </div><!--/span-->
 
                         <div class="box span3">
@@ -393,6 +443,3 @@
 
     </body>
 </html>
-
-
-
