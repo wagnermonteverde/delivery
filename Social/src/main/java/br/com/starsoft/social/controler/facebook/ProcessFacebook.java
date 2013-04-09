@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.controler.facebook;
 
+import br.com.starsoft.social.model.logic.UrlAplication;
 import br.com.starsoft.social.model.utils.ByteToBase64;
 import br.com.starsoft.social.model.utils.SocialConnectionFactory;
 import java.io.IOException;
@@ -67,7 +68,7 @@ public class ProcessFacebook extends HttpServlet {
              *
              */
 
-            AccessGrant accessGrant = SocialConnectionFactory.facebookConnFactory().getOAuthOperations().exchangeForAccess(code, "http://localhost:8084/Social/ProcessFacebook", null);
+            AccessGrant accessGrant = SocialConnectionFactory.facebookConnFactory().getOAuthOperations().exchangeForAccess(code, "" + UrlAplication.getUrlAplicacao() + "ProcessFacebook", null);
             String accessToken = accessGrant.getAccessToken();
 
 
@@ -77,12 +78,9 @@ public class ProcessFacebook extends HttpServlet {
              *
              * Instancia um template que provem toods os metodos de acesso
              * ao Facebook com necessidde do token de acesso
-             * 
+             * e seta na sessão
              * 
              */
-
-
-
 
 
 

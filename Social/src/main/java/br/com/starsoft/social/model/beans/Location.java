@@ -4,16 +4,30 @@
  */
 package br.com.starsoft.social.model.beans;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author wagner
  */
-public class Location {
-    
+@Entity
+public class Location implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String longitude;
     private String latitude;
 
     public Location() {
+    }
+
+    public Location(String longitude, String latitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getLongitude() {
@@ -31,7 +45,10 @@ public class Location {
     public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Location{" + "id=" + id + ", lonitude=" + longitude + ", " + latitude + '}';
+    }
     
 }

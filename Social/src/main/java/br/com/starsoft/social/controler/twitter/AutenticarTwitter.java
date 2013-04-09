@@ -27,8 +27,11 @@ public class AutenticarTwitter extends HttpServlet {
     public static OAuthToken requestToken;
     public static OAuth1Operations oauthOperations;
 
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+    /**
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -42,15 +45,15 @@ public class AutenticarTwitter extends HttpServlet {
 
 
 
-           twitterConnectionFactory = new TwitterConnectionFactory("UMH2hkbnqLt6KK4F43nA", "uYZWZPpCOpe2UqPYU87ca9owy6QuEEfp6DvwQ20vs");
+            twitterConnectionFactory = new TwitterConnectionFactory("UMH2hkbnqLt6KK4F43nA", "uYZWZPpCOpe2UqPYU87ca9owy6QuEEfp6DvwQ20vs");
             oauthOperations = twitterConnectionFactory.getOAuthOperations();
             requestToken = oauthOperations.fetchRequestToken("http://localhost:8084/Social/ProcessTwitter", null);
 
             String authorizeUrl = oauthOperations.buildAuthorizeUrl(requestToken.getValue(), OAuth1Parameters.NONE);
             response.sendRedirect(authorizeUrl);
 
-            
-            
+
+
 
 
         } finally {
@@ -59,8 +62,10 @@ public class AutenticarTwitter extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
+    /**
+     * Handles the HTTP
+     * <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -72,8 +77,10 @@ public class AutenticarTwitter extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -85,8 +92,9 @@ public class AutenticarTwitter extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

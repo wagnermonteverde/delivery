@@ -8,24 +8,45 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author wagner
+ * 
+ * 
  */
-
 @Entity
 public class Endereco implements Serializable {
-    
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue
     private Integer id;
     private String rua;
     private String cep;
     private Integer numero;
     private String cidade;
     private String uf;
+    @OneToOne
+    private Location location;
 
     public Endereco() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getRua() {
@@ -72,8 +93,4 @@ public class Endereco implements Serializable {
     public String toString() {
         return "Endereco{" + "rua=" + rua + ", cep=" + cep + ", numero=" + numero + ", cidade=" + cidade + ", uf=" + uf + '}';
     }
-    
-    
-          
-    
 }

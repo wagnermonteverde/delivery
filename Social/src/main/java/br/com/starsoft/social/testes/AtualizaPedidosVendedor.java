@@ -7,6 +7,7 @@ package br.com.starsoft.social.testes;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author henrique
  */
+@WebServlet(name = "AtualizaPedidosVendedor", urlPatterns = {"/AtualizaPedidosVendedor"})
 public class AtualizaPedidosVendedor extends HttpServlet {
 
     /**
@@ -33,13 +35,13 @@ public class AtualizaPedidosVendedor extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
-            out.print("henrique\n");
-         out.print(Math.random()*100+"\n");
-         out.print(Math.random()*100+"\n");
-         out.print(Math.random()*100+"\n");
-         out.print(Math.random()*100+"\n");
-         out.print(Math.random()*100+"\n");
-        } finally {            
+            out.println("henrique");
+            out.println(Math.random() * 100);
+            out.println(Math.random() * 100);
+            out.println(Math.random() * 100);
+
+
+        } finally {
             out.close();
         }
     }

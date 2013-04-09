@@ -31,12 +31,14 @@
                 options.path    ? '; path=' + options.path : '',
                 options.domain  ? '; domain=' + options.domain : '',
                 options.secure  ? '; secure' : ''
-            ].join(''));
+                ].join(''));
         }
 
         // key and possibly options given, get cookie...
         options = value || {};
-        var decode = options.raw ? function(s) { return s; } : decodeURIComponent;
+        var decode = options.raw ? function(s) {
+            return s;
+        } : decodeURIComponent;
 
         var pairs = document.cookie.split('; ');
         for (var i = 0, pair; pair = pairs[i] && pairs[i].split('='); i++) {

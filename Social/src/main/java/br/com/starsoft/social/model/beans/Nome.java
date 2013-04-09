@@ -11,20 +11,19 @@ import javax.persistence.Id;
 
 /**
  *
- * @author wagner,
- * Classe para teste de persistencia
+ * @author wagner, Classe para teste de persistencia
  */
 @Entity
 public class Nome implements Serializable {
-    
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue
     private Integer id;
     private String name;
 
     public Nome() {
     }
 
-     
     public Nome(String name) {
         this.name = name;
     }
@@ -36,7 +35,6 @@ public class Nome implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    
 
     public String getName() {
         return name;
@@ -45,7 +43,4 @@ public class Nome implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-    
 }

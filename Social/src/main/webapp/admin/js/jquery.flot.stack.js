@@ -33,7 +33,9 @@ adjusted (e.g for bar charts or filled areas).
 
 (function ($) {
     var options = {
-        series: { stack: null } // or number/string
+        series: {
+            stack: null
+        } // or number/string
     };
     
     function init(plot) {
@@ -59,19 +61,19 @@ adjusted (e.g for bar charts or filled areas).
                 return;
 
             var ps = datapoints.pointsize,
-                points = datapoints.points,
-                otherps = other.datapoints.pointsize,
-                otherpoints = other.datapoints.points,
-                newpoints = [],
-                px, py, intery, qx, qy, bottom,
-                withlines = s.lines.show,
-                horizontal = s.bars.horizontal,
-                withbottom = ps > 2 && (horizontal ? datapoints.format[2].x : datapoints.format[2].y),
-                withsteps = withlines && s.lines.steps,
-                fromgap = true,
-                keyOffset = horizontal ? 1 : 0,
-                accumulateOffset = horizontal ? 0 : 1,
-                i = 0, j = 0, l;
+            points = datapoints.points,
+            otherps = other.datapoints.pointsize,
+            otherpoints = other.datapoints.points,
+            newpoints = [],
+            px, py, intery, qx, qy, bottom,
+            withlines = s.lines.show,
+            horizontal = s.bars.horizontal,
+            withbottom = ps > 2 && (horizontal ? datapoints.format[2].x : datapoints.format[2].y),
+            withsteps = withlines && s.lines.steps,
+            fromgap = true,
+            keyOffset = horizontal ? 1 : 0,
+            accumulateOffset = horizontal ? 0 : 1,
+            i = 0, j = 0, l;
 
             while (true) {
                 if (i >= points.length)

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -32,10 +33,15 @@
         <link href="css/bootstrap.min.css" media="all" type="text/css" rel="stylesheet">
         <link href="http://bootsnipp.com/bundles/bootstrapper/css/nav-fix.css" media="all" type="text/css" rel="stylesheet">
         <link href="http://bootsnipp.com/bundles/bootstrapper/css/bootstrap-responsive.min.css" media="all" type="text/css" rel="stylesheet">
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-        <script src="js/bootstrap-modal.js"></script> 
-        <link rel="stylesheet" href="css/bootstrap-lightbox.min.css">
+        <link href="http://bootsnipp.com/css/prettify.css" media="all" type="text/css" rel="stylesheet">
+        <link href="http://bootsnipp.com/css/bootsnipp.css" media="all" type="text/css" rel="stylesheet">
+        <link href="http://bootsnipp.com/css/codemirror.css" media="all" type="text/css" rel="stylesheet">
+        <link href="http://bootsnipp.com/css/jackedup.css" media="all" type="text/css" rel="stylesheet">
+        <script src="http://bootsnipp.com/bundles/bootstrapper/js/jquery-1.8.2.min.js"></script>
+        <script src="http://bootsnipp.com/bundles/bootstrapper/js/bootstrap.min.js"></script>
+        <script src="http://bootsnipp.com/js/prettify.js"></script>
+        <script src="http://bootsnipp.com/js/codemirror.js"></script>
+        <script src="http://bootsnipp.com/js/humane.min.js"></script>
 
         <title>Promoção é Aqui</title>
 
@@ -47,70 +53,27 @@
 
 
 
-            <!-- navbar   -->
+            <%@include file="header.jsp" %>
 
-            <div class="navbar navbar-fixed-top navbar-inverse">
-                <div class="navbar-inner">
-                    <div class="container-fluid">
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <a class="brand" href="#" name="top" id="ze">Promoção é Aqui!</a>
-                        <div class="nav-collapse collapse">
-                            <ul class="nav">
-                                <li ><a href="index.jsp"><i class="icon-home"></i> Inicio</a></li>
-                                <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-file"></i> Lojas</a></li>
-                                <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-envelope"></i> Messages</a></li>
-                                <li class="divider-vertical"></li>
-                                <li ><a href="#"><i class="icon-shopping-cart"></i> Carrinho</a></li>
-                                <li class="divider-vertical"></li>
-                            </ul>
-                            <ul class="nav pull-right">
-                                <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src=""  /></a></li>
-                                <li class="dropdown ">
-                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="face"><strong class="caret"></strong></a>
-                                    <div class="dropdown-menu " style="padding: 15px; padding-bottom: 0px;">
-                                        <form method="post" action="login" accept-charset="UTF-8">
-                                            <ul>
-                                                <li><a>Configurações</a></li>
-                                                <li><a>Sair</a></li>
-                                            </ul>
-
-                                            <!-- <input style="margin-bottom: 15px;" type="text" placeholder="Usuario" id="username" name="username">
-                                             <input style="margin-bottom: 15px;" type="password" placeholder="Senha" id="password" name="password">
-                                             <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
-                                             <label class="string optional" for="user_remember_me"> Remember me</label>
-                                             <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
-                                             <label style="text-align:center;margin-top:5px">ou</label>
-                                             <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Entrar com Facebook">
-                                             <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Entrar com Twitter">
-                                            -->
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--/.nav-collapse -->
-                    </div>
-                    <!--/.container-fluid -->
-                </div>
-                <!--/.navbar-inner -->
-            </div>
-            <!--/.navbar -->
-
-            <!-- fim navbar   -->
-
+            
+             <ul class="breadcrumb">
+                <li>
+                    <a href="index.jsp">Inicio</a>
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="#">Produtos</a>
+                    <span class="active">/</span>
+                </li>
+                
+            </ul>
 
             <!-- barra secundaria-->
             <div class="navbar">
                 <div class="navbar-inner">
                     <a><img src="img/promocao1.jpg"></a>
-                    <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
-                    <a href="AutenticarTwitter" class="pull-right"><img src="img/twitter.png"></a>
+<!--                    <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
+                    <a href="AutenticarTwitter" class="pull-right"><img src="img/twitter.png"></a>-->
 
                     <ul class="nav">
 
@@ -133,7 +96,7 @@
             <!-- teste-->
 
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -182,13 +145,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -237,13 +200,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -292,13 +255,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -347,13 +310,13 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
             <ul class="thumbnails">  
-                
+
                 <li class="span2">  
                     <div class="thumbnail">  
                         <img src="img/pizza.jpg" alt="product 1">  
@@ -402,10 +365,10 @@
                             <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
                     </div>  
                 </li>  
-                
+
             </ul> 
 
-            
+
             <hr>  
 
             <footer>  
@@ -435,41 +398,8 @@
 
 
 
-            <!--Inicio do rodapé-->
-
-            <div class="navbar navbar-fixed-bottom navbar-inverse">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <form class="navbar-form pull-right">
-                            <input name="textinput2" type="search" placeholder="busca" class="span2">
-                        </form>
-                        <a class="brand" href="#">
-                            texto
-                        </a>
-                        <ul class="nav">
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    About
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Contact
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            </br>
-            </br>
-            </br>
+            <!-- inclusão do footer -->
+            <%@include file="footer.jsp" %>
 
             <!-- Exemplo toltip e popover -->
             <script src="js/bootstrap-tooltip.js"></script>  

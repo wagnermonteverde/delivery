@@ -6,16 +6,17 @@ package br.com.starsoft.social.model.beans;
 
 import br.com.starsoft.social.model.utils.ByteToBase64;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Index;
 import org.hibernate.annotations.Type;
 
@@ -37,7 +38,7 @@ public class Usuario implements Serializable {
     @GeneratedValue
     private Integer id;
     private String name;
-    @Type(type="org.hibernate.type.PrimitiveByteArrayBlobType")
+    @Type(type = "org.hibernate.type.PrimitiveByteArrayBlobType")
     private byte[] fotoPerfil;
     private String lastName;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -49,6 +50,8 @@ public class Usuario implements Serializable {
     private String cpf;
     @OneToOne
     private Endereco endereco;
+    @Transient
+    private String fotoString;
 
     public Usuario() {
     }
@@ -69,6 +72,10 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
+    public String getFotoString() {
+        return retornaStringFoto(fotoPerfil);
+    }
+
     public String getName() {
         return name;
     }
@@ -82,11 +89,13 @@ public class Usuario implements Serializable {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = " "+lastName;
     }
 
-    public Calendar getDataNascimeto() {
-        return dataNascimeto;
+    public String getDataNascimeto() {
+      String  data = new SimpleDateFormat("dd/MM/yyyy").format(dataNascimeto.getTime()); 
+        
+        return data;
     }
 
     public void setDataNascimeto(Calendar dataNascimeto) {
@@ -160,15 +169,9 @@ public class Usuario implements Serializable {
         if ((this.tokenAcesso == null) ? (other.tokenAcesso != null) : !this.tokenAcesso.equals(other.tokenAcesso)) {
             return false;
         }
-       
+
         return true;
     }
-
-    
-    
-    
-    
-    
 
     public String retornaStringFoto(byte[] foto) {
         ByteToBase64 trans = new ByteToBase64(foto);
@@ -179,6 +182,6 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", name=" + name + '}';
+        return "Usuario{" + "id=" + id + ", name=" + name + ", fotoPerfil=" + fotoPerfil + ", lastName=" + lastName + ", dataNascimeto=" + dataNascimeto + ", mail=" + mail + ", oauthVerifierTwitter=" + oauthVerifierTwitter + ", tokenAcesso=" + tokenAcesso + ", cpf=" + cpf + ", endereco=" + endereco + '}';
     }
 }

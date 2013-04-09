@@ -5,13 +5,11 @@ import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 /**
  *
  * @author wagner
- *
+ * 
  *
  */
 public class SocialConnectionFactory {
 
-    
-    
     /*
      * 
      * <code>FacebookConnectionFactory<code> Classe de conexão Spring Social
@@ -19,8 +17,6 @@ public class SocialConnectionFactory {
      * 
      */
     private static FacebookConnectionFactory facebookConnectionFactory;
-    
-    
 
     /*
      * 
@@ -31,9 +27,7 @@ public class SocialConnectionFactory {
      * 
      * 
      */
-    
-    
-    public static FacebookConnectionFactory facebookConnFactory() {
+    public static final FacebookConnectionFactory facebookConnFactory() {
 
         return facebookConnectionFactory = new FacebookConnectionFactory("444866598902145", "6fc1dabf79a6cfee8caa699acfc79f94");
 

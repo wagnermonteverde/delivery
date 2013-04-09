@@ -332,35 +332,35 @@
 .icon32 {background-image : url('../img/opa-icons-gray32.png') ;background-repeat : no-repeat ;display : inline-block ;height : 32px ;vertical-align : text-top ;width : 32px ;}
 
 ul.media-grid li {
-  text-align: center;
+    text-align: center;
 }
 .btn.opa-source {
-  margin-top: 5px;
-  vertical-align: top;
+    margin-top: 5px;
+    vertical-align: top;
 }
 
 .subhead {
-  background-color: #287590;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#2C4369), to(#23A1B2));
-  background-image: -webkit-linear-gradient(#2C4369, #23A1B2);
-  background-image: -moz-linear-gradient(#2C4369, #23A1B2);
-  background-image: -o-linear-gradient(top, #2C4369, #23A1B2);
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#2C4369), to(#23A1B2));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2C4369', endColorstr='#23A1B2', GradientType=0);
+    background-color: #287590;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2C4369), to(#23A1B2));
+    background-image: -webkit-linear-gradient(#2C4369, #23A1B2);
+    background-image: -moz-linear-gradient(#2C4369, #23A1B2);
+    background-image: -o-linear-gradient(top, #2C4369, #23A1B2);
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#2C4369), to(#23A1B2));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2C4369', endColorstr='#23A1B2', GradientType=0);
 }
 .subhead p a {
-  font-weight: bold;
+    font-weight: bold;
 }
 .subhead hr {
-  border-color:#CCC;
+    border-color:#CCC;
 }
 ul.icons-list li {
-  display:inline-block;
-  margin:6px;
+    display:inline-block;
+    margin:6px;
 }
 .well-gray {
-  background-color:#CCC;
+    background-color:#CCC;
 }
 .well-black {
-  background-color:#333;
+    background-color:#333;
 }

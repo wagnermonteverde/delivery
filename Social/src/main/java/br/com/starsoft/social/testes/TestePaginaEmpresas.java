@@ -34,8 +34,8 @@ public class TestePaginaEmpresas extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-       
-         try {
+
+        try {
             /* TODO output your page here. You may use following sample code. */
             out.write("\n");
             out.write("<!DOCTYPE html>\n");
@@ -271,12 +271,12 @@ public class TestePaginaEmpresas extends HttpServlet {
                 out.write("muda();");
                 paramter = request.getParameter("nome").replace("\"", "");
                 out.write("function muda(){");
-                out.write("classe = document.getElementById('"+paramter+"').className;");
+                out.write("classe = document.getElementById('" + paramter + "').className;");
                 out.write("if(classe == 'accordion-body collapse'){");
 
-                out.write("document.getElementById('"+paramter+"').className = 'accordion-body collapse in';");
+                out.write("document.getElementById('" + paramter + "').className = 'accordion-body collapse in';");
                 out.write("}else{");
-                out.write(" document.getElementById('"+paramter+"').className = 'accordion-body collapse';");
+                out.write(" document.getElementById('" + paramter + "').className = 'accordion-body collapse';");
                 out.write("}");
                 out.write("}");
             } catch (Exception e) {

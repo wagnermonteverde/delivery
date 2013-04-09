@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author wagner
  */
-@WebFilter(filterName = "Filtro", urlPatterns = {"/tumbail.jsp"})
-public class Filtro implements Filter {
+@WebFilter(filterName = "Filtro", urlPatterns = {"/tumbail.jsp","/cadastroEndereco.jsp"})
+public class FiltroUsuario implements Filter {
 
     private static final boolean debug = true;
     // The filter configuration object we are associated with.  If
@@ -31,7 +31,7 @@ public class Filtro implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public Filtro() {
+    public FiltroUsuario() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
@@ -73,7 +73,7 @@ public class Filtro implements Filter {
 
         if (req.getSession().getAttribute("usuario") == null) {
             resp.sendRedirect("error.jsp");
-            
+
         } else {
 
 

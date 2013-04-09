@@ -6,8 +6,8 @@ package br.com.starsoft.social.model.beans;
 
 /**
  *
- * @author wagner
+ * @author henrique
  */
-public class Vendedor {
-    
+public enum Categoria {
+    Bebida, Comida;
 }
