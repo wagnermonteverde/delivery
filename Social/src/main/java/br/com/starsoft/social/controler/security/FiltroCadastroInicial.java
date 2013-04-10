@@ -103,7 +103,7 @@ public class FiltroCadastroInicial implements Filter {
   
             HttpServletRequest request1 =(HttpServletRequest) request;
             
-            request1.getDateHeader(null);
+//            request1.getDateHeader(null);
             
             chain.doFilter(request, response);
         
