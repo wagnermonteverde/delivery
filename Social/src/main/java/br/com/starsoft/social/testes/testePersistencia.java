@@ -22,7 +22,7 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate;
  * @author wagner
  */
 public class testePersistencia {
-
+    
     public static void main(String[] args) {
   DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
         List<Produtos> listaTodos = dao.listaTodos();
@@ -33,7 +33,7 @@ public class testePersistencia {
 
         
 //         DAO dao = new DAO(Object.class);
-//            
+//        
 //            Produtos p = new Produtos();
 //            p.setDescricao("desc");
 //            p.setNome("teetee");
@@ -44,12 +44,12 @@ public class testePersistencia {
         
         
 //        Nome nome = new Nome("wagner");
-//
+//        
 //        DAO<Nome> dao = new DAO<Nome>(Nome.class);
-//
+//        
 //        dao.adiciona(nome);
-
-
+        
+        
 //        Usuario user = new Usuario();
 //       
 //        ControlerCadastro cad = new ControlerCadastro();
@@ -65,10 +65,10 @@ public class testePersistencia {
 //        
 //        System.out.println(cad.verificaCadastrado("wagnermonteverde@hotmail.com"));
 //        System.out.println(cad.RetornaUsuarioCadastrado("wagnermonteverde@hotmail.com").toString());
-
-
-
-//        
+        
+        
+        
+        
 //        Facebook facebook = new FacebookTemplate("");
 //        
 //        FacebookLink link = new FacebookLink("http://www.fabiodurand.com.br/","Teste Postagem Link","Teste","Teste aplicação Java Web Postagen de Links");
