@@ -170,7 +170,6 @@
                             <!--<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>-->
                             <li><a class="ajax-link" href="produtos.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
                         </ul>
-                        <label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
                     </div><!--/.well -->
                 </div><!--/span-->
                 <!-- left menu ends -->
@@ -190,9 +189,7 @@
                             <li>
                                 <a href="#">Home</a> <span class="divider">/</span>
                             </li>
-                            <li>
-                                <a href="#">Typography</a>
-                            </li>
+                            
                         </ul>
                     </div>
 

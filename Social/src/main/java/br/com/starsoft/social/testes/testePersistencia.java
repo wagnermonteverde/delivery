@@ -3,7 +3,7 @@ package br.com.starsoft.social.testes;
 import br.com.starsoft.social.model.beans.Categoria;
 import br.com.starsoft.social.model.beans.Nome;
 import br.com.starsoft.social.model.beans.Produtos;
-import br.com.starsoft.social.model.logic.ControlerCadastro;
+import br.com.starsoft.social.model.logic.ControlerCadastroUser;
 import br.com.starsoft.social.model.beans.Usuario;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOUsuario;
@@ -52,7 +52,7 @@ public class testePersistencia {
         
 //        Usuario user = new Usuario();
 //       
-//        ControlerCadastro cad = new ControlerCadastro();
+//        ControlerCadastroUser cad = new ControlerCadastroUser();
 //        DAOUsuario daou = new DAOUsuario(Usuario.class);
 //        
 //        

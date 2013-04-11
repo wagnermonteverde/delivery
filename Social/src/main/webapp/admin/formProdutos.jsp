@@ -8,9 +8,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <c:if test="${empty listaProdutos}" >
-            <c:redirect url="../ListaProdutosVendedor"/>
-        </c:if>
+        
         <!--
                 Charisma v1.0.0
 
@@ -243,11 +241,14 @@
 
                     <div>
                         <ul class="breadcrumb">
-                            <li>
-                                <a href="#">Home</a> <span class="divider">/</span>
+                              <li>
+                                <a href="/index.jsp">Home</a> <span class="divider">/</span>
                             </li>
                             <li>
-                                <a href="#">Cadastro de Produtos</a>
+                                <a href="produtos.jsp">Meus Produtos</a><span class="divider">/</span>
+                            </li>
+                            <li>
+                                <a href="#">Cadastrar novo produto</a>
                             </li>
                         </ul>
                     </div>
@@ -282,7 +283,7 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="typeahead">Titulo do Produto</label>
                                                     <div class="controls">
-                                                        <input name="titulo" required type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" data-source='["Pizza","Cachorro Quente", "X Salada", Misto Quente","Pastel"]' />
+                                                        <input name="titulo" required type="text"  />
                                                     </div>
                                                 </div>
                                                 <div class="control-group">

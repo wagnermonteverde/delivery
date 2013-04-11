@@ -5,7 +5,7 @@
 package br.com.starsoft.social.controler.login;
 
 import br.com.starsoft.social.model.beans.Endereco;
-import br.com.starsoft.social.model.logic.ControlerCadastro;
+import br.com.starsoft.social.model.logic.ControlerCadastroUser;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -74,7 +74,7 @@ public class ControlerLogin extends HttpServlet {
              * 
              * 
              */
-            ControlerCadastro controlercadastro = new ControlerCadastro();
+            ControlerCadastroUser controlercadastro = new ControlerCadastroUser();
 
 
 
