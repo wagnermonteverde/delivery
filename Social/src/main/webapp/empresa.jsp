@@ -114,11 +114,9 @@
                     <!-- left menu starts -->
                     <div class="span2 main-menu-span">
                         <div class="well nav-collapse sidebar-nav">
-                            <ul class="nav nav-tabs nav-stacked main-menu">
-                                <li class="nav-header hidden-tablet">Menu</li>
-                                <li><a class="ajax-link" href="index.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Dashboard</span></a></li>
-                                <li><a class="ajax-link" href="../ListaProdutosVendedor"><i class="icon-home"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
-                            </ul>
+                            <img src="http://3.bp.blogspot.com/_fGnv-Lhb0xA/Sy46zh3kNkI/AAAAAAAAAEI/eGZrtFPB2A0/s400/Bob+logo+2.jpg" style="float: left" width="120" class="img-rounded">
+                            <p>Cidade: </p>
+                            <p>Reputação: </p>
                         </div><!--/.well -->
                     </div><!--/span-->
                     <!-- left menu ends -->
@@ -194,7 +192,7 @@
 
                             <div class="box span3">
                                 <div class="box-header well" data-original-title>
-                                    <h3>Pedidos</h3>
+                                    <h3>Futuro Carrinho...</h3>
                                     <div class="box-icon">
                                         <a href="#" class=""></i></a>
                                     </div>
@@ -216,19 +214,7 @@
 
                 <hr>
 
-                <div class="modal hide fade" id="myModal">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h3>Settings</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p>Here settings can be configured...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" class="btn" data-dismiss="modal">Close</a>
-                        <a href="#" class="btn btn-primary">Save changes</a>
-                    </div>
-                </div>
+              
 
                 <footer>
                     <p class="pull-left">&copy; <a href="http://usman.it" target="_blank">Muhammad Usman</a> 2012</p>
