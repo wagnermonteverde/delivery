@@ -4,7 +4,6 @@
  */
 package br.com.starsoft.social.controler.cadastroVendedor;
 
-import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author wagner
  */
-@WebServlet(name = "VerificaCnpjCpf", urlPatterns = {"/VerificaCnpjCpf"})
-public class VerificaCnpjCpf extends HttpServlet {
+@WebServlet(name = "ControlerCadastroVendedor", urlPatterns = {"/ControlerCadastroVendedor"})
+public class ControlerCadastroVendedor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -35,44 +34,23 @@ public class VerificaCnpjCpf extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-
-
-            String cnpj = request.getParameter("empresa.cnpj");
-            String cpf = request.getParameter("pessoa.cpf");
-            System.out.println(cnpj);
-
-
-            /*
-             * 
-             * Instancia um controlador de cadastro de Vendedores
-             * 
-             */
-
-            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
-
-
+           
+            
             
             /*
              * 
-             * Verifica qual campo esta vindo para efetua a validação 
-             * @return String "true" ou "false 
-             * para o metodo validador do Jquery
+             * persistir vendedor
+             * 
              * 
              */
+             
             
             
-            if (cnpj == null) {
-
-                out.print(controlerCadastroVendedor.verificaCpfCadastrado(cpf));
-
-            } else {
-
-                out.print(controlerCadastroVendedor.verificaCnpjCadastrado(cnpj));
-            }
-
-
-
-        } finally {
+            
+            
+            
+            
+        } finally {            
             out.close();
         }
     }

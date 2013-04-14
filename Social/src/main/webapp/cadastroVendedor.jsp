@@ -75,6 +75,11 @@
                             required: true, email: true
                         },
                         
+                        mail2 : {
+                            required: true, email: true,
+                            equalTo: "#mail"
+                        },
+                        
                         
                         fantasia: {
                             required: true, minlength: 5  
@@ -133,6 +138,11 @@
                             required: "Email não pode estar em branco"
                         },
                         
+                        mail2 : {
+                            required: "Email não pode estar em branco",
+                            equalTo: "Email's são diferentes"
+                        },
+                        
                         
                         fantasia: {
                             required: "Nome Fantasia não pode estar em branco"
@@ -171,7 +181,7 @@
                         
                         "pessoa.cpf" : {
                             
-                           remote : "CPF já cadastrado em nossa base de dados! :)"
+                            remote : "CPF já cadastrado em nossa base de dados! :)"
                             
                         }
                        
@@ -198,6 +208,12 @@
                         
                         mail : {
                             required: true, email: true
+                        },
+                        
+                        
+                        mail2 : {
+                            required: true, email: true,
+                            equalTo: "#mail"
                         },
                         
                         
@@ -257,6 +273,11 @@
                         
                         mail : {
                             required: "Email não pode estar em branco"
+                        },
+                        
+                        mail2 : {
+                            required: "Email não pode estar em branco",
+                            equalTo: "Email's são diferentes"
                         },
                         
                         
@@ -348,7 +369,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
 
-                        <form method="post" name="formfisica" id="formfisica">
+                        <form method="post" name="formfisica" id="formfisica" action="ControlerCadastroVendedor">
 
                             <input type="hidden" name="tipo" value="pf">
 
@@ -378,6 +399,13 @@
                                 <label class="control-label">Email:</label>
                                 <div class="fieldgroup">
                                     <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Confirme seu Email:</label>
+                                <div class="fieldgroup">
+                                    <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value=""  class="input-xlarge"  />
                                 </div>
                             </div>
 
@@ -460,7 +488,7 @@
                         <!-- Text input-->
                         <div class="control-group">
 
-                            <form method="post" name="formjuridica" id="formjuridica" action="index.jsp">
+                            <form method="post" name="formjuridica" id="formjuridica" action="ControlerCadastroVendedor">
 
                                 <input type="hidden" name="tipo" value="pj">
 
@@ -490,6 +518,13 @@
                                     <label class="control-label">Email:</label>
                                     <div class="fieldgroup">
                                         <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Confirme seu Email:</label>
+                                    <div class="fieldgroup">
+                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value=""  class="input-xlarge"  />
                                     </div>
                                 </div>
 

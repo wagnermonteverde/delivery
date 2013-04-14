@@ -53,7 +53,7 @@ public class VerificaEmail extends HttpServlet {
              * @return String  'true' ou 'false'
              * 
              */
-            out.print(controlerCadastroVendedor.VerificaEmailCadastrado(mail));
+            out.print(controlerCadastroVendedor.verificaEmailCadastrado(mail));
 
 
 
