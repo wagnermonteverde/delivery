@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:if test="${empty listaProdutos}" >
-    <c:redirect url="/ListaProdutosVendedorUser"/>
+    <c:redirect url="/ListaProdutosVendedorUser?id=${param.id}"/>
     <%--
     response.sendRedirect("../ListaProdutosVendedor");
     --%>
@@ -134,8 +134,6 @@
                                     <!--Todo conteudo deve ir nesta div-->
 
                                     <div class="box-content">
-                                        <a href="#" onclick="muda()" ><c:out value="${param.id}" /></a>
-
 
                                         <c:forEach items="${listaProdutos}" var="produto" >
 
@@ -158,13 +156,6 @@
 
                                         </c:forEach>
                                         <c:remove var="listaProdutos"/>
-
-
-
-
-
-                                        <a href="#nome" id="ee">Texto</a>
-
 
 
                                         <script language="JavaScript" type="text/javascript">

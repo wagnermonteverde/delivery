@@ -164,6 +164,7 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
+
         </div>
         <!-- topbar ends -->
         <div class="container-fluid">
@@ -238,9 +239,9 @@
                                                         <span class="label"><c:out value="${produto.categoria}" /></span>
                                                     </td>
                                                     <td class="center">
-                                                        <a class="btn btn-success" href="#<c:out value="${produto.id}" />">
-                                                            <i class="icon-zoom-in icon-white"></i>  
-                                                            Ver                                            
+                                                        <a class="btn btn-success" href="../empresa.jsp?id=<c:out value="${produto.id}" />" />
+                                                        <i class="icon-zoom-in icon-white"></i>  
+                                                        Ver                                            
                                                         </a>
                                                         <a class="btn btn-info" href="../FindProtutoForEdit?id=<c:out value="${produto.id}" />">
                                                             <i class="icon-edit icon-white"></i>  

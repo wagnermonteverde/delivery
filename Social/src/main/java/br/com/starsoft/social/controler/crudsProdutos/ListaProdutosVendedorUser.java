@@ -45,9 +45,16 @@ public class ListaProdutosVendedorUser extends HttpServlet {
 
             ServletContext contexto = this.getServletContext();
             contexto.setAttribute("listaProdutos", listaProdutos);
-//      
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp");
-        } finally {            
+            //
+            int id = 0;
+
+            try {
+                id = Integer.parseInt(request.getParameter("id"));
+            } catch (NumberFormatException numberFormatException) {
+            }
+
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + (id-2));
+        } finally {
             out.close();
         }
     }
