@@ -4,7 +4,6 @@
  */
 package br.com.starsoft.social.controler.cadastroVendedor;
 
-import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author wagner
  */
-@WebServlet(name = "VerificaEmail", urlPatterns = {"/VerificaEmail"})
-public class VerificaEmail extends HttpServlet {
+@WebServlet(name = "VerificaCnpjCpf", urlPatterns = {"/VerificaCnpjCpf"})
+public class VerificaCnpjCpf extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -37,23 +36,21 @@ public class VerificaEmail extends HttpServlet {
         try {
 
 
-            String mail = request.getParameter("mail");
+            String cnpj = request.getParameter("empresa.cnpj");
+            String cpf = request.getParameter("pessoa.cpf");
+            System.out.println(cnpj);
 
-            /*
-             * 
-             * Instancia um controlador de cadastro de Vendedores
-             * 
-             */
-            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
 
-            /*
-             * 
-             * Printa o retorno para o metodo validador do Jquery
-             * e faz consulta com o metodo do controlador
-             * @return String  'true' ou 'false'
-             * 
-             */
-            out.print(controlerCadastroVendedor.VerificaEmailCadastrado(mail));
+            if (cnpj == null) {
+                System.out.println("é um cpf");
+                out.print("false");
+            }
+                out.print("true");
+
+
+
+
+
 
 
 

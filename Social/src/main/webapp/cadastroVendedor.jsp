@@ -12,7 +12,7 @@
                 margin:  1px 0 3px 10px;
                 padding: 0;
                 text-align: left;
-                width: 300px;
+                width: 400px;
                 font-style:italic
             }
 
@@ -22,7 +22,7 @@
                 margin:  1px 0 3px 10px;
                 padding: 0;
                 text-align: left;
-                width: 300px;
+                width: 400px;
                 font-style:italic
             }
 
@@ -63,7 +63,8 @@
                             cpf: 'both', //valida tanto Formatação como os Digitos  
                             //caso não queira validar a formatação use => cpf: 'valid'  
                             //caso só queira validar a formatação use => cpf: 'format' 
-                            required: true
+                            required: true,
+                            remote: 'VerificaCnpjCpf'
                         },
                         
                         nome: {
@@ -165,6 +166,12 @@
                         cidade:{
                             
                             required:"Cidade não pode estar em branco"
+                            
+                        },
+                        
+                        "pessoa.cpf" : {
+                            
+                           remote : "CPF já cadastrado em nossa base de dados! :)"
                             
                         }
                        
@@ -181,7 +188,8 @@
                        
                         "empresa.cnpj" : {  
                             cnpj: 'both', //valida tanto Formatação como os Digitos  
-                            required: true
+                            required: true,
+                            remote: 'VerificaCnpjCpf'
                         },
                         
                         razao: {
@@ -232,6 +240,7 @@
                             required:true
                             
                         }
+                        
                         
                     },
                     
@@ -284,6 +293,11 @@
                             
                             required:"Cidade não pode estar em branco"
                             
+                        },
+                        
+                        "empresa.cnpj": {
+                            
+                            remote : "CNPJ já cadastrado em nossa base de dados! :("
                         }
                        
                     }
@@ -305,6 +319,21 @@
         <div class="container">
 
             <%@include file="header.jsp" %>
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.jsp">Inicio</a>
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="parceiro.jsp">Seja Nosso Parceiro</a>
+                    <span class="divider">/</span>
+                </li>
+
+                <li class="active">
+                    Cadastro Vendedor
+                </li>
+            </ul>
 
 
             <div class="page-header">
@@ -341,14 +370,14 @@
                             <div class="control-group">
                                 <label class="control-label">CPF:</label>
                                 <div class="fieldgroup">
-                                    <input type="text" name="pessoa.cpf" placeholder="000.000.000-00" id="cpf1" value="" class="input-xlarge"  />
+                                    <input type="text" name="pessoa.cpf" placeholder="000.000.000-00" id="cpf" value="" class="input-xlarge"  />
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <label class="control-label">Email:</label>
                                 <div class="fieldgroup">
-                                    <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" class="input-xlarge"  />
+                                    <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
                                 </div>
                             </div>
 
@@ -460,7 +489,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Email:</label>
                                     <div class="fieldgroup">
-                                        <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" class="input-xlarge"  />
+                                        <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
                                     </div>
                                 </div>
 

@@ -5,6 +5,7 @@
 package br.com.starsoft.social.model.beans;
 
 import java.util.Calendar;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

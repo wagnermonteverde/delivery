@@ -1,8 +1,4 @@
-<%-- 
-    Document   : empresa
-    Created on : 12/04/2013, 21:43:35
-    Author     : henrique
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:if test="${empty listaProdutos}" >

@@ -8,6 +8,8 @@
     <class>br.com.starsoft.social.model.beans.Location</class>
     <class>br.com.starsoft.social.model.beans.Produtos</class>
     <class>br.com.starsoft.social.model.beans.Vendedor</class>
+    <class>br.com.starsoft.social.model.beans.PessoaFisica</class>
+    <class>br.com.starsoft.social.model.beans.PessoaJuridica</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

@@ -11,6 +11,8 @@
                         <a class="brand fluid" href="#" name="top" id="ze"><img src="img/logo.png" width="40" height="40"></a>
                         <div class="nav-collapse collapse">
                             <ul class="nav">
+                                <li class="active"><a href="index.jsp">Net Lanche</a></li>
+                                <li class="divider-vertical"></li>
                                 <li class="active"><a href="index.jsp"><i class="icon-home" ></i> Inicio</a></li>
                                 <li class="divider-vertical"></li>
                                 <li class="active" ><a href="#"><i class="icon-file "></i> Lojas</a></li>
