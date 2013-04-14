@@ -35,6 +35,7 @@
                 padding: 0;
                 text-align: left;
                 width: 220px;
+                font-style:italic
             }
         </style>
 

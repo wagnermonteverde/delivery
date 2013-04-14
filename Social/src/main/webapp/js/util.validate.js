@@ -100,7 +100,7 @@ function isCpfFormatted(cpf) {
 		
 	}, function(type,element) {
 		return (type == 'format' || (type == 'both' && !isCpfFormatted($(element).val()))) ?
-				'<label>Formato do CPF não é válido</label>' : '<label>Por favor digite um CPF válido</label>';
+				'Formato do CPF não é válido' : 'CPF invalido!';
 	});
 	$.validator.addMethod("cnpj", function(value, element, type) {
 		if (value == "")
@@ -113,6 +113,6 @@ function isCpfFormatted(cpf) {
 		
 	}, function(type,element) {
 		return (type == 'format' || (type == 'both' && !isCnpjFormatted($(element).val()))) ?
-				'Formato do CNPJ não é válido' : 'Por favor digite um CNPJ válido';
+				'Formato do CNPJ não é válido' : 'CNPJ inválido!';
 	});
 })(jQuery);
