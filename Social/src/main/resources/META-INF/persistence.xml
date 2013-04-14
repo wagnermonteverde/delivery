@@ -5,12 +5,13 @@
     <class>br.com.starsoft.social.model.beans.Nome</class>
     <class>br.com.starsoft.social.model.beans.Usuario</class>
     <class>br.com.starsoft.social.model.beans.Endereco</class>
-    <class>br.com.starsoft.social.model.beans.Empresa</class>
     <class>br.com.starsoft.social.model.beans.Location</class>
     <class>br.com.starsoft.social.model.beans.Produtos</class>
+    <class>br.com.starsoft.social.model.beans.Vendedor</class>
+    <class>br.com.starsoft.social.model.beans.PessoaFisica</class>
+    <class>br.com.starsoft.social.model.beans.PessoaJuridica</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-        
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/delivery"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
@@ -19,7 +20,7 @@
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.format_sql" value="true"/>
-      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.show_sql" value="false"/>
     </properties>
   </persistence-unit>
 </persistence>

@@ -7,15 +7,15 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:if test="${empty listaProdutos}" >
+    <c:redirect url="../ListaProdutosVendedor"/>
+    <%--
+    response.sendRedirect("../ListaProdutosVendedor");
+    --%>
+</c:if>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <c:if test="${empty listaProdutos}" >
-            <c:redirect url="../ListaProdutosVendedor"/>
-            <%--
-            response.sendRedirect("../ListaProdutosVendedor");
-            --%>
-        </c:if>
         <!--
                 Charisma v1.0.0
 
@@ -164,6 +164,7 @@
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
+
         </div>
         <!-- topbar ends -->
         <div class="container-fluid">
@@ -174,11 +175,9 @@
                     <div class="well nav-collapse sidebar-nav">
                         <ul class="nav nav-tabs nav-stacked main-menu">
                             <li class="nav-header hidden-tablet">Menu</li>
-                            <li><a class="ajax-link" href="index.jsp"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
-                            <!--<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>-->
-                            <li><a class="ajax-link" href="../ListaProdutosVendedor"><i class="icon-font"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
+                            <li><a class="ajax-link" href="index.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Dashboard</span></a></li>
+                            <li><a class="ajax-link" href="../ListaProdutosVendedor"><i class="icon-home"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
                         </ul>
-                        <label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
                     </div><!--/.well -->
                 </div><!--/span-->
                 <!-- left menu ends -->
@@ -196,7 +195,7 @@
                     <div>
                         <ul class="breadcrumb">
                             <li>
-                                <a href="#">Home</a> <span class="divider">/</span>
+                                <a href="index.jsp">Home</a> <span class="divider">/</span>
                             </li>
                             <li>
                                 <a href="#">Meus Produtos</a>
@@ -208,15 +207,13 @@
                         <div class="box span9">
                             <div class="box-header well" data-original-title>
                                 <h2><i class="icon-cog"></i> Meus Produtos</h2>
-                                <a class="btn btn-success" href="formProdutos.jsp" />">
+                                <div style="text-align: right">
+                                    <a class="btn btn-success" href="formProdutos.jsp" />
                                     <i class="icon-zoom-in icon-white"></i>  
                                     Novo Produto                                            
-                                </a>
-                                <div class="box-icon">
-
-                                    <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-                                    <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                                    </a>
                                 </div>
+
                             </div>
                             <div class="box-content">
                                 <!--Todo conteudo deve ir nesta div-->
@@ -242,9 +239,9 @@
                                                         <span class="label"><c:out value="${produto.categoria}" /></span>
                                                     </td>
                                                     <td class="center">
-                                                        <a class="btn btn-success" href="#<c:out value="${produto.id}" />">
-                                                            <i class="icon-zoom-in icon-white"></i>  
-                                                            Ver                                            
+                                                        <a class="btn btn-success" href="../empresa.jsp?id=<c:out value="${produto.id}" />" />
+                                                        <i class="icon-zoom-in icon-white"></i>  
+                                                        Ver                                            
                                                         </a>
                                                         <a class="btn btn-info" href="../FindProtutoForEdit?id=<c:out value="${produto.id}" />">
                                                             <i class="icon-edit icon-white"></i>  
@@ -259,7 +256,7 @@
 
 
                                             </c:forEach>
-
+                                            <c:remove var="listaProdutos"/>
 
 
 

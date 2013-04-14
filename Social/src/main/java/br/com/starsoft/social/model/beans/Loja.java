@@ -13,7 +13,7 @@ import java.util.List;
 public class Loja {
 
     private Integer id;
-    private Empresa empresa;
+    private Vendedor empresa;
     private List<Produtos> listaProdutos;
     private Boolean situacao;
 
@@ -28,11 +28,11 @@ public class Loja {
         this.id = id;
     }
 
-    public Empresa getEmpresa() {
+    public Vendedor getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
+    public void setEmpresa(Vendedor empresa) {
         this.empresa = empresa;
     }
 

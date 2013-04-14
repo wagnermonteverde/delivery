@@ -2,28 +2,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.login;
+package br.com.starsoft.social.controler.crudsProdutos;
 
-import br.com.starsoft.social.model.beans.Endereco;
-import br.com.starsoft.social.model.beans.Usuario;
-import br.com.starsoft.social.model.logic.ControlerCadastroUser;
+import br.com.starsoft.social.model.beans.Produtos;
+import br.com.starsoft.social.model.dao.DAO;
+import br.com.starsoft.social.model.logic.UrlAplication;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONException;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author wagner
+ * @author henrique
  */
-@WebServlet(name = "ControlerSetEnderecoLocation", urlPatterns = {"/ControlerSetEnderecoLocation"})
-public class ControlerSetEnderecoLocation extends HttpServlet {
+@WebServlet(name = "ListaProdutosVendedor", urlPatterns = {"/ListaProdutosVendedor"})
+public class ListaProdutosVendedor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -36,41 +37,17 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, JSONException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
+            List<Produtos> listaProdutos = dao.listaTodos();
 
-
-
-            /*
-             *
-             * Instancia um controler de cadastro
-             * 
-             */
-            ControlerCadastroUser controlerCadastro = new ControlerCadastroUser();
-
-
-            /*
-             *
-             * chama metodo do controler para setar Endereço
-             * 
-             */
-            controlerCadastro.cadastraEndereco(request);
-
-
-
-            /*
-             *
-             * Redireciona para o inicio
-             * 
-             * 
-             */
-            response.sendRedirect("index.jsp");
-
-
-
-
+            ServletContext contexto = this.getServletContext();
+            contexto.setAttribute("listaProdutos", listaProdutos);
+//      
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "admin/produtos.jsp");
 
         } finally {
             out.close();
@@ -90,11 +67,7 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (JSONException ex) {
-            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -109,11 +82,7 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (JSONException ex) {
-            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -30,7 +30,7 @@
         <%@include file="imports.jsp" %>
 
 
-        <title>DeliveryTanaMesa</title>
+        <title>Net Lanche</title>
 
     </head>
     <body>
@@ -76,7 +76,9 @@
                         <div id="collapseOne" class="accordion-body collapse in">
                             <div class="accordion-inner">
                                 <img src="img/Ulogo3.png" alt="Delivery ta na mesa!" width="" height="80">
-
+                                <img src="img/lema1.png" alt="Delivery ta na mesa!" width="" height="80">
+                                
+                                
                                 <c:choose>
 
                                     <c:when test="${usuario==null}">

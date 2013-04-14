@@ -2,28 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.login;
+package br.com.starsoft.social.controler.cadastroVendedor;
 
-import br.com.starsoft.social.model.beans.Endereco;
-import br.com.starsoft.social.model.beans.Usuario;
-import br.com.starsoft.social.model.logic.ControlerCadastroUser;
+import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONException;
 
 /**
  *
  * @author wagner
  */
-@WebServlet(name = "ControlerSetEnderecoLocation", urlPatterns = {"/ControlerSetEnderecoLocation"})
-public class ControlerSetEnderecoLocation extends HttpServlet {
+@WebServlet(name = "VerificaEmail", urlPatterns = {"/VerificaEmail"})
+public class VerificaEmail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -36,39 +31,29 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, JSONException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
 
 
+            String mail = request.getParameter("mail");
 
             /*
-             *
-             * Instancia um controler de cadastro
+             * 
+             * Instancia um controlador de cadastro de Vendedores
              * 
              */
-            ControlerCadastroUser controlerCadastro = new ControlerCadastroUser();
-
+            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
 
             /*
-             *
-             * chama metodo do controler para setar Endereço
+             * 
+             * Printa o retorno para o metodo validador do Jquery
+             * e faz consulta com o metodo do controlador
+             * @return String  'true' ou 'false'
              * 
              */
-            controlerCadastro.cadastraEndereco(request);
-
-
-
-            /*
-             *
-             * Redireciona para o inicio
-             * 
-             * 
-             */
-            response.sendRedirect("index.jsp");
-
-
+            out.print(controlerCadastroVendedor.verificaEmailCadastrado(mail));
 
 
 
@@ -90,11 +75,7 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (JSONException ex) {
-            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -109,11 +90,7 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (JSONException ex) {
-            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

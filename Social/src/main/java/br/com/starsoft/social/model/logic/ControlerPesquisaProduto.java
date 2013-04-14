@@ -2,28 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.login;
+package br.com.starsoft.social.model.logic;
 
-import br.com.starsoft.social.model.beans.Endereco;
-import br.com.starsoft.social.model.beans.Usuario;
-import br.com.starsoft.social.model.logic.ControlerCadastroUser;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONException;
 
 /**
  *
- * @author wagner
+ * @author henrique
  */
-@WebServlet(name = "ControlerSetEnderecoLocation", urlPatterns = {"/ControlerSetEnderecoLocation"})
-public class ControlerSetEnderecoLocation extends HttpServlet {
+@WebServlet(name = "ControlerPesquisaProduto", urlPatterns = {"/ControlerPesquisaProduto"})
+public class ControlerPesquisaProduto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -36,43 +30,13 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, JSONException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-
-
-
-            /*
-             *
-             * Instancia um controler de cadastro
-             * 
-             */
-            ControlerCadastroUser controlerCadastro = new ControlerCadastroUser();
-
-
-            /*
-             *
-             * chama metodo do controler para setar Endereço
-             * 
-             */
-            controlerCadastro.cadastraEndereco(request);
-
-
-
-            /*
-             *
-             * Redireciona para o inicio
-             * 
-             * 
-             */
-            response.sendRedirect("index.jsp");
-
-
-
-
-
-        } finally {
+            /* TODO output your page here. You may use following sample code. */
+            
+        } finally {            
             out.close();
         }
     }
@@ -90,11 +54,7 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (JSONException ex) {
-            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -109,11 +69,7 @@ public class ControlerSetEnderecoLocation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (JSONException ex) {
-            Logger.getLogger(ControlerSetEnderecoLocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

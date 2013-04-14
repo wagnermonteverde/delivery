@@ -25,9 +25,9 @@ import org.springframework.social.facebook.api.FacebookProfile;
  *
  * @author wagner
  */
-public class ControlerCadastro {
+public class ControlerCadastroUser {
 
-    public ControlerCadastro() {
+    public ControlerCadastroUser() {
     }
 
     public Usuario cadastrobasico(FacebookProfile profile, Facebook facebook, String acessToken) {

@@ -2,29 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.crudsProdutos;
+package br.com.starsoft.social.controler.cadastroVendedor;
 
-import br.com.starsoft.social.model.beans.Produtos;
-import br.com.starsoft.social.model.dao.DAO;
-import br.com.starsoft.social.model.logic.UrlAplication;
+import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author henrique
+ * @author wagner
  */
-@WebServlet(name = "ListaProdutosVendedor", urlPatterns = {"/ListaProdutosVendedor"})
-public class ListProdutosVendedor extends HttpServlet {
+@WebServlet(name = "VerificaCnpjCpf", urlPatterns = {"/VerificaCnpjCpf"})
+public class VerificaCnpjCpf extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -41,13 +35,42 @@ public class ListProdutosVendedor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
-            List<Produtos> listaProdutos = dao.listaTodos();
 
-            ServletContext contexto = this.getServletContext();
-            contexto.setAttribute("listaProdutos", listaProdutos);
-//      
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "admin/produtos.jsp");
+
+            String cnpj = request.getParameter("empresa.cnpj");
+            String cpf = request.getParameter("pessoa.cpf");
+            System.out.println(cnpj);
+
+
+            /*
+             * 
+             * Instancia um controlador de cadastro de Vendedores
+             * 
+             */
+
+            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
+
+
+            
+            /*
+             * 
+             * Verifica qual campo esta vindo para efetua a validação 
+             * @return String "true" ou "false 
+             * para o metodo validador do Jquery
+             * 
+             */
+            
+            
+            if (cnpj == null) {
+
+                out.print(controlerCadastroVendedor.verificaCpfCadastrado(cpf));
+
+            } else {
+
+                out.print(controlerCadastroVendedor.verificaCnpjCadastrado(cnpj));
+            }
+
+
 
         } finally {
             out.close();

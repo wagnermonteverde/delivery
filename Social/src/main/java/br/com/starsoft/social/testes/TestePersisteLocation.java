@@ -4,7 +4,7 @@
  */
 package br.com.starsoft.social.testes;
 
-import br.com.starsoft.social.model.beans.Empresa;
+import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.beans.Endereco;
 import br.com.starsoft.social.model.beans.Location;
 import br.com.starsoft.social.model.beans.Usuario;
@@ -19,7 +19,7 @@ public class TestePersisteLocation {
     public static void main(String[] args) {
         
         DAO<Usuario> daoUse = new DAO<Usuario>(Usuario.class);
-        DAO<Empresa> daoEmp = new DAO<Empresa>(Empresa.class);
+        DAO<Vendedor> daoEmp = new DAO<Vendedor>(Vendedor.class);
         DAO<Location> daoLoc = new DAO<Location>(Location.class);
         DAO<Endereco> daoEnd = new DAO<Endereco>(Endereco.class);
         DAO dao = new DAO(Object.class);
@@ -39,13 +39,13 @@ public class TestePersisteLocation {
         dao.adiciona(endereco);
         
         
-        //cria a Empresa
-//        Empresa empresa = new Empresa();
+        //cria a Vendedor
+//        Vendedor empresa = new Vendedor();
 //        empresa.setCnpj("0000000000000000");
 //        empresa.setEndereco(endereco);
-//        empresa.setSenha("Empresa do zé");
+//        empresa.setSenha("Vendedor do zé");
 //        
-//         //coloca a Empresa para o JPA Entitymanager gerenciar
+//         //coloca a Vendedor para o JPA Entitymanager gerenciar
 //         // e termina a operação no banco comitando a transação
 //        daoEmp.adiciona(empresa);
         
