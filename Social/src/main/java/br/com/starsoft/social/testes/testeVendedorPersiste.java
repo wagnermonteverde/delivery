@@ -34,7 +34,7 @@ public class testeVendedorPersiste {
         daoEndereco.adiciona(endereco);
 
         Vendedor vendedor = new PessoaFisica("04271689963", "wagner aparecido monteverde");
-        Vendedor vendedor1 = new PessoaJuridica("000000000000", "wagner aparecido monteverde");
+        Vendedor vendedor1 = new PessoaJuridica("30816391000188", "lanche e cia ltda");
 
         vendedor.setEndereco(endereco);
         vendedor1.setEndereco(endereco);

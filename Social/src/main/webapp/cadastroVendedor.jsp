@@ -57,7 +57,7 @@
             
             $(function() {  
                 $("#formfisica").validate({  
-                    debug:true, //retira essa linha, para o form voltar a funcionar  
+                    //debug:true, //retira essa linha, para o form voltar a funcionar  
                     rules: {  
                         "pessoa.cpf" : {  
                             cpf: 'both', //valida tanto Formatação como os Digitos  
@@ -154,7 +154,8 @@
                         
                         
                         confirmpassword:{
-                            required: "Senha não pode estar em branco"
+                            required: "Senha não pode estar em branco",
+                            equalTo: "Senhas devem ser iguais"
                             
                         },
                         
@@ -192,7 +193,7 @@
             
             $(function() {  
                 $("#formjuridica").validate({  
-                    debug:true, //retira essa linha, para o form voltar a funcionar  
+                    // debug:true, //retira essa linha, para o form voltar a funcionar  
                     rules: {  
                        
                        
@@ -231,7 +232,6 @@
                             equalTo: "#password"
                         },
                         
-                        
                         estados :{
                             
                             required: true
@@ -256,7 +256,6 @@
                             required:true
                             
                         }
-                        
                         
                     },
                     
@@ -291,7 +290,8 @@
                         
                         
                         confirmpassword:{
-                            required: "Senha não pode estar em branco"
+                            required: "Senha não pode estar em branco",
+                            equalTo: "Senhas devem ser iguais"
                             
                         },
                         
@@ -369,7 +369,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
 
-                        <form method="post" name="formfisica" id="formfisica" action="ControlerCadastroVendedor">
+                        <form method="post"  id="formfisica" action="ControlerCadastroVendedor">
 
                             <input type="hidden" name="tipo" value="pf">
 
@@ -477,9 +477,7 @@
                                 </div>
                             </div>
 
-                            <div class="control-group">
-                                <button class="btn btn-primary" type="submit">Aceito todos os termos e Criar conta</button>
-                            </div>
+                            <input class="btn btn-large btn-success" type="submit" value="Aceito todos os termos e Criar conta!"/>
 
                         </form>
 
@@ -589,15 +587,16 @@
                                         <input type="password" name="password" placeholder="*****" id="password" value="" class="input-xlarge"  />
                                     </div>
                                 </div>
+
                                 <div class="control-group">
                                     <label class="control-label"> Confirme sua Senha:</label>
                                     <div class="fieldgroup">
                                         <input type="password" name="confirmpassword" placeholder="*****" id="confirmpassword" value="" class="input-xlarge"  />
                                     </div>
                                 </div>
-                                <div class="control-group">
-                                    <button class="btn btn-primary" type="submit">Aceito todos os termos e Criar conta</button>
-                                </div>
+                                    
+                                    
+                                    <input class="btn btn-large btn-success" type="submit" value="Aceito todos os termos e Criar conta!"/>
 
                             </form>
 
