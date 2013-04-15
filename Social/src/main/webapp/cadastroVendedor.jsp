@@ -102,7 +102,6 @@
                         },
                         
                         n:{
-                            required:true,
                             number: true
                         },
                         
@@ -156,11 +155,9 @@
                         confirmpassword:{
                             required: "Senha não pode estar em branco",
                             equalTo: "Senhas devem ser iguais"
-                            
                         },
                         
                         n:{
-                            required:"Numero não pode estar em branco",
                             number:"Este campo é numerico"
                         },
                         
@@ -239,7 +236,6 @@
                         },
                         
                         n:{
-                            required:true,
                             number: true
                         },
                         
@@ -296,8 +292,9 @@
                         },
                         
                         n:{
-                            required:"Numero não pode estar em branco",
+                            
                             number:"Este campo é numerico"
+                            
                         },
                         
                         rua:{
@@ -331,7 +328,7 @@
 
 
 
-        <title>Area do Vendedor- Meus produtos</title>
+        <title>Cadastro Vendedor</title>
 
     </head>
 
@@ -405,7 +402,7 @@
                             <div class="control-group">
                                 <label class="control-label">Confirme seu Email:</label>
                                 <div class="fieldgroup">
-                                    <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value=""  class="input-xlarge"  />
+                                    <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
                                 </div>
                             </div>
 
@@ -477,7 +474,7 @@
                                 </div>
                             </div>
 
-                            <input class="btn btn-large btn-success" type="submit" value="Aceito todos os termos e Criar conta!"/>
+                            <input class="btn btn-large btn-info" type="submit" value="Aceito todos os termos e Criar conta!"/>
 
                         </form>
 
@@ -522,7 +519,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Confirme seu Email:</label>
                                     <div class="fieldgroup">
-                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value=""  class="input-xlarge"  />
+                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
                                     </div>
                                 </div>
 
@@ -594,9 +591,9 @@
                                         <input type="password" name="confirmpassword" placeholder="*****" id="confirmpassword" value="" class="input-xlarge"  />
                                     </div>
                                 </div>
-                                    
-                                    
-                                    <input class="btn btn-large btn-success" type="submit" value="Aceito todos os termos e Criar conta!"/>
+
+
+                                <input class="btn btn-large btn-info" type="submit" value="Aceito todos os termos e Criar conta!"/>
 
                             </form>
 
