@@ -85,7 +85,6 @@
                     <label>Email:</label>
                     <div class="fieldgroup">
                         <input class="span4" id="login" name="mail" type="text"/>
-                        <c:set var="mail" value="${param.mail}" scope="request"/>
                     </div>
                     <input class="btn btn-large btn-success" type="submit" value="Cadastre-se Agora Mesmo !"/>
                     </br>

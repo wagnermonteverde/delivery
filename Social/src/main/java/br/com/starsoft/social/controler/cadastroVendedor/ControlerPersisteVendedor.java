@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author wagner
  */
 @WebServlet(name = "ControlerCadastroVendedor", urlPatterns = {"/ControlerCadastroVendedor"})
-public class ControlerCadastroVendedor extends HttpServlet {
+public class ControlerPersisteVendedor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -44,6 +44,16 @@ public class ControlerCadastroVendedor extends HttpServlet {
              * 
              */
             
+            
+            String tipo = request.getParameter("tipo");
+            String fantasia = request.getParameter("fantasia");
+            
+            
+            
+//           ControlerPersisteVendedor controlerCadastroVendedor = new ControlerPersisteVendedor();
+//           
+//           
+//           controlerCadastroVendedor.
             
             
              

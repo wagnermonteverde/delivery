@@ -8,6 +8,7 @@ import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOVendedor;
 import br.com.starsoft.social.model.utils.RetiraCaracteres;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -39,5 +40,15 @@ public class ControlerCadastroVendedor {
 
         return daoVendedor.consultaCnpj(cnpj) == null ? "true" : "false";
 
+    }
+
+    public void cadastraPessoaFisica(HttpServletRequest request) {
+        
+        
+        String tipo = request.getParameter("tipo");
+        
+        System.out.println("Imprimiu alguma Coisa na Tela "+tipo);
+        
+        
     }
 }
