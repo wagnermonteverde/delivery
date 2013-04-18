@@ -119,7 +119,7 @@ public class linkEmpresa implements Filter {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
             // rethrow the problem after that.
-            problem = t;
+            problem = t; 
             t.printStackTrace();
         }
    
