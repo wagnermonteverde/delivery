@@ -29,7 +29,8 @@ public class SocialConnectionFactory {
      */
     public static final FacebookConnectionFactory facebookConnFactory() {
 
-        return facebookConnectionFactory = new FacebookConnectionFactory("444866598902145", "6fc1dabf79a6cfee8caa699acfc79f94");
+       // return facebookConnectionFactory = new FacebookConnectionFactory("444866598902145", "6fc1dabf79a6cfee8caa699acfc79f94");
+    /*net lanche*/    return facebookConnectionFactory = new FacebookConnectionFactory("298568550277158", "6c9edff16f393c5500ac77dd2ab86d4f");
 
     }
 }
