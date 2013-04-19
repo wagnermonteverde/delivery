@@ -8,7 +8,7 @@ package br.com.starsoft.social.model.utils;
  *
  * @author wagner
  */
-public class RetiraCaracteres {
+public class TrataCaracteres {
 
     public static String retiraCaracteresNaoNumericos(String cpfCnpj) {
         return cpfCnpj.replaceAll("[^0-9]", "");

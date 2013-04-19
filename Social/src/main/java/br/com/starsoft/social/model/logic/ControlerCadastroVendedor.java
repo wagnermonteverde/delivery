@@ -10,7 +10,7 @@ import br.com.starsoft.social.model.beans.PessoaFisica;
 import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOVendedor;
-import br.com.starsoft.social.model.utils.RetiraCaracteres;
+import br.com.starsoft.social.model.utils.TrataCaracteres;
 import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import org.json.JSONException;
@@ -30,7 +30,7 @@ public class ControlerCadastroVendedor {
 
     public String verificaCpfCadastrado(String cpf) {
 
-        cpf = RetiraCaracteres.retiraCaracteresNaoNumericos(cpf);
+        cpf = TrataCaracteres.retiraCaracteresNaoNumericos(cpf);
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
 
         return daoVendedor.consultaCpf(cpf) == null ? "true" : "false";
@@ -40,14 +40,14 @@ public class ControlerCadastroVendedor {
 
     public String verificaCnpjCadastrado(String cnpj) {
 
-        cnpj = RetiraCaracteres.retiraCaracteresNaoNumericos(cnpj);
+        cnpj = TrataCaracteres.retiraCaracteresNaoNumericos(cnpj);
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
 
         return daoVendedor.consultaCnpj(cnpj) == null ? "true" : "false";
 
     }
 
-    public void cadastraPessoaFisica(HttpServletRequest request) throws JSONException {
+    public Vendedor cadastraPessoaFisica(HttpServletRequest request) throws JSONException {
         
         DAO<Location> daolocation = new DAO<Location>(Location.class);
         DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
@@ -85,9 +85,10 @@ public class ControlerCadastroVendedor {
        pessoaFisica.setSenha(password);
        pessoaFisica.setDataCadastro(Calendar.getInstance());
        pessoaFisica.setEndereco(endereco);
+       
        daoVendedor.adiciona(pessoaFisica);
      
-       
+       return pessoaFisica;
         
     }
 }
