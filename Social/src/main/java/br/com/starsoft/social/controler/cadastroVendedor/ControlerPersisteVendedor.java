@@ -4,8 +4,10 @@
  */
 package br.com.starsoft.social.controler.cadastroVendedor;
 
+import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,36 +36,40 @@ public class ControlerPersisteVendedor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-           
-            
-            
+
+
+
             /*
              * 
              * persistir vendedor
              * 
              * 
              */
-            
-            
-            String tipo = request.getParameter("tipo");
-            String fantasia = request.getParameter("fantasia");
-            
-            
-            
-//           ControlerPersisteVendedor controlerCadastroVendedor = new ControlerPersisteVendedor();
-//           
-//           
-//           controlerCadastroVendedor.
-            
-            
-             
-            
-            
-            
-            
-            
-            
-        } finally {            
+
+
+
+            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
+            controlerCadastroVendedor.cadastraPessoaFisica(request);
+
+
+            response.sendRedirect("index.jsp");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        } finally {
             out.close();
         }
     }
