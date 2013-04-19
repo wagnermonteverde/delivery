@@ -204,14 +204,14 @@
                             required: true, minlength: 5
                         },
                         
-                        mail : {
+                        mail1 : {
                             required: true, email: true
                         },
                         
                         
-                        mail2 : {
+                        mail3 : {
                             required: true, email: true,
-                            equalTo: "#mail"
+                            equalTo: "#mail1"
                         },
                         
                         
@@ -512,14 +512,14 @@
                                 <div class="control-group">
                                     <label class="control-label">Email:</label>
                                     <div class="fieldgroup">
-                                        <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
+                                        <input type="text" name="mail1" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label">Confirme seu Email:</label>
                                     <div class="fieldgroup">
-                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
+                                        <input type="text" name="mail3" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
                                     </div>
                                 </div>
 
