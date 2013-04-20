@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author henrique
  */
-@WebFilter(filterName = "linkEmpresa", urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST})
+@WebFilter(filterName = "linkEmpresa", urlPatterns = {"/empresa.jsp"}, dispatcherTypes = {DispatcherType.REQUEST})
 public class linkEmpresa implements Filter {
     
     private static final boolean debug = true;

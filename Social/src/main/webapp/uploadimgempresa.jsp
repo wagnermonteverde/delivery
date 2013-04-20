@@ -81,49 +81,17 @@
                 </li>
             </ul>
 
-            <form class="form-horizontal pull" action='ControlerLoginVendedor' method="POST" name="login" id="login">
-                <fieldset>
-                    <div id="legend">
-                        <legend class="">Login Vendedor</legend>
-                    </div>
-                    <c:if test="${erro!=null}">
-
-                        <div class="alert alert-error">
-                            Email ou senha incorretos! :(
-                        </div>
-
-                    </c:if>
-                    <div class="control-group">
-                        <!-- Username -->
-                        <label class="control-label"  for="mail">Email</label>
-                        <div class="controls">
-                            <div class="fieldgroup">
-                                <input type="text" id="mail" name="mail" placeholder="seuemail@mail.com" class="input-xlarge">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <!-- Password-->
-                        <label class="control-label" for="password">Senha</label>
-                        <div class="controls">
-                            <div class="fieldgroup">
-                                <input type="password" id="password" name="password" placeholder="*****" class="input-xlarge">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="control-group">
-                        <!-- Button -->
-                        <div class="controls">
-                            <button class="btn btn-success">Login</button>
-                        </div>
-                    </div>
-                </fieldset>
-
+            <form id="formSendFile" 
+                  name="formSendFile" 
+                  method="post" 
+                  action="ControlerUploadServlet" 
+                  enctype="multipart/form-data">
+                Name: <br/>
+                <input name="namePerson" type="text" /><br/><br/>
+                Picture:<br/>
+                <input name="imagem" type="file" id="imagem" maxlength="60" name="arq" /><br/><br/>
+                <input type="submit" id="upload" name="upload" value="insert" />
             </form>
-            <a class=" btn btn-info" href="parceiro.jsp">Ainda não é Anunciante cadastre-se aqui e coloque seus  produtos na internet!</a>
 
             <%@include file="footer.jsp" %>
         </div>

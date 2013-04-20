@@ -1,5 +1,6 @@
 package br.com.starsoft.social.controler.upload;
 
+import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.logic.Upload;
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -17,17 +19,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  *
  */
-@WebServlet(name = "UploadArquivo", urlPatterns = {"/UploadArquivo"})
+@WebServlet(name = "ControlerUploadServlet", urlPatterns = {"/ControlerUploadServlet"})
 public class ControlerUploadServlet extends HttpServlet {
-
-    public final String dir = "/files/empresax/";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
 
+        HttpSession session = request.getSession();
 
+        Vendedor vendedor = (Vendedor) session.getAttribute("vendedor");
+
+        String dir = "/" + vendedor.getDiretorioImg();
 
         /* 
          * 
@@ -67,7 +71,7 @@ public class ControlerUploadServlet extends HttpServlet {
          */
 
 
-        Map<String, String> map = upload.getFormValues(list);
+        Map<String, String> map = upload.getFormValues(list ,"");
 
 
 

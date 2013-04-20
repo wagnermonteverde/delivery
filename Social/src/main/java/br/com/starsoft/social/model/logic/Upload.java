@@ -81,9 +81,11 @@ public class Upload {
     /**
      * Retorna em um Map os campos do formulário exceto o campo da imagem.
      */
-    public Map<String, String> getFormValues(List l) {
+    public Map<String, String> getFormValues(List l, String nameArq) {
         Map<String, String> map = new HashMap<String, String>();
         Iterator iter = l.iterator();
+        
+        
 
         while (iter.hasNext()) {
 
