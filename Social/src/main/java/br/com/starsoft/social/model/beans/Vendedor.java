@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.model.beans;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Vendedor {
+public abstract class Vendedor implements Serializable {
 
     @Id
     @GeneratedValue
@@ -43,7 +44,6 @@ public class Vendedor {
 
     public Vendedor() {
     }
-
     
     public Integer getId() {
         return id;

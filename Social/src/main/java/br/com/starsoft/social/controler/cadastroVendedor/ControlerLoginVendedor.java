@@ -2,27 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.login;
+package br.com.starsoft.social.controler.cadastroVendedor;
 
-import br.com.starsoft.social.model.beans.Endereco;
-import br.com.starsoft.social.model.logic.ControlerCadastroUser;
+import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.FacebookProfile;
 
 /**
  *
  * @author wagner
  */
-@WebServlet(name = "ControlerLogin", urlPatterns = {"/ControlerLogin"})
-public class ControlerLogin extends HttpServlet {
+@WebServlet(name = "ControlerLoginVendedor", urlPatterns = {"/ControlerLoginVendedor"})
+public class ControlerLoginVendedor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -45,84 +43,40 @@ public class ControlerLogin extends HttpServlet {
             HttpSession session = request.getSession();
 
 
-            /*
-             *
-             * 
-             * Recupera o Facebook template da sessão
-             * 
-             * 
-             */
-            Facebook facebook = (Facebook) session.getAttribute("facebook");
 
 
-            /*
-             *
-             * 
-             * Obtem o Perfil do Usario com todas as informações
-             * referentes ao perfil do usuario
-             * 
-             * 
-             */
-            FacebookProfile profile = facebook.userOperations().getUserProfile();
-
-
-
-            /*
-             *
-             * Instancia um controler para tratar operações de cadastro
-             * e verificação de usuarios cadastrados
-             * 
-             * 
-             */
-            ControlerCadastroUser controlercadastro = new ControlerCadastroUser();
+            String mail = request.getParameter("mail");
+            String password = request.getParameter("password");
 
 
 
 
-            /*
-             * 
-             * Verifica se o usuario q fez login com facebook
-             * já esta cadastrado no sistema
-             * se não estiver faz o cadastro basico
-             * com os dados da rede social
-             * 
-             */
+            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
 
 
 
 
-            /*  
-             * 
-             * refatorar pra metodos do controler cadastro 
-             * passar verificações para controler cadastro
-             * 
-             * motivo usuario pde abortar cadastro de endereço
-             * ficando só com os dados do facebook
-             * 
-             */
+
+            if (controlerCadastroVendedor.Login(mail, password)) {
+
+                if (session.getAttribute("erro") != null) {
+                    session.removeAttribute("erro");
+                }
 
 
+                session.setAttribute("vendedor", controlerCadastroVendedor.retornaVendedor(mail));
+                response.sendRedirect("admin/index.jsp");
 
 
-            if (controlercadastro.verificaCadastrado(profile.getEmail())) {
-
-                session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile, facebook, (String) session.getAttribute("token")));
-                 
             } else {
-                session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token")));
-               
+
+
+                session.setAttribute("erro", "erro");
+                response.sendRedirect("login.jsp");
+
+
             }
 
-            /*  
-             * 
-             * refatorar pra metodos do controler cadastro 
-             * passar verificações para controler cadastro
-             * 
-             */
-
-
-
-            response.sendRedirect("RedirecionamentoIndex");
 
 
 

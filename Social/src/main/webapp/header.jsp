@@ -17,7 +17,7 @@
                                 <li class="divider-vertical"></li>
                                 <li class="active" ><a href="#"><i class="icon-file "></i> Lojas</a></li>
                                 <li class="divider-vertical"></li>
-                                <li class="active"><a href="#"><i class="icon-envelope "></i> Messages</a></li>
+                                <li class="active"><a href="login.jsp"><i class="icon-cog "></i>Vendedor</a></li>
                                 <li class="divider-vertical"></li>
                                 <li class="active"><a href="parceiro.jsp"><i class="icon-globe "></i> Seja Nosso Parceiro</a></li>
                                 <li class="divider-vertical"></li>

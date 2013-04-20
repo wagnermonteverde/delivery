@@ -12,23 +12,25 @@ import javax.persistence.Table;
 /**
  *
  * @author wagner
- * 
+ *
  */
 @Entity
 @Table(name = "Vendedor")
-public class PessoaFisica extends Vendedor implements Serializable{
-    
+public class PessoaFisica extends Vendedor implements Serializable {
+
     private String cpf;
     private String nome;
 
     public PessoaFisica() {
+        super();
     }
 
     public PessoaFisica(String cpf, String nome) {
+        super();
         this.cpf = cpf;
         this.nome = nome;
     }
-   
+
     public String getCpf() {
         return cpf;
     }
@@ -49,7 +51,4 @@ public class PessoaFisica extends Vendedor implements Serializable{
     public String toString() {
         return "PessoaFisica{" + "cpf=" + cpf + ", nome=" + nome + '}';
     }
-    
-    
-    
 }
