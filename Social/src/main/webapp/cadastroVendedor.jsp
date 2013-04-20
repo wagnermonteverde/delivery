@@ -204,14 +204,14 @@
                             required: true, minlength: 5
                         },
                         
-                        mail1 : {
+                        mail : {
                             required: true, email: true
                         },
                         
                         
-                        mail3 : {
+                        mail2 : {
                             required: true, email: true,
-                            equalTo: "#mail1"
+                            equalTo: "#mail"
                         },
                         
                         

@@ -74,7 +74,7 @@ public class ControlerCadastroVendedor {
         String fantasia = request.getParameter("fantasia");
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("pessoa.cpf");
-        String mail = request.getParameter("mail3");
+        String mail = request.getParameter("mail");
         String estado = request.getParameter("estados");
         String cidade = request.getParameter("cidade");
         String rua = request.getParameter("rua");
