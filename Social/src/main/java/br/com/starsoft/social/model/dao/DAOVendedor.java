@@ -59,6 +59,25 @@ public class DAOVendedor extends DAO<Vendedor>{
         return v;
 
     }
+       public Vendedor consultaNome(String nome) {
+        Vendedor v = null;
+        EntityManager em = new JPAUtil().getEntityManager();
+        Query query = em.createQuery("select v from Vendedor v where v.nome = '" + nome + "'", Vendedor.class);
+        List<Vendedor> vendors = null;
+        try {
+
+            vendors = (List<Vendedor>) query.getResultList();
+            v = vendors.get(0);
+
+        } catch (Exception e) {
+
+            em.close();
+            return null;
+        }
+        em.close();
+        return v;
+
+    }
     public Vendedor consultaCpf(String cpf) {
         Vendedor v = null;
         EntityManager em = new JPAUtil().getEntityManager();

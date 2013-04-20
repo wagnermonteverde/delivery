@@ -47,13 +47,25 @@ public class ListaProdutosVendedorUser extends HttpServlet {
             contexto.setAttribute("listaProdutos", listaProdutos);
             //
             int id = 0;
-
+            int ancora = -1;
             try {
                 id = Integer.parseInt(request.getParameter("id"));
+
             } catch (NumberFormatException numberFormatException) {
             }
 
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + (id-2));
+            try {
+//                Gera a ancora para rolagem do produto na pagina do vendedor apartir de um link para o produto
+                Produtos buscaPorId = dao.buscaPorId(id);
+                int lastIndexOf = listaProdutos.lastIndexOf(buscaPorId);
+//                a ancora deve rolar a pagina para o segundo produto acima do desejado por questoes de alinhamento na tela
+                Produtos get = listaProdutos.get(lastIndexOf - 2);
+                ancora = get.getId();
+            } catch (Exception e) {
+            }
+
+
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + ancora);
         } finally {
             out.close();
         }
