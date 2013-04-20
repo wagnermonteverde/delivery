@@ -28,7 +28,7 @@
 
 
                                 <ul class="nav pull-right">
-                                    <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src="<c:out value="${usuario.fotoString}"/>" /></a></li>
+                                    <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src="${usuario.fotoString}" /></a></li>
 
                                     <li class="dropdown ">
                                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="face"><c:out value="${ usuario.name }"/><c:out value="${ usuario.lastName }"/><strong class="caret"></strong></a>
