@@ -1,4 +1,4 @@
-package br.com.starsoft.social.model.utils;
+package br.com.starsoft.social.model.conf;
 
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 

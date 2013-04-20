@@ -6,7 +6,7 @@ package br.com.starsoft.social.controler.crudsProdutos;
 
 import br.com.starsoft.social.model.beans.Categoria;
 import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
-import br.com.starsoft.social.model.logic.UrlAplication;
+import br.com.starsoft.social.model.conf.UrlAplication;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

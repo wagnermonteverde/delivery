@@ -5,8 +5,8 @@
 package br.com.starsoft.social.controler.facebook;
 
 import br.com.starsoft.social.model.beans.Endereco;
-import br.com.starsoft.social.model.logic.UrlAplication;
-import br.com.starsoft.social.model.utils.SocialConnectionFactory;
+import br.com.starsoft.social.model.conf.UrlAplication;
+import br.com.starsoft.social.model.conf.SocialConnectionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
