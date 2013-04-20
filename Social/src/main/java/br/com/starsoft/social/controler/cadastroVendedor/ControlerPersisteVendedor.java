@@ -49,13 +49,13 @@ public class ControlerPersisteVendedor extends HttpServlet {
              * 
              */
 
-
+            String context = getServletContext().getRealPath("/");
 
             ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
-            controlerCadastroVendedor.cadastraVendedor(request);
+            controlerCadastroVendedor.cadastraVendedor(request,context);
 
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
 
 
 

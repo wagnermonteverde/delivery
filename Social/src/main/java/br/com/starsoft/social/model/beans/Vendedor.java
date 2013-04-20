@@ -35,6 +35,7 @@ public abstract class Vendedor implements Serializable {
     private String tipo;
     private Status status;
     private Integer quantidadeProdutos;
+    private String diretorioImg;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataCadastro;
@@ -95,6 +96,14 @@ public abstract class Vendedor implements Serializable {
 
     public void setQuantidadeProdutos(Integer quantidadeProdutos) {
         this.quantidadeProdutos = quantidadeProdutos;
+    }
+
+    public String getDiretorioImg() {
+        return diretorioImg;
+    }
+
+    public void setDiretorioImg(String diretorioImg) {
+        this.diretorioImg = diretorioImg;
     }
     
 

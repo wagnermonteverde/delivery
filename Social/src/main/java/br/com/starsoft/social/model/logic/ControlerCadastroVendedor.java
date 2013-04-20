@@ -22,55 +22,55 @@ import org.json.JSONException;
  * @author wagner
  */
 public class ControlerCadastroVendedor {
-    
+
     public String verificaEmailCadastrado(String email) {
-        
+
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
         return daoVendedor.consultaEmail(email) == null ? "true" : "false";
-        
+
     }
-    
+
     public String verificaCpfCadastrado(String cpf) {
-        
+
         cpf = TrataCaracteres.retiraCaracteresNaoNumericos(cpf);
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
-        
+
         return daoVendedor.consultaCpf(cpf) == null ? "true" : "false";
-        
-        
+
+
     }
-    
+
     public String verificaCnpjCadastrado(String cnpj) {
-        
+
         cnpj = TrataCaracteres.retiraCaracteresNaoNumericos(cnpj);
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
-        
+
         return daoVendedor.consultaCnpj(cnpj) == null ? "true" : "false";
-        
+
     }
-    
-    public void cadastraVendedor(HttpServletRequest request) throws JSONException {
-        
-        
+
+    public void cadastraVendedor(HttpServletRequest request, String context) throws JSONException {
+
+
         if (request.getParameter("tipo").equals("pf")) {
-            
-            cadastraPessoaFisica(request);
+
+            cadastraPessoaFisica(request, context);
         } else {
-            
-            cadastraPessoaJuridica(request);
-            
+
+            cadastraPessoaJuridica(request, context);
+
         }
-        
-        
+
+
     }
-    
-    private void cadastraPessoaFisica(HttpServletRequest request) throws JSONException {
-        
+
+    private void cadastraPessoaFisica(HttpServletRequest request, String context) throws JSONException {
+
         DAO<Location> daolocation = new DAO<Location>(Location.class);
         DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
         DAO<Endereco> daoEndereco = new DAO<Endereco>(Endereco.class);
-        
-        
+
+
         String tipo = request.getParameter("tipo");
         String fantasia = request.getParameter("fantasia");
         String nome = request.getParameter("nome");
@@ -82,19 +82,19 @@ public class ControlerCadastroVendedor {
         String numero = request.getParameter("n");
         String cep = request.getParameter("cep");
         String password = request.getParameter("password");
-        
-        
+
+
         Location location = MapsUtils.getCoord(numero + "," + rua + " ," + cidade + ", " + estado);
         daolocation.adiciona(location);
-        
+
         Endereco endereco = new Endereco();
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
         endereco.setUf(estado);
         endereco.setLocation(location);
         daoEndereco.adiciona(endereco);
-        
-        
+
+
         PessoaFisica pessoaFisica = new PessoaFisica(TrataCaracteres.retiraCaracteresNaoNumericos(cpf), nome);
         pessoaFisica.setNomeFantasia(fantasia);
         pessoaFisica.setMail(mail);
@@ -102,18 +102,26 @@ public class ControlerCadastroVendedor {
         pessoaFisica.setSenha(CriptografaSenha.criptografa(password));
         pessoaFisica.setDataCadastro(Calendar.getInstance());
         pessoaFisica.setEndereco(endereco);
+
+
+        /* cria diretorio com nome da empresa para imagens*/
+        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia)+"/";
+        final String path = context + dir;
+        Upload upload = new Upload(path);
         
+        pessoaFisica.setDiretorioImg(dir);
+
         daoVendedor.adiciona(pessoaFisica);
-        
+
     }
-    
-    private void cadastraPessoaJuridica(HttpServletRequest request) throws JSONException {
-        
+
+    private void cadastraPessoaJuridica(HttpServletRequest request, String context) throws JSONException {
+
         DAO<Location> daolocation = new DAO<Location>(Location.class);
         DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
         DAO<Endereco> daoEndereco = new DAO<Endereco>(Endereco.class);
-        
-        
+
+
         String tipo = request.getParameter("tipo");
         String fantasia = request.getParameter("fantasia");
         String nome = request.getParameter("razao");
@@ -125,19 +133,21 @@ public class ControlerCadastroVendedor {
         String numero = request.getParameter("n");
         String cep = request.getParameter("cep");
         String password = request.getParameter("password");
-        
-        
+
+
+
+
         Location location = MapsUtils.getCoord(numero + "," + rua + " ," + cidade + ", " + estado);
         daolocation.adiciona(location);
-        
+
         Endereco endereco = new Endereco();
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
         endereco.setUf(estado);
         endereco.setLocation(location);
         daoEndereco.adiciona(endereco);
-        
-        
+
+
         PessoaJuridica pessoaJuridica = new PessoaJuridica(TrataCaracteres.retiraCaracteresNaoNumericos(cnpj), nome);
         pessoaJuridica.setNomeFantasia(fantasia);
         pessoaJuridica.setMail(mail);
@@ -146,41 +156,50 @@ public class ControlerCadastroVendedor {
         pessoaJuridica.setDataCadastro(Calendar.getInstance());
         pessoaJuridica.setEndereco(endereco);
         
+        
+        
+        /* cria diretorio com nome da empresa para imagens*/
+        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia)+"/";
+        final String path = context + dir;
+        Upload upload = new Upload(path);
+        
+        pessoaJuridica.setDiretorioImg(dir);
+
         daoVendedor.adiciona(pessoaJuridica);
-        
-        
-        
-        
+
+
+
+
     }
-    
+
     public Boolean Login(String mail, String senha) {
-        
+
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
-        
+
         String md5 = CriptografaSenha.criptografa(senha);
-        
+
         Vendedor vendedor = daoVendedor.consultaEmail(mail);
-        
-        
+
+
         if (vendedor != null) {
-            
+
             if (md5.equals(vendedor.getSenha()) && mail.equals(vendedor.getMail())) {
-                
+
                 return true;
-                
+
             }
-            
-        }        
+
+        }
         return false;
-        
+
     }
-    
+
     public Vendedor retornaVendedor(String mail) {
-        
+
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
-        
+
         return daoVendedor.consultaEmail(mail);
-        
-        
+
+
     }
 }

@@ -20,4 +20,9 @@ public class TrataCaracteres {
         string = Normalizer.normalize(string, Normalizer.Form.NFD);
         return string.replaceAll("[^\\p{ASCII}]", "");
     }
+    public static String retiraAcentosEspacos(String string) {
+        string = Normalizer.normalize(string, Normalizer.Form.NFD);
+        string = string.replaceAll(" ","");
+        return string.replaceAll("[^\\p{ASCII}]", "").toLowerCase();
+    }
 }
