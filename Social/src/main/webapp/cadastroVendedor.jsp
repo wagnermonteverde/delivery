@@ -219,14 +219,14 @@
                             required: true, minlength: 5  
                         },
                         
-                        password : {
+                        password1 : {
                             required: true, minlength: 5  
                         },
                         
                         
                         confirmpassword:{
                             required: true,
-                            equalTo: "#password"
+                            equalTo: "#password1"
                         },
                         
                         estados :{
@@ -280,7 +280,7 @@
                             required: "Nome Fantasia não pode estar em branco"
                         },
                         
-                        password : {
+                        password1 : {
                             required: "Senha não pode estar em branco"  
                         },
                         
@@ -512,14 +512,14 @@
                                 <div class="control-group">
                                     <label class="control-label">Email:</label>
                                     <div class="fieldgroup">
-                                        <input type="text" name="mail1" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
+                                        <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label">Confirme seu Email:</label>
                                     <div class="fieldgroup">
-                                        <input type="text" name="mail3" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
+                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
                                     </div>
                                 </div>
 
@@ -581,7 +581,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Senha:</label>
                                     <div class="fieldgroup">
-                                        <input type="password" name="password" placeholder="*****" id="password" value="" class="input-xlarge"  />
+                                        <input type="password" name="password1" placeholder="*****" id="password1" value="" class="input-xlarge"  />
                                     </div>
                                 </div>
 

@@ -1,9 +1,7 @@
 package br.com.starsoft.social.controler.upload;
 
 import br.com.starsoft.social.model.beans.Vendedor;
-import br.com.starsoft.social.model.logic.ControlerNameImagensVendedor;
 import br.com.starsoft.social.model.logic.Upload;
-import com.oreilly.servlet.MultipartRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;

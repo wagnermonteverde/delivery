@@ -48,6 +48,14 @@ public class ControlerCadastroVendedor {
         return daoVendedor.consultaCnpj(cnpj) == null ? "true" : "false";
 
     }
+    
+    public String verificaNomeFantasia(String fantasia) {
+         
+        DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
+
+        return daoVendedor.consultaFantasia(fantasia) == null ? "true" : "false";
+
+    }
 
     public void cadastraVendedor(HttpServletRequest request, String context) throws JSONException {
 
@@ -132,7 +140,7 @@ public class ControlerCadastroVendedor {
         String rua = request.getParameter("rua");
         String numero = request.getParameter("n");
         String cep = request.getParameter("cep");
-        String password = request.getParameter("password");
+        String password = request.getParameter("password1");
 
 
 
