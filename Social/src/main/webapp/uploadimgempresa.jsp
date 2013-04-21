@@ -81,17 +81,20 @@
                 </li>
             </ul>
 
-            <form id="formSendFile" 
-                  name="formSendFile" 
-                  method="post" 
-                  action="ControlerUploadServlet" 
-                  enctype="multipart/form-data">
-                Name: <br/>
-                <input name="namePerson" type="text" /><br/><br/>
-                Picture:<br/>
-                <input name="imagem" type="file" id="imagem" maxlength="60" name="arq" /><br/><br/>
-                <input type="submit" id="upload" name="upload" value="insert" />
+
+
+
+            <form  name="fotoPerfil" method="POST" action="ControlerUploadServlet"  enctype="multipart/form-data">
+                <input type="hidden" name="perfil" value="perfil">
+                <input type="file" name="perfil" accept="image/*">
+                <input type="submit">
             </form>
+
+
+
+
+
+
 
             <%@include file="footer.jsp" %>
         </div>

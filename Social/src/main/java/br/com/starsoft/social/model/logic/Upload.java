@@ -81,22 +81,41 @@ public class Upload {
     /**
      * Retorna em um Map os campos do formulário exceto o campo da imagem.
      */
-    public Map<String, String> getFormValues(List l, String nameArq) {
+    public Map<String, String> getFormValues(List l) {
         Map<String, String> map = new HashMap<String, String>();
         Iterator iter = l.iterator();
-        
-        
+
+
+        String nomearquivo = "padrao";
 
         while (iter.hasNext()) {
 
             FileItem item = (FileItem) iter.next();
 
+
             if (item.isFormField()) {
+
                 map.put(item.getFieldName(), item.getString());
+                System.out.println(item.getFieldName());
+
+                nomearquivo = item.getFieldName();
+
             } else {
+
                 if (item.getName().length() > 0) {
-                    this.saveFile(this.getPath(), "teste", item);
+
+
+
+
+                    String nomeArquivoDisco = trataNome(nomearquivo, item.getName());
+
+
+                    this.saveFile(this.getPath(), nomeArquivoDisco, item);
+
+
                     map.put(item.getFieldName(), this.getNameFile(item));
+
+
                     item.delete();
                 }
             }
@@ -116,6 +135,8 @@ public class Upload {
     public List processRequest(HttpServletRequest req) {
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
+
+
         try {
             return upload.parseRequest(req);
         } catch (FileUploadException ex) {
@@ -126,5 +147,47 @@ public class Upload {
     public String[] getAllImages() {
         File dir = new File(this.getPath());
         return dir.list();
+    }
+
+    public String resolveNomeArquivo(String identificador) {
+
+
+        if (identificador.equals("perfilVendedor")) {
+
+            return "logoPerfil.jpg";
+
+        } else if (false) {
+
+            return "";
+
+        }
+
+
+        return null;
+
+    }
+
+    public String ReselvenomeImagem(String nome) {
+
+
+
+        return null;
+    }
+
+    private String trataNome(String nome, String nameArquivo) {
+
+        ControlerNameImagensVendedor resolveNomes = new ControlerNameImagensVendedor();
+        nome = resolveNomes.resolveNomeImagens(nome);
+        return trataEstensão(nome, nameArquivo);
+
+    }
+
+    private String trataEstensão(String nome, String nameArquivo) {
+
+        int i = nameArquivo.lastIndexOf(".");
+
+        nameArquivo = nameArquivo.substring(i, nameArquivo.length());
+
+        return nome + nameArquivo;
     }
 }
