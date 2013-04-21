@@ -28,8 +28,8 @@
 
         </style>
 
-        <meta charset="utf-8">
         <%@include file="imports.jsp" %>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <script type="text/javascript" src="js/jquery.validate.min.js"></script>  
         <!-- acima as dependencias, e abaixo o meu javascript, e um exemplo -->  
         <script type="text/javascript" src="js/util.validate.js"></script> 
@@ -82,7 +82,9 @@
                         
                         
                         fantasia: {
-                            required: true, minlength: 5  
+                            required: true, minlength: 5,
+                            remote:'VerificaNomeFantasia'
+                            
                         },
                         
                         password : {
@@ -144,7 +146,8 @@
                         
                         
                         fantasia: {
-                            required: "Nome Fantasia não pode estar em branco"
+                            required: "Nome Fantasia não pode estar em branco",
+                            remote:"Este nome já esta em uso :("
                         },
                         
                         password : {
@@ -216,7 +219,8 @@
                         
                         
                         fantasia: {
-                            required: true, minlength: 5  
+                            required: true, minlength: 5,
+                            remote:'VerificaNomeFantasia'
                         },
                         
                         password1 : {
@@ -277,7 +281,8 @@
                         
                         
                         fantasia: {
-                            required: "Nome Fantasia não pode estar em branco"
+                            required: "Nome Fantasia não pode estar em branco",
+                            remote:"Este nome já esta em uso :("
                         },
                         
                         password1 : {
@@ -366,7 +371,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
 
-                        <form method="post"  id="formfisica" action="ControlerCadastroVendedor">
+                        <form method="post"  id="formfisica" action="ControlerCadastroVendedor" accept-charset="ISO-8859-1">
 
                             <input type="hidden" name="tipo" value="pf">
 
@@ -483,7 +488,7 @@
                         <!-- Text input-->
                         <div class="control-group">
 
-                            <form method="post" name="formjuridica" id="formjuridica" action="ControlerCadastroVendedor">
+                            <form method="post" name="formjuridica" id="formjuridica" action="ControlerCadastroVendedor" accept-charset="ISO-8859-1">
 
                                 <input type="hidden" name="tipo" value="pj">
 

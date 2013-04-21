@@ -38,7 +38,7 @@ public class VerificaNomeFantasia extends HttpServlet {
            
             
             
-             String fantasia = request.getParameter("mail");
+             String fantasia = request.getParameter("fantasia");
 
             /*
              * 
