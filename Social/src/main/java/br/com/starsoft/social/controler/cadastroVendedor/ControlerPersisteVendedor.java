@@ -2,25 +2,27 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.crudsProdutos;
+package br.com.starsoft.social.controler.cadastroVendedor;
 
-import br.com.starsoft.social.model.beans.Categoria;
-import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
-import br.com.starsoft.social.model.conf.UrlAplication;
+import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONException;
 
 /**
  *
- * @author henrique
+ * @author wagner
  */
-@WebServlet(name = "ControlerCadastroProdutos", urlPatterns = {"/ControlerCadastroProdutos"})
-public class ControlerCadastroProdutos extends HttpServlet {
+@WebServlet(name = "ControlerCadastroVendedor", urlPatterns = {"/ControlerCadastroVendedor"})
+public class ControlerPersisteVendedor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -33,25 +35,43 @@ public class ControlerCadastroProdutos extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
 
-            String preco = (String) request.getParameter("valor");
-            String categoria = (String) request.getParameter("categoria");
-            Categoria categoria1 = null;
-            if (categoria.equalsIgnoreCase("bebida")) {
-                categoria1 = categoria1.Bebida;
-            } else {
-                categoria1 = categoria1.Comida;
-            }
 
-            ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"), categoria1);
-            response.setCharacterEncoding("UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html;charset=UTF-8");
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "ListaProdutosVendedor");
+
+            /*
+             * 
+             * persistir vendedor
+             * 
+             * 
+             */
+
+            String context = getServletContext().getRealPath("/");
+
+            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
+            controlerCadastroVendedor.cadastraVendedor(request,context);
+
+
+            response.sendRedirect("login.jsp");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         } finally {
             out.close();
         }
@@ -70,7 +90,11 @@ public class ControlerCadastroProdutos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(ControlerPersisteVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -85,7 +109,11 @@ public class ControlerCadastroProdutos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(ControlerPersisteVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

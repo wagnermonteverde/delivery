@@ -2,11 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.crudsProdutos;
+package br.com.starsoft.social.controler.cadastroVendedor;
 
-import br.com.starsoft.social.model.beans.Categoria;
-import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
-import br.com.starsoft.social.model.conf.UrlAplication;
+import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author henrique
+ * @author wagner
  */
-@WebServlet(name = "ControlerCadastroProdutos", urlPatterns = {"/ControlerCadastroProdutos"})
-public class ControlerCadastroProdutos extends HttpServlet {
+@WebServlet(name = "VerificaNomeFantasia", urlPatterns = {"/VerificaNomeFantasia"})
+public class VerificaNomeFantasia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -37,22 +35,31 @@ public class ControlerCadastroProdutos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+           
+            
+            
+             String fantasia = request.getParameter("fantasia");
 
-            String preco = (String) request.getParameter("valor");
-            String categoria = (String) request.getParameter("categoria");
-            Categoria categoria1 = null;
-            if (categoria.equalsIgnoreCase("bebida")) {
-                categoria1 = categoria1.Bebida;
-            } else {
-                categoria1 = categoria1.Comida;
-            }
+            /*
+             * 
+             * Instancia um controlador de cadastro de Vendedores
+             * 
+             */
+            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
 
-            ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"), categoria1);
-            response.setCharacterEncoding("UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html;charset=UTF-8");
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "ListaProdutosVendedor");
-        } finally {
+            /*
+             * 
+             * Printa o retorno para o metodo validador do Jquery
+             * e faz consulta com o metodo do controlador
+             * @return String  'true' ou 'false'
+             * 
+             */
+            out.print(controlerCadastroVendedor.verificaNomeFantasia(fantasia));
+            
+            
+            
+            
+        } finally {            
             out.close();
         }
     }

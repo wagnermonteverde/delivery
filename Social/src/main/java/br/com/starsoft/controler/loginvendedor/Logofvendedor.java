@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.cadastroVendedor;
+package br.com.starsoft.controler.loginvendedor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,13 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author wagner
  */
-@WebServlet(name = "ControlerCadastroVendedor", urlPatterns = {"/ControlerCadastroVendedor"})
-public class ControlerCadastroVendedor extends HttpServlet {
+@WebServlet(name = "Logofvendedor", urlPatterns = {"/Logofvendedor"})
+public class Logofvendedor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -34,21 +35,13 @@ public class ControlerCadastroVendedor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-           
             
             
-            /*
-             * 
-             * persistir vendedor
-             * 
-             * 
-             */
+              HttpSession session = request.getSession();
+              session.removeAttribute("vendedor");
+            
              
-            
-            
-            
-            
-            
+            response.sendRedirect("login.jsp");
             
         } finally {            
             out.close();

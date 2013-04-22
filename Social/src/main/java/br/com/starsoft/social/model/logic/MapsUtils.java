@@ -50,6 +50,7 @@ public class MapsUtils {
         
         for (String string : split) {
             System.out.println(string);
+            System.out.println(string);
         }
 
         String lon = split[60].replace(":", "").replace(",", "");

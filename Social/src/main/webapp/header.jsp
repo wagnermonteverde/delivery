@@ -17,9 +17,9 @@
                                 <li class="divider-vertical"></li>
                                 <li class="active" ><a href="#"><i class="icon-file "></i> Lojas</a></li>
                                 <li class="divider-vertical"></li>
-                                <li class="active"><a href="#"><i class="icon-envelope "></i> Messages</a></li>
-                                <li class="divider-vertical"></li>
                                 <li class="active"><a href="parceiro.jsp"><i class="icon-globe "></i> Seja Nosso Parceiro</a></li>
+                                <li class="divider-vertical"></li>
+                                <li class="active"><a href="login.jsp"><i class="icon-cog "></i>Vendedor</a></li>
                                 <li class="divider-vertical"></li>
                             </ul>
 
@@ -28,7 +28,7 @@
 
 
                                 <ul class="nav pull-right">
-                                    <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src="<c:out value="${usuario.fotoString}"/>" /></a></li>
+                                    <li><a href="#" id="sair"><img  style=" width: 24px; height: 24px;" alt="0"src="${usuario.fotoString}" /></a></li>
 
                                     <li class="dropdown ">
                                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="face"><c:out value="${ usuario.name }"/><c:out value="${ usuario.lastName }"/><strong class="caret"></strong></a>
@@ -37,8 +37,6 @@
                                                 <ul>
                                                     <li><a href="perfil.jsp">Perfil</a></li>
                                                     <li><a href="Logof">Sair</a></li>
-                                            </form>
-                                            </form>
                                             </form>
                                         </div>
                                     </li>

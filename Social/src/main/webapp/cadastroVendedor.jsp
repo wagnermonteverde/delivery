@@ -28,8 +28,8 @@
 
         </style>
 
-        <meta charset="utf-8">
         <%@include file="imports.jsp" %>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <script type="text/javascript" src="js/jquery.validate.min.js"></script>  
         <!-- acima as dependencias, e abaixo o meu javascript, e um exemplo -->  
         <script type="text/javascript" src="js/util.validate.js"></script> 
@@ -82,7 +82,9 @@
                         
                         
                         fantasia: {
-                            required: true, minlength: 5  
+                            required: true, minlength: 5,
+                            remote:'VerificaNomeFantasia'
+                            
                         },
                         
                         password : {
@@ -102,7 +104,6 @@
                         },
                         
                         n:{
-                            required:true,
                             number: true
                         },
                         
@@ -145,7 +146,8 @@
                         
                         
                         fantasia: {
-                            required: "Nome Fantasia não pode estar em branco"
+                            required: "Nome Fantasia não pode estar em branco",
+                            remote:"Este nome já esta em uso :("
                         },
                         
                         password : {
@@ -156,11 +158,9 @@
                         confirmpassword:{
                             required: "Senha não pode estar em branco",
                             equalTo: "Senhas devem ser iguais"
-                            
                         },
                         
                         n:{
-                            required:"Numero não pode estar em branco",
                             number:"Este campo é numerico"
                         },
                         
@@ -219,17 +219,18 @@
                         
                         
                         fantasia: {
-                            required: true, minlength: 5  
+                            required: true, minlength: 5,
+                            remote:'VerificaNomeFantasia'
                         },
                         
-                        password : {
+                        password1 : {
                             required: true, minlength: 5  
                         },
                         
                         
                         confirmpassword:{
                             required: true,
-                            equalTo: "#password"
+                            equalTo: "#password1"
                         },
                         
                         estados :{
@@ -239,7 +240,6 @@
                         },
                         
                         n:{
-                            required:true,
                             number: true
                         },
                         
@@ -281,10 +281,11 @@
                         
                         
                         fantasia: {
-                            required: "Nome Fantasia não pode estar em branco"
+                            required: "Nome Fantasia não pode estar em branco",
+                            remote:"Este nome já esta em uso :("
                         },
                         
-                        password : {
+                        password1 : {
                             required: "Senha não pode estar em branco"  
                         },
                         
@@ -296,8 +297,9 @@
                         },
                         
                         n:{
-                            required:"Numero não pode estar em branco",
+                            
                             number:"Este campo é numerico"
+                            
                         },
                         
                         rua:{
@@ -331,7 +333,7 @@
 
 
 
-        <title>Area do Vendedor- Meus produtos</title>
+        <title>Cadastro Vendedor</title>
 
     </head>
 
@@ -369,7 +371,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
 
-                        <form method="post"  id="formfisica" action="ControlerCadastroVendedor">
+                        <form method="post"  id="formfisica" action="ControlerCadastroVendedor" accept-charset="ISO-8859-1">
 
                             <input type="hidden" name="tipo" value="pf">
 
@@ -405,7 +407,7 @@
                             <div class="control-group">
                                 <label class="control-label">Confirme seu Email:</label>
                                 <div class="fieldgroup">
-                                    <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value=""  class="input-xlarge"  />
+                                    <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
                                 </div>
                             </div>
 
@@ -477,7 +479,7 @@
                                 </div>
                             </div>
 
-                            <input class="btn btn-large btn-success" type="submit" value="Aceito todos os termos e Criar conta!"/>
+                            <input class="btn btn-large btn-info" type="submit" value="Aceito todos os termos e Criar conta!"/>
 
                         </form>
 
@@ -486,7 +488,7 @@
                         <!-- Text input-->
                         <div class="control-group">
 
-                            <form method="post" name="formjuridica" id="formjuridica" action="ControlerCadastroVendedor">
+                            <form method="post" name="formjuridica" id="formjuridica" action="ControlerCadastroVendedor" accept-charset="ISO-8859-1">
 
                                 <input type="hidden" name="tipo" value="pj">
 
@@ -522,7 +524,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Confirme seu Email:</label>
                                     <div class="fieldgroup">
-                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value=""  class="input-xlarge"  />
+                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
                                     </div>
                                 </div>
 
@@ -584,7 +586,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Senha:</label>
                                     <div class="fieldgroup">
-                                        <input type="password" name="password" placeholder="*****" id="password" value="" class="input-xlarge"  />
+                                        <input type="password" name="password1" placeholder="*****" id="password1" value="" class="input-xlarge"  />
                                     </div>
                                 </div>
 
@@ -594,9 +596,9 @@
                                         <input type="password" name="confirmpassword" placeholder="*****" id="confirmpassword" value="" class="input-xlarge"  />
                                     </div>
                                 </div>
-                                    
-                                    
-                                    <input class="btn btn-large btn-success" type="submit" value="Aceito todos os termos e Criar conta!"/>
+
+
+                                <input class="btn btn-large btn-info" type="submit" value="Aceito todos os termos e Criar conta!"/>
 
                             </form>
 

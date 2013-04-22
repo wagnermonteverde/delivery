@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.model.beans;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Vendedor {
+public abstract class Vendedor implements Serializable {
 
     @Id
     @GeneratedValue
@@ -34,6 +35,7 @@ public class Vendedor {
     private String tipo;
     private Status status;
     private Integer quantidadeProdutos;
+    private String diretorioImg;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataCadastro;
@@ -43,7 +45,6 @@ public class Vendedor {
 
     public Vendedor() {
     }
-
     
     public Integer getId() {
         return id;
@@ -95,6 +96,14 @@ public class Vendedor {
 
     public void setQuantidadeProdutos(Integer quantidadeProdutos) {
         this.quantidadeProdutos = quantidadeProdutos;
+    }
+
+    public String getDiretorioImg() {
+        return diretorioImg;
+    }
+
+    public void setDiretorioImg(String diretorioImg) {
+        this.diretorioImg = diretorioImg;
     }
     
 

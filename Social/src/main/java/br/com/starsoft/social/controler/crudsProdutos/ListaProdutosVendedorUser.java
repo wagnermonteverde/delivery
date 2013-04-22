@@ -6,7 +6,7 @@ package br.com.starsoft.social.controler.crudsProdutos;
 
 import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.dao.DAO;
-import br.com.starsoft.social.model.logic.UrlAplication;
+import br.com.starsoft.social.model.conf.UrlAplication;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -47,13 +47,25 @@ public class ListaProdutosVendedorUser extends HttpServlet {
             contexto.setAttribute("listaProdutos", listaProdutos);
             //
             int id = 0;
-
+            int ancora = -1;
             try {
                 id = Integer.parseInt(request.getParameter("id"));
+
             } catch (NumberFormatException numberFormatException) {
             }
 
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + (id-2));
+            try {
+//                Gera a ancora para rolagem do produto na pagina do vendedor apartir de um link para o produto
+                Produtos buscaPorId = dao.buscaPorId(id);
+                int lastIndexOf = listaProdutos.lastIndexOf(buscaPorId);
+//                a ancora deve rolar a pagina para o segundo produto acima do desejado por questoes de alinhamento na tela
+                Produtos get = listaProdutos.get(lastIndexOf - 2);
+                ancora = get.getId();
+            } catch (Exception e) {
+            }
+
+
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + ancora);
         } finally {
             out.close();
         }
