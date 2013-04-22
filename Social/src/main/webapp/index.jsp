@@ -65,7 +65,7 @@
 
 
             <!--  acordion-->
-            <div class="container-fluid">  
+            <!--<div class="container-fluid">-->  
                 <div class="accordion" id="accordion2">
                     <div class="accordion-group">
                         <div class="accordion-heading">
@@ -99,7 +99,7 @@
 
                 </div>
 
-            </div>
+            <!--</div>-->
 
 
             <!-- Fim acordion -->
