@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.cadastroVendedor;
+package br.com.starsoft.controler.loginvendedor;
 
 import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;

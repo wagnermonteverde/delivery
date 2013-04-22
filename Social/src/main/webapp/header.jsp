@@ -17,9 +17,9 @@
                                 <li class="divider-vertical"></li>
                                 <li class="active" ><a href="#"><i class="icon-file "></i> Lojas</a></li>
                                 <li class="divider-vertical"></li>
-                                <li class="active"><a href="login.jsp"><i class="icon-cog "></i>Vendedor</a></li>
-                                <li class="divider-vertical"></li>
                                 <li class="active"><a href="parceiro.jsp"><i class="icon-globe "></i> Seja Nosso Parceiro</a></li>
+                                <li class="divider-vertical"></li>
+                                <li class="active"><a href="login.jsp"><i class="icon-cog "></i>Vendedor</a></li>
                                 <li class="divider-vertical"></li>
                             </ul>
 
@@ -37,8 +37,6 @@
                                                 <ul>
                                                     <li><a href="perfil.jsp">Perfil</a></li>
                                                     <li><a href="Logof">Sair</a></li>
-                                            </form>
-                                            </form>
                                             </form>
                                         </div>
                                     </li>

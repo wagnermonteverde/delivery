@@ -88,6 +88,6 @@ public class ControlerUploadServlet extends HttpServlet {
          * Vai para pagina de visualização
          * 
          */
-        response.sendRedirect("admin/view.jsp");
+        response.sendRedirect("admin/index.jsp");
     }
 }
