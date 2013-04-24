@@ -149,6 +149,7 @@
                                                     <div id="<c:out value="${produto.id}" />" class="accordion-body collapse">
                                                         <div class="accordion-inner">
                                                             <c:out value="${produto.descricao}" />
+                                                            <p style="text-align: right"><img src="img/botao-comprar.png" alt="Pedir" /></p>
                                                         </div>
                                                     </div>
                                                 </div>
