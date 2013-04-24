@@ -48,9 +48,9 @@ public class ControlerCadastroVendedor {
         return daoVendedor.consultaCnpj(cnpj) == null ? "true" : "false";
 
     }
-    
+
     public String verificaNomeFantasia(String fantasia) {
-         
+
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
 
         return daoVendedor.consultaFantasia(fantasia) == null ? "true" : "false";
@@ -98,8 +98,10 @@ public class ControlerCadastroVendedor {
         Endereco endereco = new Endereco();
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
+        endereco.setRua(rua);
         endereco.setUf(estado);
         endereco.setLocation(location);
+        endereco.setCep(TrataCaracteres.retiraCaracteresNaoNumericos(cep));
         daoEndereco.adiciona(endereco);
 
 
@@ -113,10 +115,10 @@ public class ControlerCadastroVendedor {
 
 
         /* cria diretorio com nome da empresa para imagens*/
-        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia)+"/";
+        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
         final String path = context + dir;
         Upload upload = new Upload(path);
-        
+
         pessoaFisica.setDiretorioImg(dir);
 
         daoVendedor.adiciona(pessoaFisica);
@@ -151,8 +153,10 @@ public class ControlerCadastroVendedor {
         Endereco endereco = new Endereco();
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
+        endereco.setRua(rua);
         endereco.setUf(estado);
         endereco.setLocation(location);
+        endereco.setCep(TrataCaracteres.retiraCaracteresNaoNumericos(cep));
         daoEndereco.adiciona(endereco);
 
 
@@ -163,14 +167,14 @@ public class ControlerCadastroVendedor {
         pessoaJuridica.setSenha(CriptografaSenha.criptografa(password));
         pessoaJuridica.setDataCadastro(Calendar.getInstance());
         pessoaJuridica.setEndereco(endereco);
-        
-        
-        
+
+
+
         /* cria diretorio com nome da empresa para imagens*/
-        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia)+"/";
+        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
         final String path = context + dir;
         Upload upload = new Upload(path);
-        
+
         pessoaJuridica.setDiretorioImg(dir);
 
         daoVendedor.adiciona(pessoaJuridica);
