@@ -111,7 +111,7 @@ public class ControlerCadastroVendedor {
         pessoaFisica.setTipo(tipo);
         pessoaFisica.setDataCadastro(Calendar.getInstance());
         pessoaFisica.setEndereco(endereco);
-
+        pessoaFisica.setLink(TrataCaracteres.retiraAcentosEspacos(fantasia));
 
         if (pessoaFisica.getId() == null) {
 
@@ -176,6 +176,7 @@ public class ControlerCadastroVendedor {
         pessoaJuridica.setTipo(tipo);
         pessoaJuridica.setDataCadastro(Calendar.getInstance());
         pessoaJuridica.setEndereco(endereco);
+        pessoaJuridica.setLink(TrataCaracteres.retiraAcentosEspacos(fantasia));
 
 
 

@@ -27,6 +27,7 @@ public abstract class Vendedor implements Serializable {
     @GeneratedValue
     private Integer id;
     private String nomeFantasia;
+    private String link;
     private String mail;
     private String senha;
     private String descricao;
@@ -36,16 +37,14 @@ public abstract class Vendedor implements Serializable {
     private Status status;
     private Integer quantidadeProdutos;
     private String diretorioImg;
-    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataCadastro;
-    
     @OneToOne
     private Endereco endereco;
 
     public Vendedor() {
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -105,7 +104,6 @@ public abstract class Vendedor implements Serializable {
     public void setDiretorioImg(String diretorioImg) {
         this.diretorioImg = diretorioImg;
     }
-    
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
@@ -135,7 +133,6 @@ public abstract class Vendedor implements Serializable {
         this.tipo = tipo;
     }
 
-   
     public Calendar getDataCadastro() {
         return dataCadastro;
     }
@@ -152,7 +149,11 @@ public abstract class Vendedor implements Serializable {
         this.endereco = endereco;
     }
 
-   
-    
-    
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 }
