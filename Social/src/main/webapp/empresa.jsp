@@ -131,7 +131,9 @@
                                     <!--Todo conteudo deve ir nesta div-->
 
                                     <div class="box-content">
-
+                                        <c:if test="${!empty param.isnull}" >
+                                            <h4>Este vendedor ainda não possui produtos cadastrados</h4>
+                                        </c:if>
                                         <c:forEach items="${listaProdutos}" var="produto" >
 
                                             <div class="<c:out value="${produto.id}" />" id="accordion2">
