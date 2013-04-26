@@ -64,8 +64,12 @@ public class ListaProdutosVendedorUser extends HttpServlet {
             } catch (Exception e) {
             }
 
-
+            if (!listaProdutos.isEmpty()) {
             response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + ancora);
+            }else{
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?isnull=true");
+            }
+                
         } finally {
             out.close();
         }

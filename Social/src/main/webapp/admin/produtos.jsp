@@ -7,7 +7,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:if test="${empty listaProdutos}" >
+<c:if test="${empty listaProdutos and empty param.isnull}" >
     <c:redirect url="../ListaProdutosVendedor"/>
     <%--
     response.sendRedirect("../ListaProdutosVendedor");
@@ -230,6 +230,7 @@
                                             </tr>
                                         </thead>   
                                         <tbody>
+                                           <c:out value="${empty listaProdutos} and ${!empty param.isnull}" />
                                             <c:forEach items="${listaProdutos}" var="produto" >
                                                 <tr>
                                                     <td><c:out value="${produto.nome}" /></td>

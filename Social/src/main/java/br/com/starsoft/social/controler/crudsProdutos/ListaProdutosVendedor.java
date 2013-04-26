@@ -45,9 +45,14 @@ public class ListaProdutosVendedor extends HttpServlet {
             List<Produtos> listaProdutos = dao.listaTodos();
 
             ServletContext contexto = this.getServletContext();
+            
             contexto.setAttribute("listaProdutos", listaProdutos);
 //      
+             if (!listaProdutos.isEmpty()) {
             response.sendRedirect(UrlAplication.getUrlAplicacao() + "admin/produtos.jsp");
+            }else{
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "admin/produtos.jsp?isnull=true");
+            }
 
         } finally {
             out.close();

@@ -1,11 +1,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:if test="${empty listaProdutos}" >
+<c:if test="${empty listaProdutos and empty param.isnull}" >
     <c:redirect url="/ListaProdutosVendedorUser?id=${param.id}"/>
-    <%--
-    response.sendRedirect("../ListaProdutosVendedor");
-    --%>
 </c:if>
 <!DOCTYPE html>
 <html>
@@ -202,7 +199,7 @@
 
                 <hr>
 
-              
+
 
                 <footer>
                     <p class="pull-left">&copy; <a href="http://usman.it" target="_blank">Muhammad Usman</a> 2012</p>
