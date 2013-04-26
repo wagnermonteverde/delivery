@@ -223,18 +223,16 @@
                                         <thead>
                                             <tr>
                                                 <th>Produto</th>
-                                                <th>Data de registro</th>
                                                 <th>Preço</th>
                                                 <th>Categoria</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </thead>   
                                         <tbody>
-                                           <c:out value="${empty listaProdutos} and ${!empty param.isnull}" />
+                                            <c:out value="${empty listaProdutos} and ${!empty param.isnull}" />
                                             <c:forEach items="${listaProdutos}" var="produto" >
                                                 <tr>
                                                     <td><c:out value="${produto.nome}" /></td>
-                                                    <td class="center"></td>
                                                     <td class="center">R$ <c:out value="${produto.preco}" /></td>
                                                     <td class="center">
                                                         <span class="label"><c:out value="${produto.categoria}" /></span>
