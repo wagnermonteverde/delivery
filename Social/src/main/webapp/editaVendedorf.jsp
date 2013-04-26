@@ -370,7 +370,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
 
-                        <form method="post"  id="formfisica" action="ControlerCadastroVendedor" accept-charset="ISO-8859-1">
+                        <form method="post"  id="formfisica" action="ControlerUpdateVendedor" accept-charset="ISO-8859-1">
 
                             <input type="hidden" name="tipo" value="pf">
 
@@ -464,19 +464,17 @@
                                 <input class="span2" type="text" name="cep"  placeholder="000000-000" value="${vendedor.endereco.cep}" id="cep1"/><br />
                             </div>
 
-<!--                            <div class="control-group">
-                                <label class="control-label">Senha:</label>
+                            <div class="control-group">
                                 <div class="fieldgroup">
-                                    <input type="password" name="password" placeholder="*****" id="password" value="" class="input-xlarge"  />
+                                    <input type="hidden" name="password" placeholder="*****" id="password" value="${vendedor.senha}" class="input-xlarge"  />
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label"> Confirme sua Senha:</label>
                                 <div class="fieldgroup">
-                                    <input type="password" name="confirmpassword" placeholder="*****" id="confirmpassword" value="" class="input-xlarge"  />
+                                    <input type="hidden" name="confirmpassword" placeholder="*****" id="confirmpassword" value="${vendedor.senha}" class="input-xlarge"  />
                                 </div>
-                            </div>-->
+                            </div>
 
                             <input class="btn btn-large btn-info" type="submit" value="Aceito todos os termos e Criar conta!"/>
 
@@ -484,122 +482,7 @@
 
                     </div>
                     <div class="tab-pane" id="tab2">
-                        <!-- Text input-->
-                        <div class="control-group">
-
-                            <form method="post" name="formjuridica" id="formjuridica" action="ControlerCadastroVendedor" accept-charset="ISO-8859-1">
-
-                                <input type="hidden" name="tipo" value="pj">
-
-                                <div class="control-group">
-                                    <label class="control-label">Nome Fantasia:</label>
-                                    <div class="fieldgroup">
-                                        <input  class="span6" type="text" name="fantasia" placeholder="Genérico Lanches" id="fantasia" value="" class="input-xlarge"  />
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label">Razão Social:</label>
-                                    <div class="fieldgroup">
-                                        <input  class="span6" type="text" name="razao" placeholder="Cia & Cia LTDA" id="razao" value="" class="input-xlarge"  />
-                                    </div>
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="control-group">
-                                    <label class="control-label">CNPJ:</label>
-                                    <div class="fieldgroup">
-                                        <input type="text" name="empresa.cnpj" placeholder="00.000.000/0000-00" id="cnpj" value="" class="input-xlarge"  />
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label">Email:</label>
-                                    <div class="fieldgroup">
-                                        <input type="text" name="mail" placeholder="seuemail@mail.com" id="mail" value="<c:out value="${param.mail}"/>" disabled class="input-xlarge"  />
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label">Confirme seu Email:</label>
-                                    <div class="fieldgroup">
-                                        <input type="text" name="mail2" placeholder="Confirme seu email aqui" id="mail2" value="" autocomplete='off' class="input-xlarge"  />
-                                    </div>
-                                </div>
-
-                                <div class="fieldgroup">
-                                    <label class="right">Estado:</label>
-                                    <select name="estados" id="estados">
-                                        <option value="">Escolha o Estado</option>
-                                        <option value="AC">Acre</option>
-                                        <option value="AL">Alagoas</option>
-                                        <option value="AP">Amapá</option>
-                                        <option value="AM">Amazonas</option>
-                                        <option value="BA">Bahia</option>
-                                        <option value="CE">Ceará</option>
-                                        <option value="DF">Distrito Federal</option>
-                                        <option value="ES">Espirito Santo</option>
-                                        <option value="GO">Goiás</option>
-                                        <option value="MA">Maranhão</option>
-                                        <option value="MT">Mato Grosso</option>
-                                        <option value="MS">Mato Grosso do Sul</option>
-                                        <option value="MG">Minas Gerais</option>
-                                        <option value="PA">Pará</option>
-                                        <option value="PB">Paraiba</option>
-                                        <option value="PR">Paraná</option>
-                                        <option value="PE">Pernambuco</option>
-                                        <option value="PI">Piauí</option>
-                                        <option value="RJ">Rio de Janeiro</option>
-                                        <option value="RN">Rio Grande do Norte</option>
-                                        <option value="RS">Rio Grande do Sul</option>
-                                        <option value="RO">Rondônia</option>
-                                        <option value="RR">Roraima</option>
-                                        <option value="SC">Santa Catarina</option>
-                                        <option value="SP">São Paulo</option>
-                                        <option value="SE">Sergipe</option>
-                                        <option value="TO">Tocantis</option>
-                                    </select>
-                                </div>
-
-                                <div class="fieldgroup">
-                                    <label class="right">Cidade:</label>
-                                    <input class="span6"type="text" name="cidade"  placeholder="Sua cidade" id="cidade" value="" />
-                                </div>
-
-                                <div class="fieldgroup">
-                                    <label class="right ">Rua:</label>
-                                    <input  class="span6"type="text" name="rua" placeholder="Sua Rua" id="rua" value=""  />
-                                </div>
-
-                                <div class="fieldgroup">
-                                    <label class="right">Nº:</label>
-                                    <input  class="span1"type="text" name="n" placeholder="000" value="" />
-                                </div>
-
-                                <div class="fieldgroup">
-                                    <label class="right">Cep:</label>
-                                    <input class="span2" type="text" name="cep" placeholder="000000-000" value="" id="cep"/><br />
-                                </div>
-
-
-                                <div class="control-group">
-                                    <label class="control-label">Senha:</label>
-                                    <div class="fieldgroup">
-                                        <input type="password" name="password1" placeholder="*****" id="password1" value="" class="input-xlarge"  />
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label"> Confirme sua Senha:</label>
-                                    <div class="fieldgroup">
-                                        <input type="password" name="confirmpassword" placeholder="*****" id="confirmpassword" value="" class="input-xlarge"  />
-                                    </div>
-                                </div>
-
-
-                                <input class="btn btn-large btn-info" type="submit" value="Aceito todos os termos e Criar conta!"/>
-
-                            </form>
+                        
 
 
 
