@@ -98,7 +98,10 @@ public class Upload {
                 map.put(item.getFieldName(), item.getString());
                 System.out.println(item.getFieldName());
 
-                nomearquivo = item.getFieldName();
+                if (item.getFieldName().equals("tipo")) {
+
+//                    nomearquivo = item nome do imput para dar nome a imagen
+                }
 
             } else {
 

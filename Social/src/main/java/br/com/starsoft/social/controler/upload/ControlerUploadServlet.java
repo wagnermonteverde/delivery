@@ -79,6 +79,10 @@ public class ControlerUploadServlet extends HttpServlet {
          */
 
         Map<String, String> map = upload.getFormValues(list);
+        
+        
+        
+        
 
 
 

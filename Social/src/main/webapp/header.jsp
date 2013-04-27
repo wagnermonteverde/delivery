@@ -19,7 +19,7 @@
                                 <li class="divider-vertical"></li>
                                 <li class="active"><a href="parceiro.jsp"><i class="icon-globe "></i> Seja Nosso Parceiro</a></li>
                                 <li class="divider-vertical"></li>
-                                <li class="active"><a href="login.jsp"><i class="icon-cog "></i>Vendedor</a></li>
+                                <li class="active"><a href="admin/index.jsp"><i class="icon-cog "></i>Vendedor</a></li>
                                 <li class="divider-vertical"></li>
                             </ul>
 
