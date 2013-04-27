@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Locale;
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author henrique
  */
-@WebFilter(filterName = "linkEmpresa", urlPatterns = {"/empresa.jsp"}, dispatcherTypes = {DispatcherType.REQUEST})
+@WebFilter(filterName = "linkEmpresa", urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST})
 public class linkEmpresa implements Filter {
 
     private static final boolean debug = true;
@@ -111,18 +112,22 @@ public class linkEmpresa implements Filter {
         }
         
         StringBuffer url = ((HttpServletRequest) request).getRequestURL();
-
-        HttpServletResponse response1 = null;        
-        DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
-
-
-        Vendedor consultaLink = daoVendedor.consultaLink(url.toString());
-        
-        
-        
-        if (consultaLink != null) {
-            HttpServletResponse res = (HttpServletResponse) request.getServletContext();
-        }
+        System.out.println(url.toString());
+        System.out.println(url.toString()+"--------------------");
+//
+//        HttpServletResponse response1 = null;        
+//        DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
+//
+//
+//        Vendedor consultaLink = daoVendedor.consultaLink(url.toString());
+//        
+//        System.out.println(consultaLink.toString()+"----------------------------------");
+//        
+//        if (consultaLink != null) {
+////            HttpServletResponse res = (HttpServletResponse) request.getServletContext();
+////            res.sendRedirect("index.jsp");
+//            response.setLocale(new Locale("index.jsp"));
+//        }
 
         doBeforeProcessing(request, response);
 
