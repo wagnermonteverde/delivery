@@ -9,6 +9,7 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -17,12 +18,14 @@ import javax.persistence.Temporal;
  * @author wagner
  */
  @Entity
+
 @Table(name = "Produtos")
 public class Produtos {
 
     @Id
     @GeneratedValue
     private Integer id;
+    private Integer idVendedor;
     private String nome;
     private Categoria categoria;
     private Double preco;
@@ -33,12 +36,25 @@ public class Produtos {
     public Produtos() {
     }
 
-    public Produtos(String nome, Double preco, String descricao, Calendar dataInclusao, Integer quantidade) {
+    public Produtos(Integer id, Integer idVendedor, String nome, Categoria categoria, Double preco, String descricao, Calendar dataInclusao) {
+        this.id = id;
+        this.idVendedor = idVendedor;
         this.nome = nome;
+        this.categoria = categoria;
         this.preco = preco;
         this.descricao = descricao;
         this.dataInclusao = dataInclusao;
     }
+
+    public Integer getIdVendedor() {
+        return idVendedor;
+    }
+
+    public void setIdVendedor(Integer idVendedor) {
+        this.idVendedor = idVendedor;
+    }
+
+  
 
     public Categoria getCategoria() {
         return categoria;
@@ -96,6 +112,11 @@ public class Produtos {
         return hash;
     }
 
+
+    public void setDataInclusao(DateFormat dateFormat) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -108,7 +129,13 @@ public class Produtos {
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
             return false;
         }
+        if (this.idVendedor != other.idVendedor && (this.idVendedor == null || !this.idVendedor.equals(other.idVendedor))) {
+            return false;
+        }
         if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+            return false;
+        }
+        if (this.categoria != other.categoria) {
             return false;
         }
         if (this.preco != other.preco && (this.preco == null || !this.preco.equals(other.preco))) {
@@ -120,17 +147,13 @@ public class Produtos {
         if (this.dataInclusao != other.dataInclusao && (this.dataInclusao == null || !this.dataInclusao.equals(other.dataInclusao))) {
             return false;
         }
-       
         return true;
-    }
-
-    public void setDataInclusao(DateFormat dateFormat) {
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
     public String toString() {
-        return "Produtos{" + "id=" + id + ", nome=" + nome + ", categoria=" + categoria + ", preco=" + preco + ", descricao=" + descricao + ", dataInclusao=" + dataInclusao + '}';
+        return "Produtos{" + "id=" + id + ", idVendedor=" + idVendedor + ", nome=" + nome + ", categoria=" + categoria + ", preco=" + preco + ", descricao=" + descricao + ", dataInclusao=" + dataInclusao + '}';
     }
-    
+
+ 
 }

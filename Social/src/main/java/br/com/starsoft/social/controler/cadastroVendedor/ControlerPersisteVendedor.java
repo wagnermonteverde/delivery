@@ -61,17 +61,6 @@ public class ControlerPersisteVendedor extends HttpServlet {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         } finally {
             out.close();
         }

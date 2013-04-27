@@ -5,6 +5,7 @@
 package br.com.starsoft.social.controler.crudsProdutos;
 
 import br.com.starsoft.social.model.beans.Categoria;
+import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
 import br.com.starsoft.social.model.conf.UrlAplication;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,7 +48,11 @@ public class ControlerCadastroProdutos extends HttpServlet {
             } else {
                 categoria1 = categoria1.Comida;
             }
-
+            HttpSession session = request.getSession();
+            Vendedor vededor = (Vendedor) session.getAttribute("vendedor");
+            
+            
+            
             ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"), categoria1);
             response.setCharacterEncoding("UTF-8");
             request.setCharacterEncoding("UTF-8");
