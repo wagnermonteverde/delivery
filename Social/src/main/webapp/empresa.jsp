@@ -63,10 +63,10 @@
 
             <!--  acordion-->
             <div class="container-fluid">  
-                <div class="accordion" id="accordion2">
+                <div class="accordion" id="accordion1">
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle btn-success" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            <a class="accordion-toggle btn-success" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
                                 Esta com Fome Faça Login E procure a comida mais perto de você com Nossa Busca por endereço
                             </a>
                         </div>
@@ -107,7 +107,7 @@
                     <!-- left menu starts -->
                     <div class="span2 main-menu-span">
                         <div class="well nav-collapse sidebar-nav">
-                            <img src="http://3.bp.blogspot.com/_fGnv-Lhb0xA/Sy46zh3kNkI/AAAAAAAAAEI/eGZrtFPB2A0/s400/Bob+logo+2.jpg" style="float: left" width="120" class="img-rounded">
+                            <img src="" style="float: left" width="120" class="img-rounded">
                             <p>Cidade: </p>
                             <p>Reputação: </p>
                         </div><!--/.well -->
@@ -140,7 +140,7 @@
                                                 <div class="accordion-group">
                                                     <div class="accordion-heading">
                                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<c:out value="${produto.id}" />">
-                                                            <img src="http://images01.olx.com.br/ui/15/02/01/1315589626_248560101_1-Lanches-delivery-em-Itaborai-centro.jpg" style="float: left" width="100" class="img-rounded">
+                                                            <img src="${produto.imagem}" style="float: left" width="100" class="img-rounded">
                                                             <h3><c:out value="${produto.nome}" /></h3>
                                                             <p>Preço: R$ <c:out value="${produto.preco}" /></p>
                                                         </a>
@@ -204,8 +204,7 @@
 
 
                 <footer>
-                    <p class="pull-left">&copy; <a href="http://usman.it" target="_blank">Muhammad Usman</a> 2012</p>
-                    <p class="pull-right">Powered by: <a href="http://usman.it/free-responsive-admin-template">Charisma</a></p>
+                     <p>© By Wagner Monteverde & Henrique Bartoski  Software  Email wagnermonteverde@outlook.com &  </p>  
                 </footer>
 
             </div><!--/.fluid-container-->

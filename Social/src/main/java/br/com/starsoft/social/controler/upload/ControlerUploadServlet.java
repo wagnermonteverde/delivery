@@ -1,6 +1,7 @@
 package br.com.starsoft.social.controler.upload;
 
 import br.com.starsoft.social.model.beans.Vendedor;
+import br.com.starsoft.social.model.logic.ControlerObjetoMultipart;
 import br.com.starsoft.social.model.logic.Upload;
 import java.io.IOException;
 import java.util.List;
@@ -34,8 +35,8 @@ public class ControlerUploadServlet extends HttpServlet {
 
 
         String dir = "/" + vendedor.getDiretorioImg();
-     
-        
+
+
 
 
         /* 
@@ -79,10 +80,12 @@ public class ControlerUploadServlet extends HttpServlet {
          */
 
         Map<String, String> map = upload.getFormValues(list);
-        
-        
-        
-        
+
+
+
+        ControlerObjetoMultipart controlerObjetoMultipart = new ControlerObjetoMultipart();
+
+        controlerObjetoMultipart.saveObjeto(map, vendedor);
 
 
 

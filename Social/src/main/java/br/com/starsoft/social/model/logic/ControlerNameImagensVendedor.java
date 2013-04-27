@@ -18,6 +18,13 @@ public class ControlerNameImagensVendedor {
 
 
         }
+        
+        if (formOrigem.equals("prod")) {
+
+            return "p1";
+
+
+        }
 
         return "erro";
     }

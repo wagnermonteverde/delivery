@@ -109,29 +109,20 @@ public class ControlerCadastroVendedor {
         pessoaFisica.setNomeFantasia(fantasia);
         pessoaFisica.setMail(mail);
         pessoaFisica.setTipo(tipo);
+        pessoaFisica.setSenha(CriptografaSenha.criptografa(password));
         pessoaFisica.setDataCadastro(Calendar.getInstance());
         pessoaFisica.setEndereco(endereco);
-        pessoaFisica.setLink(TrataCaracteres.retiraAcentosEspacos(fantasia));
-
-        if (pessoaFisica.getId() == null) {
-
-            pessoaFisica.setSenha(CriptografaSenha.criptografa(password));
 
 
-            /* cria diretorio com nome da empresa para imagens*/
-            String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
-            final String path = context + dir;
-            Upload upload = new Upload(path);
+        /* cria diretorio com nome da empresa para imagens*/
+        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia)+ "/";
+        final String path = context + dir;
+        Upload upload = new Upload(path+"/");
+        System.out.println("Criando diretorio -----"+path);
 
-            pessoaFisica.setDiretorioImg(dir);
+        pessoaFisica.setDiretorioImg(dir);
 
-            daoVendedor.adiciona(pessoaFisica);
-
-        } else {
-
-            daoVendedor.atualiza(pessoaFisica);
-
-        }
+        daoVendedor.adiciona(pessoaFisica);
 
     }
 
@@ -174,37 +165,22 @@ public class ControlerCadastroVendedor {
         pessoaJuridica.setNomeFantasia(fantasia);
         pessoaJuridica.setMail(mail);
         pessoaJuridica.setTipo(tipo);
+        pessoaJuridica.setSenha(CriptografaSenha.criptografa(password));
         pessoaJuridica.setDataCadastro(Calendar.getInstance());
         pessoaJuridica.setEndereco(endereco);
-        pessoaJuridica.setLink(TrataCaracteres.retiraAcentosEspacos(fantasia));
 
 
 
-        if (pessoaJuridica.getId() == null) {
+        /* cria diretorio com nome da empresa para imagens*/
+        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
+        final String path = context + dir;
+        System.out.println("path ------------"+path);
+        Upload upload = new Upload(path);
 
+        pessoaJuridica.setDiretorioImg(dir);
 
-            pessoaJuridica.setSenha(CriptografaSenha.criptografa(password));
+        daoVendedor.adiciona(pessoaJuridica);
 
-
-
-
-            /* cria diretorio com nome da empresa para imagens*/
-            String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
-            final String path = context + dir;
-            Upload upload = new Upload(path);
-
-            pessoaJuridica.setDiretorioImg(dir);
-
-            daoVendedor.adiciona(pessoaJuridica);
-
-        } else {
-
-
-
-            daoVendedor.atualiza(pessoaJuridica);
-
-
-        }
 
 
 
@@ -215,11 +191,9 @@ public class ControlerCadastroVendedor {
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
 
         String md5 = CriptografaSenha.criptografa(senha);
-
         Vendedor vendedor = daoVendedor.consultaEmail(mail);
-
-
-        if (vendedor != null) {
+        if (vendedor
+                != null) {
 
             if (md5.equals(vendedor.getSenha()) && mail.equals(vendedor.getMail())) {
 
@@ -228,6 +202,7 @@ public class ControlerCadastroVendedor {
             }
 
         }
+
         return false;
 
     }
@@ -237,8 +212,6 @@ public class ControlerCadastroVendedor {
         DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
 
         return daoVendedor.consultaEmail(mail);
-
-
     }
 
     public void updateVendedor(HttpServletRequest request, Vendedor vendedor) throws JSONException {
@@ -253,6 +226,8 @@ public class ControlerCadastroVendedor {
             updatePessoaJuridica(request, vendedor);
 
 
+
+
         }
 
 
@@ -264,8 +239,6 @@ public class ControlerCadastroVendedor {
         DAO<Location> daolocation = new DAO<Location>(Location.class);
         DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
         DAO<Endereco> daoEndereco = new DAO<Endereco>(Endereco.class);
-
-
         String tipo = request.getParameter("tipo");
         String nome = request.getParameter("razao");
         String cnpj = request.getParameter("empresa.cnpj");
@@ -276,37 +249,32 @@ public class ControlerCadastroVendedor {
         String numero = request.getParameter("n");
         String cep = request.getParameter("cep");
         String password = request.getParameter("password1");
-
-
-
-
         Location location = MapsUtils.getCoord(numero + "," + rua + " ," + cidade + ", " + estado);
-        daolocation.adiciona(location);
 
+        daolocation.adiciona(location);
         Endereco endereco = vendedor.getEndereco();
 
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
+
         endereco.setRua(rua);
+
         endereco.setUf(estado);
+
         endereco.setLocation(location);
+
         endereco.setCep(TrataCaracteres.retiraCaracteresNaoNumericos(cep));
 
         daoEndereco.atualiza(endereco);
-
-
         PessoaJuridica pessoaJuridica = (PessoaJuridica) vendedor;
+
         pessoaJuridica.setMail(mail);
+
         pessoaJuridica.setRazaSocial(nome);
+
         pessoaJuridica.setEndereco(endereco);
 
-
-
         daoVendedor.atualiza(pessoaJuridica);
-
-
-
-
     }
 
     private void updatePessoaFisica(HttpServletRequest request, Vendedor vendedor) throws JSONException {
@@ -314,8 +282,6 @@ public class ControlerCadastroVendedor {
         DAO<Location> daolocation = new DAO<Location>(Location.class);
         DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
         DAO<Endereco> daoEndereco = new DAO<Endereco>(Endereco.class);
-
-
         String tipo = request.getParameter("tipo");
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("pessoa.cpf");
@@ -325,31 +291,32 @@ public class ControlerCadastroVendedor {
         String rua = request.getParameter("rua");
         String numero = request.getParameter("n");
         String cep = request.getParameter("cep");
-
-
         Location location = MapsUtils.getCoord(numero + "," + rua + " ," + cidade + ", " + estado);
-        daolocation.adiciona(location);
 
+        daolocation.adiciona(location);
         Endereco endereco = vendedor.getEndereco();
+
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
+
         endereco.setRua(rua);
+
         endereco.setUf(estado);
+
         endereco.setLocation(location);
+
         endereco.setCep(TrataCaracteres.retiraCaracteresNaoNumericos(cep));
         daoEndereco.atualiza(endereco);
-
-
         PessoaFisica pessoaFisica = (PessoaFisica) vendedor;
+
         pessoaFisica.setMail(mail);
+
         pessoaFisica.setTipo(tipo);
+
         pessoaFisica.setNome(nome);
+
         pessoaFisica.setEndereco(endereco);
 
-
-
         daoVendedor.atualiza(pessoaFisica);
-
-
     }
 }

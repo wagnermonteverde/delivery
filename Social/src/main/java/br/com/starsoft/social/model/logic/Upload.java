@@ -86,7 +86,8 @@ public class Upload {
         Iterator iter = l.iterator();
 
 
-        String nomearquivo = "padrao";
+        String tipoForm = "padrao";
+        String nomeFild = "padrao";
 
         while (iter.hasNext()) {
 
@@ -95,13 +96,17 @@ public class Upload {
 
             if (item.isFormField()) {
 
-                map.put(item.getFieldName(), item.getString());
-                System.out.println(item.getFieldName());
+                tipoForm = item.getFieldName();
+                System.out.println(tipoForm + "-------------------------"+item.getString());
 
-                if (item.getFieldName().equals("tipo")) {
+                if (tipoForm.equals("tipo")) {
 
-//                    nomearquivo = item nome do imput para dar nome a imagen
+                    nomeFild = item.getString();
+                    System.out.println(nomeFild);
                 }
+
+                map.put(tipoForm, item.getString());
+
 
             } else {
 
@@ -110,8 +115,9 @@ public class Upload {
 
 
 
-                    String nomeArquivoDisco = trataNome(nomearquivo, item.getName());
+                    String nomeArquivoDisco = trataNome(nomeFild, item.getName());
 
+                    map.put("arquivo", nomeArquivoDisco);
 
                     this.saveFile(this.getPath(), nomeArquivoDisco, item);
 
@@ -177,11 +183,13 @@ public class Upload {
         return null;
     }
 
-    private String trataNome(String nome, String nameArquivo) {
+    private String trataNome(String tipoForm, String nameArquivo) {
 
         ControlerNameImagensVendedor resolveNomes = new ControlerNameImagensVendedor();
-        nome = resolveNomes.resolveNomeImagens(nome);
-        return trataEstensão(nome, nameArquivo);
+        System.out.println("antes" + tipoForm);
+        tipoForm = resolveNomes.resolveNomeImagens(tipoForm);
+        System.out.println("depois" + tipoForm);
+        return trataEstensão(tipoForm, nameArquivo);
 
     }
 

@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author wagner
  */
-@WebFilter(filterName = "VendedorSecao", urlPatterns = {"/admin/index.jsp"})
-public class VendedorSecao implements Filter {
+@WebFilter(filterName = "FiltroVendedor", urlPatterns = {"/admin/index.jsp"})
+public class FiltroVendedor implements Filter {
 
     private static final boolean debug = true;
     // The filter configuration object we are associated with.  If
@@ -31,7 +31,7 @@ public class VendedorSecao implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public VendedorSecao() {
+    public FiltroVendedor() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

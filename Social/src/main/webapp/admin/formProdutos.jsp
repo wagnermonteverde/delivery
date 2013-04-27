@@ -297,7 +297,7 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="fileInput">Foto</label>
                                                     <div class="controls">
-                                                        <input class="input-file uniform_on" id="fileInput" type="file">
+                                                       <input type="file" name="perfil" accept="image/*">
                                                     </div>
                                                 </div>          
                                                 <div class="control-group">

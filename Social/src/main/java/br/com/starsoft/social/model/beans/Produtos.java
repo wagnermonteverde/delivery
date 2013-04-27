@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.model.beans;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Calendar;
 import javax.persistence.Entity;
@@ -20,15 +21,15 @@ import javax.persistence.Temporal;
  @Entity
 
 @Table(name = "Produtos")
-public class Produtos {
+public class Produtos implements Serializable {
 
     @Id
     @GeneratedValue
     private Integer id;
-    private Integer idVendedor;
     private String nome;
     private Categoria categoria;
     private Double preco;
+    private String imagem;
     private String descricao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataInclusao;
@@ -36,25 +37,6 @@ public class Produtos {
     public Produtos() {
     }
 
-    public Produtos(Integer id, Integer idVendedor, String nome, Categoria categoria, Double preco, String descricao, Calendar dataInclusao) {
-        this.id = id;
-        this.idVendedor = idVendedor;
-        this.nome = nome;
-        this.categoria = categoria;
-        this.preco = preco;
-        this.descricao = descricao;
-        this.dataInclusao = dataInclusao;
-    }
-
-    public Integer getIdVendedor() {
-        return idVendedor;
-    }
-
-    public void setIdVendedor(Integer idVendedor) {
-        this.idVendedor = idVendedor;
-    }
-
-  
 
     public Categoria getCategoria() {
         return categoria;
@@ -63,8 +45,17 @@ public class Produtos {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
     
 
+    
     public Integer getId() {
         return id;
     }
@@ -129,9 +120,6 @@ public class Produtos {
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
             return false;
         }
-        if (this.idVendedor != other.idVendedor && (this.idVendedor == null || !this.idVendedor.equals(other.idVendedor))) {
-            return false;
-        }
         if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
             return false;
         }
@@ -150,10 +138,7 @@ public class Produtos {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Produtos{" + "id=" + id + ", idVendedor=" + idVendedor + ", nome=" + nome + ", categoria=" + categoria + ", preco=" + preco + ", descricao=" + descricao + ", dataInclusao=" + dataInclusao + '}';
-    }
+   
 
  
 }

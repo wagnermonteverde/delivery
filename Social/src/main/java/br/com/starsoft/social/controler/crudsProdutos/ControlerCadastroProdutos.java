@@ -53,7 +53,7 @@ public class ControlerCadastroProdutos extends HttpServlet {
             
             
             
-            ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"), categoria1);
+//            ControlerCRUDProdutos.cadastraProdutos((String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"), categoria1);
             response.setCharacterEncoding("UTF-8");
             request.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");

@@ -5,10 +5,12 @@
 package br.com.starsoft.social.model.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -44,9 +46,9 @@ public abstract class Vendedor implements Serializable {
     private Calendar dataCadastro;
     @OneToOne
     private Endereco endereco;
-    @OneToMany
+    @OneToMany(fetch= FetchType.EAGER)
     @JoinColumn(name="id_vendedor")
-    private List<Produtos> listaProdutos;
+    private List<Produtos> listaProdutos = new ArrayList<Produtos>();;
 
     public Vendedor() {
     }
@@ -169,5 +171,9 @@ public abstract class Vendedor implements Serializable {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public void setProduto(Produtos p) {
+        this.listaProdutos.add(p);
     }
 }

@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author henrique
  */
-@WebFilter(filterName = "linkEmpresa", urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST})
+@WebFilter(filterName = "linkEmpresa", urlPatterns = {"/empresa.jsp"}, dispatcherTypes = {DispatcherType.REQUEST})
 public class linkEmpresa implements Filter {
 
     private static final boolean debug = true;
@@ -110,10 +110,10 @@ public class linkEmpresa implements Filter {
         if (debug) {
             log("linkEmpresa:doFilter()");
         }
-        
+
         StringBuffer url = ((HttpServletRequest) request).getRequestURL();
         System.out.println(url.toString());
-        System.out.println(url.toString()+"--------------------");
+        System.out.println(url.toString() + "--------------------");
 //
 //        HttpServletResponse response1 = null;        
 //        DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);

@@ -18,7 +18,7 @@ public class TesteNomePasta {
         
         System.out.println(TrataCaracteres.retiraAcentosEspacos(nome).trim());
         
-        Upload upload = new Upload("/files/"+TrataCaracteres.retiraAcentosEspacos(nome).trim()+"/");
+        Upload upload = new Upload("/home/wagner/Documentos/Social/Social/target/Social-1/img/empresas");
         
     }
     
