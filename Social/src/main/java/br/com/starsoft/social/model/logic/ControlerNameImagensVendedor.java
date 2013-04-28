@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class ControlerNameImagensVendedor {
 
-    public String resolveNomeImagens(String formOrigem , Vendedor vendedor) {
+    public String resolveNomeImagens(String formOrigem, Vendedor vendedor) {
 
         if (formOrigem.equals("perfil")) {
 
@@ -21,12 +21,12 @@ public class ControlerNameImagensVendedor {
 
 
         }
-        
+
         if (formOrigem.equals("prod")) {
 
-         String nome =   geraNome(vendedor);
-            
-            return "p1";
+            String nome = geraNome(vendedor);
+
+            return nome;
 
 
         }
@@ -35,8 +35,16 @@ public class ControlerNameImagensVendedor {
     }
 
     private String geraNome(Vendedor vendedor) {
+        //verificar se não é igual a outra no banco
         
-        return null;
+        String nomeArquivo = null;
+        nomeArquivo = String.valueOf((Math.random()));
+        nomeArquivo = nomeArquivo.replace(".", "");
+        System.out.println(nomeArquivo);
+
         
+
+        return nomeArquivo;
+
     }
 }

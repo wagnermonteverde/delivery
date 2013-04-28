@@ -12,11 +12,12 @@ package br.com.starsoft.social.testes;
 public class TesteRandom {
     
     public static void main(String[] args) {
-        
+        String x = null;
         
         for (int i = 0; i < 100; i++) {
-             System.out.println((Math.random()));
+            x = String.valueOf((Math.random()));
+            x=x.replace(".","");
+            System.out.println(x);
         }
     }
-    
 }

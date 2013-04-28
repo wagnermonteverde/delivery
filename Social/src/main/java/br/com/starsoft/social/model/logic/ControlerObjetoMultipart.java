@@ -16,8 +16,8 @@ public class ControlerObjetoMultipart {
 
     public void saveObjeto(Map<String, String> map, Vendedor vendedor) {
 
-        
-        
+
+
         String origem = map.get("tipo");
         String id = map.get("id");
 
@@ -27,15 +27,15 @@ public class ControlerObjetoMultipart {
         if (origem.equals("prod")) {
 
             if (id == null) {
-                
+
                 persisteProduto(map, vendedor);
 
-            }else{
-            
-            
-                atualizaproduto(map,vendedor);
-                
-            
+            } else {
+
+
+                atualizaproduto(map, vendedor);
+
+
             }
 
 
@@ -56,9 +56,9 @@ public class ControlerObjetoMultipart {
     }
 
     private void atualizaproduto(Map<String, String> map, Vendedor vendedor) {
-        
-         ControlerCRUDProdutos controlerCRUDProdutos = new ControlerCRUDProdutos();
-         controlerCRUDProdutos.atualizaProdutos(map, vendedor);
-        
+
+        ControlerCRUDProdutos controlerCRUDProdutos = new ControlerCRUDProdutos();
+        controlerCRUDProdutos.atualizaProdutos(map, vendedor);
+
     }
 }
