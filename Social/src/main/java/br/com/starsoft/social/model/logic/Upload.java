@@ -1,5 +1,6 @@
 package br.com.starsoft.social.model.logic;
 
+import br.com.starsoft.social.model.beans.Vendedor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -81,7 +82,7 @@ public class Upload {
     /**
      * Retorna em um Map os campos do formulário exceto o campo da imagem.
      */
-    public Map<String, String> getFormValues(List l) {
+    public Map<String, String> getFormValues(List l , Vendedor vendedor) {
         Map<String, String> map = new HashMap<String, String>();
         Iterator iter = l.iterator();
 
@@ -97,7 +98,7 @@ public class Upload {
             if (item.isFormField()) {
 
                 tipoForm = item.getFieldName();
-                System.out.println(tipoForm + "-------------------------"+item.getString());
+//                System.out.println(tipoForm + "-------------------------"+item.getString());
 
                 if (tipoForm.equals("tipo")) {
 
@@ -115,7 +116,7 @@ public class Upload {
 
 
 
-                    String nomeArquivoDisco = trataNome(nomeFild, item.getName());
+                    String nomeArquivoDisco = trataNome(nomeFild, item.getName(), vendedor);
 
                     map.put("arquivo", nomeArquivoDisco);
 
@@ -183,12 +184,10 @@ public class Upload {
         return null;
     }
 
-    private String trataNome(String tipoForm, String nameArquivo) {
+    private String trataNome(String tipoForm, String nameArquivo , Vendedor vendedor) {
 
         ControlerNameImagensVendedor resolveNomes = new ControlerNameImagensVendedor();
-        System.out.println("antes" + tipoForm);
-        tipoForm = resolveNomes.resolveNomeImagens(tipoForm);
-        System.out.println("depois" + tipoForm);
+        tipoForm = resolveNomes.resolveNomeImagens(tipoForm , vendedor);
         return trataEstensão(tipoForm, nameArquivo);
 
     }

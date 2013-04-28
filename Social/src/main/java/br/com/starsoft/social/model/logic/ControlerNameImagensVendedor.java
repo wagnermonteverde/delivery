@@ -4,13 +4,16 @@
  */
 package br.com.starsoft.social.model.logic;
 
+import br.com.starsoft.social.model.beans.Vendedor;
+import java.util.Random;
+
 /**
  *
  * @author wagner
  */
 public class ControlerNameImagensVendedor {
 
-    public String resolveNomeImagens(String formOrigem) {
+    public String resolveNomeImagens(String formOrigem , Vendedor vendedor) {
 
         if (formOrigem.equals("perfil")) {
 
@@ -21,11 +24,19 @@ public class ControlerNameImagensVendedor {
         
         if (formOrigem.equals("prod")) {
 
+         String nome =   geraNome(vendedor);
+            
             return "p1";
 
 
         }
 
         return "erro";
+    }
+
+    private String geraNome(Vendedor vendedor) {
+        
+        return null;
+        
     }
 }

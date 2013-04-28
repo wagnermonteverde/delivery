@@ -16,6 +16,8 @@ public class ControlerObjetoMultipart {
 
     public void saveObjeto(Map<String, String> map, Vendedor vendedor) {
 
+        
+        
         String origem = map.get("tipo");
         String id = map.get("id");
 

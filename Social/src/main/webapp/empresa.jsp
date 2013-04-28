@@ -107,7 +107,7 @@
                     <!-- left menu starts -->
                     <div class="span2 main-menu-span">
                         <div class="well nav-collapse sidebar-nav">
-                            <img src="" style="float: left" width="120" class="img-rounded">
+                            <img src="http://3.bp.blogspot.com/_fGnv-Lhb0xA/Sy46zh3kNkI/AAAAAAAAAEI/eGZrtFPB2A0/s400/Bob+logo+2.jpg" style="float: left" width="120" class="img-rounded">
                             <p>Cidade: </p>
                             <p>Reputação: </p>
                         </div><!--/.well -->
