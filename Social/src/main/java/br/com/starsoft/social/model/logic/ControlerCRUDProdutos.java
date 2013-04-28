@@ -8,6 +8,7 @@ import br.com.starsoft.social.model.beans.Categoria;
 import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.dao.DAO;
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -109,5 +110,13 @@ public class ControlerCRUDProdutos {
         } catch (NumberFormatException numberFormatException) {
             return false;
         }
+    }
+
+    public void deletaImagemProduto(String caminhoAbsolutoImagem) {
+
+//      File fg = new File("/home/wagner/Documentos/Social/Social/target/Social-1/img/empresas/wagnerlanches/03481000407727486.jpg");
+        File fg = new File(caminhoAbsolutoImagem);
+        fg.delete();
+
     }
 }
