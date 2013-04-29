@@ -43,6 +43,10 @@ public class RedirecionaUpdate extends HttpServlet {
 
             Vendedor vendedor = (Vendedor) session.getAttribute("vendedor");
 
+            //mudar para pegar nome da cidade no dao cidade uf no dao estado gambi
+            String uf = vendedor.getEndereco().getUf();
+            String cidade = vendedor.getEndereco().getCidade();
+
             if (vendedor.getTipo().equals("pf")) {
                 response.sendRedirect("editaVendedorf.jsp");
             } else {

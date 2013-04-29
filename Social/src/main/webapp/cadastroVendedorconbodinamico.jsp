@@ -332,15 +332,15 @@
         <script type="text/javascript">
    
             $(document).ready(function(){
-                // Evento change no campo tipo  
+                // Evento change no campo estados 
                 $("select[name=estados]").change(function(){
-                    // Exibimos no campo marca antes de concluirmos
+                    // Exibimos no campo estados antes de concluirmos
                     $("select[name=cidade]").html('<option value="">Carregando...</option>');
                     // Exibimos no campo  antes de selecionamos a cidade, serve também em caso
                     // do usuario ja ter selecionado o tipo e resolveu trocar, com isso limpamos a
                     $.post("CarregaCiadades",
                     {estados:$(this).val()},
-                    // Carregamos o resultado acima para o campo cidade
+                    // Carregamos o resultado acima para o campo cidades
                     function(valor){
                         $("select[name=cidade]").html(valor);
                     }
