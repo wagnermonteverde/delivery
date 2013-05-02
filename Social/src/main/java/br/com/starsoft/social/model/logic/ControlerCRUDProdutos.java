@@ -48,6 +48,7 @@ public class ControlerCRUDProdutos {
             p.setPreco(Double.parseDouble(preco));
             p.setCategoria(categoria1);
             p.setImagem(vendedor.getDiretorioImg() + nomeArquivo);
+            p.setLocation(vendedor.getEndereco().getLocation());
 
             Date data = new Date(System.currentTimeMillis());
             Calendar calendar = new GregorianCalendar();
@@ -94,6 +95,7 @@ public class ControlerCRUDProdutos {
             p.setNome(titulo);
             p.setPreco(Double.parseDouble(preco));
             p.setCategoria(categoria1);
+            p.setLocation(vendedor.getEndereco().getLocation());
 
             Date data = new Date(System.currentTimeMillis());
             Calendar calendar = new GregorianCalendar();

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -33,6 +34,16 @@ public class Produtos implements Serializable {
     private String descricao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataInclusao;
+    @OneToOne
+    private Location location;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public Produtos() {
     }

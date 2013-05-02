@@ -115,10 +115,10 @@ public class ControlerCadastroVendedor {
 
 
         /* cria diretorio com nome da empresa para imagens*/
-        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia)+ "/";
+        String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
         final String path = context + dir;
-        Upload upload = new Upload(path+"/");
-        System.out.println("Criando diretorio -----"+path);
+        Upload upload = new Upload(path + "/");
+        System.out.println("Criando diretorio -----" + path);
 
         pessoaFisica.setDiretorioImg(dir);
 
@@ -174,7 +174,7 @@ public class ControlerCadastroVendedor {
         /* cria diretorio com nome da empresa para imagens*/
         String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
         final String path = context + dir;
-        System.out.println("path ------------"+path);
+        System.out.println("path ------------" + path);
         Upload upload = new Upload(path);
 
         pessoaJuridica.setDiretorioImg(dir);
@@ -292,8 +292,10 @@ public class ControlerCadastroVendedor {
         String numero = request.getParameter("n");
         String cep = request.getParameter("cep");
         Location location = MapsUtils.getCoord(numero + "," + rua + " ," + cidade + ", " + estado);
+        location.setId(vendedor.getEndereco().getLocation().getId());
 
-        daolocation.adiciona(location);
+        daolocation.atualiza(location);
+        
         Endereco endereco = vendedor.getEndereco();
 
         endereco.setNumero(Integer.parseInt(numero));
@@ -307,6 +309,7 @@ public class ControlerCadastroVendedor {
 
         endereco.setCep(TrataCaracteres.retiraCaracteresNaoNumericos(cep));
         daoEndereco.atualiza(endereco);
+
         PessoaFisica pessoaFisica = (PessoaFisica) vendedor;
 
         pessoaFisica.setMail(mail);
