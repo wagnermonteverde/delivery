@@ -7,6 +7,8 @@ package br.com.starsoft.social.controler.crudsProdutos;
 import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.conf.UrlAplication;
+import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
+import br.com.starsoft.social.model.logic.ControlerLinkPage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -44,9 +46,11 @@ public class RemoveProdudos extends HttpServlet {
 
             String parameter = request.getParameter("id");
             Produtos produtoRemovido = dao.buscaPorId(Integer.parseInt(parameter));
-            
+       
             dao.remove(produtoRemovido);
-
+            ControlerCRUDProdutos.deletaImagemProduto(getServletContext().getRealPath("/") + produtoRemovido.getImagem());
+            
+            
             response.sendRedirect("ListaProdutosVendedor");
 
         } finally {

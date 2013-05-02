@@ -112,7 +112,7 @@ public class ControlerCRUDProdutos {
         }
     }
 
-    public void deletaImagemProduto(String caminhoAbsolutoImagem) {
+    public static void deletaImagemProduto(String caminhoAbsolutoImagem) {
 
 //      File fg = new File("/home/wagner/Documentos/Social/Social/target/Social-1/img/empresas/wagnerlanches/03481000407727486.jpg");
         File fg = new File(caminhoAbsolutoImagem);
