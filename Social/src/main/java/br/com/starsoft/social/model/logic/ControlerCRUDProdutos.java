@@ -18,7 +18,7 @@ import java.util.Map;
  *
  * @author henrique
  */
-public class ControlerCRUDProdutos {
+public class ControlerCRUDProdutos { 
 
     public boolean cadastraProdutos(Map map, Vendedor vendedor) {
         try {

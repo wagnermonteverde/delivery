@@ -46,7 +46,7 @@ public class RemoveProdudos extends HttpServlet {
 
             String parameter = request.getParameter("id");
             Produtos produtoRemovido = dao.buscaPorId(Integer.parseInt(parameter));
-       
+        
             dao.remove(produtoRemovido);
             ControlerCRUDProdutos.deletaImagemProduto(getServletContext().getRealPath("/") + produtoRemovido.getImagem());
             
