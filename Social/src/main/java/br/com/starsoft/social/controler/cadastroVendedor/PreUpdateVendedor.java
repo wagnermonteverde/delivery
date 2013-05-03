@@ -2,15 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.starsoft.social.controler.loginvendedor;
+package br.com.starsoft.social.controler.cadastroVendedor;
 
 import br.com.starsoft.social.model.beans.Estado;
 import br.com.starsoft.social.model.beans.Vendedor;
+import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOEstado;
-import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author wagner
  */
-@WebServlet(name = "ControlerLoginVendedor", urlPatterns = {"/ControlerLoginVendedor"})
-public class ControlerLoginVendedor extends HttpServlet {
+@WebServlet(name = "PreUpdateVendedor", urlPatterns = {"/PreUpdateVendedor"})
+public class PreUpdateVendedor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -43,52 +42,31 @@ public class ControlerLoginVendedor extends HttpServlet {
 
 
 
+
             HttpSession session = request.getSession();
 
+            Vendedor vendedor = (Vendedor) session.getAttribute("vendedor");
+
+            DAOEstado dao = new DAOEstado(Estado.class);
+
+            Estado estado = dao.consultaPorUf(vendedor.getEndereco().getUf());
+
+            session.setAttribute("estado", estado.getId());
 
 
+            if (vendedor.getTipo().equals("pf")) {
 
-            String mail = request.getParameter("mail");
-            String password = request.getParameter("password");
-
-
-
-
-            ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
-
-
-
-
-
-            if (controlerCadastroVendedor.Login(mail, password)) {
-
-                if (session.getAttribute("erro") != null) {
-                    session.removeAttribute("erro");
-                }
-
-                
-                Vendedor vendedor =controlerCadastroVendedor.retornaVendedor(mail);
-
-                session.setAttribute("vendedor",vendedor);
-                
-                DAOEstado dao = new DAOEstado(Estado.class);
-
-                Estado estado = dao.consultaPorUf(vendedor.getEndereco().getUf());
-                
-
-                session.setAttribute("estado", estado );
-                
-                response.sendRedirect("admin/index.jsp");
-
+                response.sendRedirect("editaVendedorf.jsp");
 
             } else {
 
-
-                session.setAttribute("erro", "erro");
-                response.sendRedirect("login.jsp");
-
+                response.sendRedirect("editaVendedorj.jsp");
 
             }
+
+
+
+
 
 
 

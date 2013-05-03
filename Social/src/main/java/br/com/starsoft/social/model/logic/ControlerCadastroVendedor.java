@@ -5,6 +5,7 @@
 package br.com.starsoft.social.model.logic;
 
 import br.com.starsoft.social.model.beans.Endereco;
+import br.com.starsoft.social.model.beans.Estado;
 import br.com.starsoft.social.model.beans.Location;
 import br.com.starsoft.social.model.beans.PessoaFisica;
 import br.com.starsoft.social.model.beans.PessoaJuridica;
@@ -77,6 +78,7 @@ public class ControlerCadastroVendedor {
         DAO<Location> daolocation = new DAO<Location>(Location.class);
         DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
         DAO<Endereco> daoEndereco = new DAO<Endereco>(Endereco.class);
+        DAO<Estado> daoEstado = new DAO<Estado>(Estado.class);
 
 
         String tipo = request.getParameter("tipo");
@@ -84,12 +86,16 @@ public class ControlerCadastroVendedor {
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("pessoa.cpf");
         String mail = request.getParameter("mail2");
-        String estado = request.getParameter("estados");
+        Integer estado = Integer.parseInt(request.getParameter("estados"));
         String cidade = request.getParameter("cidade");
         String rua = request.getParameter("rua");
         String numero = request.getParameter("n");
         String cep = request.getParameter("cep");
         String password = request.getParameter("password");
+
+
+        Estado estado1 = daoEstado.buscaPorId(estado);
+
 
 
         Location location = MapsUtils.getCoord(numero + "," + rua + " ," + cidade + ", " + estado);
@@ -99,7 +105,7 @@ public class ControlerCadastroVendedor {
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
         endereco.setRua(rua);
-        endereco.setUf(estado);
+        endereco.setUf(estado1.getNome());
         endereco.setLocation(location);
         endereco.setCep(TrataCaracteres.retiraCaracteresNaoNumericos(cep));
         daoEndereco.adiciona(endereco);
@@ -118,7 +124,7 @@ public class ControlerCadastroVendedor {
         String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
         final String path = context + dir;
         Upload upload = new Upload(path + "/");
-        System.out.println("Criando diretorio -----" + path);
+//        System.out.println("Criando diretorio -----" + path);
 
         pessoaFisica.setDiretorioImg(dir);
 
@@ -131,6 +137,7 @@ public class ControlerCadastroVendedor {
         DAO<Location> daolocation = new DAO<Location>(Location.class);
         DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
         DAO<Endereco> daoEndereco = new DAO<Endereco>(Endereco.class);
+        DAO<Estado> daoEstado = new DAO<Estado>(Estado.class);
 
 
         String tipo = request.getParameter("tipo");
@@ -138,7 +145,7 @@ public class ControlerCadastroVendedor {
         String nome = request.getParameter("razao");
         String cnpj = request.getParameter("empresa.cnpj");
         String mail = request.getParameter("mail2");
-        String estado = request.getParameter("estados");
+        Integer estado = Integer.parseInt(request.getParameter("estados"));
         String cidade = request.getParameter("cidade");
         String rua = request.getParameter("rua");
         String numero = request.getParameter("n");
@@ -146,6 +153,7 @@ public class ControlerCadastroVendedor {
         String password = request.getParameter("password1");
 
 
+        Estado estado1 = daoEstado.buscaPorId(estado);
 
 
         Location location = MapsUtils.getCoord(numero + "," + rua + " ," + cidade + ", " + estado);
@@ -155,7 +163,7 @@ public class ControlerCadastroVendedor {
         endereco.setNumero(Integer.parseInt(numero));
         endereco.setCidade(cidade);
         endereco.setRua(rua);
-        endereco.setUf(estado);
+        endereco.setUf(estado1.getNome());
         endereco.setLocation(location);
         endereco.setCep(TrataCaracteres.retiraCaracteresNaoNumericos(cep));
         daoEndereco.adiciona(endereco);
@@ -174,7 +182,7 @@ public class ControlerCadastroVendedor {
         /* cria diretorio com nome da empresa para imagens*/
         String dir = "img/empresas/" + TrataCaracteres.retiraAcentosEspacos(fantasia) + "/";
         final String path = context + dir;
-        System.out.println("path ------------" + path);
+//        System.out.println("path ------------" + path);
         Upload upload = new Upload(path);
 
         pessoaJuridica.setDiretorioImg(dir);
@@ -295,7 +303,7 @@ public class ControlerCadastroVendedor {
         location.setId(vendedor.getEndereco().getLocation().getId());
 
         daolocation.atualiza(location);
-        
+
         Endereco endereco = vendedor.getEndereco();
 
         endereco.setNumero(Integer.parseInt(numero));

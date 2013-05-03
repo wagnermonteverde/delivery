@@ -149,7 +149,7 @@
                             <li><a class="ajax-link" href="index.jsp"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
                             <!--<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>-->
                             <li><a class="ajax-link" href="produtos.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
-                            <li><a class="ajax-link" href="../RedirecionaUpdate"><i class="icon-font"></i><span class="hidden-tablet">Alterar Cadastro</span></a></li>
+                            <li><a class="ajax-link" href="../editaVendedorf.jsp"><i class="icon-font"></i><span class="hidden-tablet">Alterar Cadastro</span></a></li>
                         </ul>
                     </div><!--/.well -->
                 </div><!--/span-->

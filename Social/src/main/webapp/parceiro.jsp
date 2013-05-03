@@ -81,7 +81,7 @@
             <div>
                 <h1 class="text-success">Comece Hoje Mesmo!</h1>
                 <p class="lead ">Cadastre seus produtos em nosso site e divulgue sua empresa no Facebook, Deixe os clientes te encontrarem com a nossa Busca Por Geolocalização sempre um cliente com fome e perto de você na internet :)</p>
-                <form id="meu_form" method="post" action="cadastroVendedor.jsp">
+                <form id="meu_form" method="post" action="cadastroVendedorconbodinamico.jsp">
                     <label>Email:</label>
                     <div class="fieldgroup">
                         <input class="span4" id="login" name="mail" type="text"/>
