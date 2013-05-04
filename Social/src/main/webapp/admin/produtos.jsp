@@ -230,7 +230,7 @@
                                         </thead>   
                                         <tbody>
                                             <c:out value="${empty listaProdutos} and ${!empty param.isnull}" />
-                                            <c:forEach items="${listaProdutos}" var="produto" >
+                                            <c:forEach items="${vendedor.listaProdutos}" var="produto" >
                                                 <tr>
                                                     <td><c:out value="${produto.nome}" /></td>
                                                     <td class="center">R$ <c:out value="${produto.preco}" /></td>

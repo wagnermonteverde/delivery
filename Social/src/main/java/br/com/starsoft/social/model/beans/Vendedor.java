@@ -46,7 +46,7 @@ public abstract class Vendedor implements Serializable {
     private Calendar dataCadastro;
     @OneToOne
     private Endereco endereco;
-    @OneToMany(fetch= FetchType.EAGER)
+    @OneToMany(fetch= FetchType.EAGER,cascade= CascadeType.ALL)
     @JoinColumn(name="id_vendedor")
     private List<Produtos> listaProdutos = new ArrayList<Produtos>();;
 

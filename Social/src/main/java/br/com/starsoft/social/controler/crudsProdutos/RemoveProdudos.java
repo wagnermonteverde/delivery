@@ -5,6 +5,7 @@
 package br.com.starsoft.social.controler.crudsProdutos;
 
 import br.com.starsoft.social.model.beans.Produtos;
+import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.conf.UrlAplication;
 import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
@@ -18,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,15 +44,49 @@ public class RemoveProdudos extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
 
-            DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
+            HttpSession session = request.getSession();
+
+            ServletContext contexto = this.getServletContext();
+
+
+            Vendedor vendedor = (Vendedor) session.getAttribute("vendedor");
+
+
+            DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
 
             String parameter = request.getParameter("id");
-            Produtos produtoRemovido = dao.buscaPorId(Integer.parseInt(parameter));
-        
-            dao.remove(produtoRemovido);
-            ControlerCRUDProdutos.deletaImagemProduto(getServletContext().getRealPath("/") + produtoRemovido.getImagem());
-            
-            
+            Integer idproduto = Integer.parseInt(parameter);
+
+            List<Produtos> listaProd = daoVendedor.buscaPorId(vendedor.getId()).getListaProdutos();
+
+
+            Produtos p = null;
+
+            for (Produtos pro : listaProd) {
+
+                if (pro.getId() == idproduto) {
+
+                    p = pro;
+
+                }
+
+            }
+
+            listaProd.remove(p);
+
+
+            vendedor.setListaProdutos(listaProd);
+
+
+            daoVendedor.atualiza(vendedor);
+
+            session.setAttribute("vendedor", daoVendedor.buscaPorId(vendedor.getId()));
+
+            contexto.setAttribute("listaProdutos", listaProd);
+
+            ControlerCRUDProdutos.deletaImagemProduto(getServletContext().getRealPath("/") + p.getImagem());
+
+
             response.sendRedirect("ListaProdutosVendedor");
 
         } finally {
