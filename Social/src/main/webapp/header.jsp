@@ -15,7 +15,7 @@
                                 <li class="divider-vertical"></li>
                                 <li class="active"><a href="index.jsp"><i class="icon-home" ></i> Inicio</a></li>
                                 <li class="divider-vertical"></li>
-                                <li class="active" ><a href="#"><i class="icon-file "></i> Lojas</a></li>
+                                <li class="active" ><a href="PopulaLojas"><i class="icon-file "></i> Lojas</a></li>
                                 <li class="divider-vertical"></li>
                                 <li class="active"><a href="parceiro.jsp"><i class="icon-globe "></i> Seja Nosso Parceiro</a></li>
                                 <li class="divider-vertical"></li>

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author wagner
  */
-@WebFilter(filterName = "Filtro", urlPatterns = {"/tumbail.jsp","/cadastroEndereco.jsp"})
+@WebFilter(filterName = "Filtro", urlPatterns = {"/cadastroEndereco.jsp"})
 public class FiltroUsuario implements Filter {
 
     private static final boolean debug = true;
