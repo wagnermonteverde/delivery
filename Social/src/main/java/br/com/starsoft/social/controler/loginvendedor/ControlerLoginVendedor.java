@@ -78,7 +78,16 @@ public class ControlerLoginVendedor extends HttpServlet {
 
                 session.setAttribute("estado", estado );
                 
+                
+                if (vendedor.getImagemLogo()==null) {
+                    
+                response.sendRedirect("uploadimgempresa.jsp");
+                
+                }else{
+                
                 response.sendRedirect("admin/index.jsp");
+                
+                }
 
 
             } else {

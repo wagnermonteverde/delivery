@@ -126,7 +126,7 @@
 
                     <div class="top-nav nav-collapse">
                         <ul class="nav">
-                            <li><a href="#">Net Lanche</a></li>
+                            <li><a href="../index.jsp">Net Lanche</a></li>
                             <li>
                                 <form class="navbar-search pull-left">
                                     <input placeholder="Search" class="search-query span2" name="query" type="text">
@@ -150,6 +150,7 @@
                             <!--<li><a class="ajax-link" href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>-->
                             <li><a class="ajax-link" href="produtos.jsp"><i class="icon-font"></i><span class="hidden-tablet"> Meus Produtos</span></a></li>
                             <li><a class="ajax-link" href="../editaVendedorf.jsp"><i class="icon-font"></i><span class="hidden-tablet">Alterar Cadastro</span></a></li>
+                            <li><a class="ajax-link" href="../uploadimgempresa.jsp"><i class="icon-font"></i><span class="hidden-tablet">Alterar Logotipo</span></a></li>
                         </ul>
                     </div><!--/.well -->
                 </div><!--/span-->

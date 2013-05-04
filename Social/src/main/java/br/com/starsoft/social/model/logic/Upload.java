@@ -1,6 +1,8 @@
 package br.com.starsoft.social.model.logic;
 
 import br.com.starsoft.social.model.beans.Vendedor;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,6 +12,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
@@ -72,6 +77,10 @@ public class Upload {
             }
             output.flush();
             output.close();
+        
+            redimensiona(path, fileName);
+            
+            
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
@@ -82,7 +91,7 @@ public class Upload {
     /**
      * Retorna em um Map os campos do formulário exceto o campo da imagem.
      */
-    public Map<String, String> getFormValues(List l , Vendedor vendedor) {
+    public Map<String, String> getFormValues(List l, Vendedor vendedor) {
         Map<String, String> map = new HashMap<String, String>();
         Iterator iter = l.iterator();
 
@@ -121,7 +130,8 @@ public class Upload {
                     map.put("arquivo", nomeArquivoDisco);
 
                     this.saveFile(this.getPath(), nomeArquivoDisco, item);
-
+                    
+                    
 
                     map.put(item.getFieldName(), this.getNameFile(item));
 
@@ -159,23 +169,7 @@ public class Upload {
         return dir.list();
     }
 
-    public String resolveNomeArquivo(String identificador) {
-
-
-        if (identificador.equals("perfilVendedor")) {
-
-            return "logoPerfil.jpg";
-
-        } else if (false) {
-
-            return "";
-
-        }
-
-
-        return null;
-
-    }
+ 
 
     public String ReselvenomeImagem(String nome) {
 
@@ -184,11 +178,13 @@ public class Upload {
         return null;
     }
 
-    private String trataNome(String tipoForm, String nameArquivo , Vendedor vendedor) {
-
+    private String trataNome(String tipoForm, String nameArquivo, Vendedor vendedor) {
+        String nomeArquivo = null;
         ControlerNameImagensVendedor resolveNomes = new ControlerNameImagensVendedor();
-        tipoForm = resolveNomes.resolveNomeImagens(tipoForm , vendedor);
-        return trataEstensão(tipoForm, nameArquivo);
+        tipoForm = resolveNomes.resolveNomeImagens(tipoForm, vendedor);
+        nomeArquivo = trataEstensão(tipoForm, nameArquivo);
+
+        return nomeArquivo;
 
     }
 
@@ -199,5 +195,23 @@ public class Upload {
         nameArquivo = nameArquivo.substring(i, nameArquivo.length());
 
         return nome + nameArquivo;
+    }
+
+    private void redimensiona(String path, String fileName) throws IOException {
+
+      //BufferedImage imagem = ImageIO.read(RedimensionarImagem.class.getResourceAsStream("background.jpg"));
+        BufferedImage imagem = null;
+        try {
+            imagem = ImageIO.read(new File(path+"/"+fileName));
+            System.out.println(path+fileName+"file file file ");
+        } catch (IOException ex) {
+        }
+        int new_w = 378, new_h = 400;
+        BufferedImage new_img = new BufferedImage(new_w, new_h, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = new_img.createGraphics();
+
+        g.drawImage(imagem, 0, 0, new_w, new_h, null);
+        ImageIO.write(new_img, "JPG", new File(path+"/"+fileName));
+    
     }
 }

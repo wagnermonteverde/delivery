@@ -14,6 +14,7 @@ import java.util.Random;
 public class ControlerNameImagensVendedor {
 
     public String resolveNomeImagens(String formOrigem, Vendedor vendedor) {
+        
 
         if (formOrigem.equals("perfil")) {
 

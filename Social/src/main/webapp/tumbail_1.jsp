@@ -62,7 +62,7 @@
                     <span class="divider">/</span>
                 </li>
                 <li>
-                    <a href="#">Produtos</a>
+                    <a href="#">Lojas</a>
                     <span class="active">/</span>
                 </li>
 
@@ -95,27 +95,27 @@
 
             <!-- teste-->
 
+
+
+            <ul class="thumbnails">
+                <hr>
+                <c:forEach var="vendedores" items="${vendedores}">
           
-
-            <c:forEach var="vendedores" items="${vendedores}">
-                <ul class="thumbnails">
-
-
-                    <c:forEach var="cont" begin="1"  end="${size}">
+                    <li class="divider"></li>
+                    <form method="post" action="ListaProdutosVendedorUser">
                         <li class="span2">  
-                            <div class="thumbnail">  
-                                <img src="${vendedores.imagemLogo}" alt="product 1">  
+                            <div class="thumbnails ">  
+                                <img src="${vendedores.diretorioImg}${vendedores.imagemLogo}" alt="product 1">  
                                 <div class="caption">  
-                                    <p>Moda da Casa</br>R$ 29,90.</p>  
-                                    <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                            </div>  
+                                    <p class="text-info">${vendedores.nomeFantasia}</p>  
+                                    <imput align="center" class="btn-success btn" type="submit" value="Viste a Loja">Viste a Loja</imput>
+                                </div>  
                         </li> 
 
-                    </c:forEach>
+                    </form>
 
-
-                </ul>
-            </c:forEach>
+                </c:forEach>
+            </ul>
 
 
 

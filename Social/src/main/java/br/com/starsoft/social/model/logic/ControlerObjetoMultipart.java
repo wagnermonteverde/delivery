@@ -4,8 +4,8 @@
  */
 package br.com.starsoft.social.model.logic;
 
-import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.beans.Vendedor;
+import br.com.starsoft.social.model.dao.DAO;
 import java.util.Map;
 
 /**
@@ -38,6 +38,16 @@ public class ControlerObjetoMultipart {
 
             }
 
+
+
+        } else if (origem.equals("perfil")) {
+
+            DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
+            String nome = map.get("arquivo");
+
+            vendedor.setImagemLogo(nome);
+            
+            daoVendedor.atualiza(vendedor);
 
 
         }

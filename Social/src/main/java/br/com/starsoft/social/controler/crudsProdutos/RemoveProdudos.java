@@ -53,6 +53,7 @@ public class RemoveProdudos extends HttpServlet {
 
 
             DAO<Vendedor> daoVendedor = new DAO<Vendedor>(Vendedor.class);
+            DAO<Produtos> daoProdutos = new DAO<Produtos>(Produtos.class);
 
             String parameter = request.getParameter("id");
             Integer idproduto = Integer.parseInt(parameter);
@@ -71,6 +72,7 @@ public class RemoveProdudos extends HttpServlet {
                 }
 
             }
+            
 
             listaProd.remove(p);
 
@@ -80,6 +82,8 @@ public class RemoveProdudos extends HttpServlet {
 
             daoVendedor.atualiza(vendedor);
 
+            daoProdutos.remove(p);
+            
             session.setAttribute("vendedor", daoVendedor.buscaPorId(vendedor.getId()));
 
             contexto.setAttribute("listaProdutos", listaProd);
