@@ -24,15 +24,17 @@ public class ControlerFacebookOperations {
          facebook.feedOperations().updateStatus(status);
 
     }
+    
+    
     public void postaLinkFacebook(String token, String status) {
 
         Facebook facebook = new FacebookTemplate(token);
       
-        FacebookLink link = new FacebookLink("http://www.fabiodurand.com.br/","Teste Postagem Link","Teste","Teste aplicação Java Web Postagen de Links");
+        FacebookLink link = new FacebookLink("http://www.utfpr.edu.br/campomourao/","Teste Postagem Link","Teste UTFPR Campo Mourão","Teste aplicação Java Web Postagen de Links");
 
         FacebookProfile profile = facebook.userOperations().getUserProfile();
 
-        facebook.feedOperations().postLink("Fabio Durand", link);
+        facebook.feedOperations().postLink("Teste Postagem de links", link);
 
 
     }

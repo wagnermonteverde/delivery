@@ -102,17 +102,18 @@
                 <c:forEach var="vendedores" items="${vendedores}">
           
                     <li class="divider"></li>
-                    <form method="post" action="ListaProdutosVendedorUser">
+                    <!--<form method="post" action="ListaProdutosVendedorUser">-->
                         <li class="span2">  
                             <div class="thumbnails ">  
                                 <img src="${vendedores.diretorioImg}${vendedores.imagemLogo}" alt="product 1">  
                                 <div class="caption">  
                                     <p class="text-info">${vendedores.nomeFantasia}</p>  
-                                    <imput align="center" class="btn-success btn" type="submit" value="Viste a Loja">Viste a Loja</imput>
+                                    <!--<imput align="center" class="btn-success btn" type="submit" value="Viste a Loja">Viste a Loja</imput>-->
+                                    <a  href="ListaProdutosVendedorUser"  align="center" class="btn-success btn" type="submit" value="Viste a Loja">Viste a Loja</a>
                                 </div>  
                         </li> 
 
-                    </form>
+                    <!--</form>-->
 
                 </c:forEach>
             </ul>

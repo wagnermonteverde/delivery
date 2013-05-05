@@ -180,7 +180,7 @@
                    <div class="row-fluid sortable">
                         <div class="box span9">
                             <div class="box-header well" data-original-title>
-                                <h2><i class="icon-font"></i> Typography</h2>
+                                <h2><i class="icon-font"></i>Bem vindo ${vendedor.nomeFantasia} !</h2>
                                 <div class="box-icon">
                                     <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
                                     <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>

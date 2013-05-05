@@ -181,7 +181,7 @@
                                                 <div class="accordion-group">
                                                     <div class="accordion-heading">
                                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<c:out value="${produto.id}" />">
-                                                            <img src="${produto.imagem}" style="float: left" width="100" class="img-rounded">
+                                                            <img src="${produto.imagem}" style="float: left" width="14%" height="8%" class="img-rounded">
                                                             <h3><c:out value="${produto.nome}" />  <c:out value="${produto.id}" /></h3>
                                                             <p>Preço: R$ <c:out value="${produto.preco}" /></p>
                                                         </a>

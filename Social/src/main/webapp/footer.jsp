@@ -5,7 +5,7 @@
                 <div class="container">
                     <form class="navbar-form pull-right" action="PesquisaProdutos?pag=1" method="POST">
                         <input  name="busca" type="search" placeholder="Pesquise seu lanche!" class="span5">
-                        <input type="submit" value="Buscar" >
+                        <input class="btn-info" type="submit" value="Buscar" >
                     </form>
                     <a class="brand" href="#">
 
