@@ -10,7 +10,6 @@ import br.com.starsoft.social.model.dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**   
+/**
  *
  * @author henrique
  */
@@ -45,21 +44,6 @@ public class PesquisaProdutos extends HttpServlet {
             HttpSession session = request.getSession();
 
             String busca = request.getParameter("busca");
-            try {
-//                if (!session.getAttribute("busca").equals(busca)) {
-//                    session.setAttribute("busca", busca);
-//                    session.setAttribute("pagina", 1);
-//                } else {
-//
-//                    session.setAttribute("pagina", request.getParameter("pag"));
-//                }
-            } catch (Exception e) {
-            }
-
-
-
-
-
 
 
 
@@ -69,11 +53,13 @@ public class PesquisaProdutos extends HttpServlet {
             List<Produtos> lista = dao.listaTodos();
             int pag = Integer.parseInt(request.getParameter("pag"));
             List<Produtos> listaProdutos = dao.listaTodosPaginada((pag - 1) * 10, pag * 10);
-            int size = lista.size();
-//            System.out.println(size + "--------------");
-            System.out.println((pag - 1) * 10 + "--------------");
-            System.out.println(pag * 10 + "--------------");
 
+
+
+            int size = lista.size();
+
+
+//         
             int nPag = 0;
             if (size % 10 != 0) {
                 nPag = 1 + size / 10;
@@ -86,13 +72,38 @@ public class PesquisaProdutos extends HttpServlet {
 
             String paginacao = "<ul>\n"
                     + "                                                <li class=\"nolink\">« Página Anterior</li>\n";
+
             for (int i = 1; i < nPag + 1; i++) {
-//                if (pag == i) {
-//                    paginacao += "                                                <li><a href=\"#\" class=\"current\">" + i + "</a></li>\n";
-//
-//                } else {
-                    paginacao += "                                                <li><a href=\"PesquisaProdutos?pag=" + i + "&busca=" + busca + "\">" + i + "</a></li>\n";
-//                }
+
+
+                if (pag - 2 <= 0 && i >= 5) {
+                    if (pag == i) {
+                        paginacao += "                                                <li class=\"current\">" + i + "</li>\n";
+
+                    } else {
+                        paginacao += "                                                <li><a href=\"PesquisaProdutos?pag=" + i + "&busca=" + busca + "\">" + i + "</a></li>\n";
+                    }
+                } else if (pag + 2 >= size && i >= size+5) {
+                    if (pag == i) {
+                        paginacao += "                                                <li class=\"current\">" + i + "</li>\n";
+
+                    } else {
+                        paginacao += "                                                <li><a href=\"PesquisaProdutos?pag=" + i + "&busca=" + busca + "\">" + i + "</a></li>\n";
+                    }
+                } else if (i >= pag - 2 && i <= pag + 2) {
+                    if (pag == i) {
+                        paginacao += "                                                <li class=\"current\">" + i + "</li>\n";
+
+                    } else {
+                        paginacao += "                                                <li><a href=\"PesquisaProdutos?pag=" + i + "&busca=" + busca + "\">" + i + "</a></li>\n";
+                    }
+                }
+
+
+
+
+
+
             }
             paginacao += "                                                <li><a href=\"#\">Próxima Pagina »</a></li>\n"
                     + "                                            </ul>";
