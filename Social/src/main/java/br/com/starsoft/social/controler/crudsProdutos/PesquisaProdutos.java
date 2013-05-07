@@ -71,19 +71,19 @@ public class PesquisaProdutos extends HttpServlet {
 
 
             String paginacao = "<ul>\n"
-                    + "                                                <li class=\"nolink\">« Página Anterior</li>\n";
+                    + "                                                <li><a href=\"PesquisaProdutos?pag=1&busca=" + busca + "\">« Primeira Página</a></li>\n";
 
             for (int i = 1; i < nPag + 1; i++) {
 
 
-                if (pag - 2 <= 0 && i >= 5) {
+                if (pag - 2 <= 0 && i <= 5) {
                     if (pag == i) {
                         paginacao += "                                                <li class=\"current\">" + i + "</li>\n";
 
                     } else {
                         paginacao += "                                                <li><a href=\"PesquisaProdutos?pag=" + i + "&busca=" + busca + "\">" + i + "</a></li>\n";
                     }
-                } else if (pag + 2 >= size && i >= size+5) {
+                } else if (i >= size-3) {
                     if (pag == i) {
                         paginacao += "                                                <li class=\"current\">" + i + "</li>\n";
 
@@ -105,7 +105,7 @@ public class PesquisaProdutos extends HttpServlet {
 
 
             }
-            paginacao += "                                                <li><a href=\"#\">Próxima Pagina »</a></li>\n"
+            paginacao += "                                                <li><a href=\"PesquisaProdutos?pag="+nPag+"&busca=" + busca + "\">Ultima Página »</a></li>\n"
                     + "                                            </ul>";
 
 
