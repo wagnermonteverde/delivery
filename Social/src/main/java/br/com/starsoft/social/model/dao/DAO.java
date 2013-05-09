@@ -2,6 +2,7 @@ package br.com.starsoft.social.model.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 /**
@@ -80,6 +81,26 @@ public class DAO<T> {
 
         List<T> lista = em.createQuery(query).setFirstResult(firstResult)
                 .setMaxResults(maxResults).getResultList();
+
+        em.close();
+        return lista;
+    }
+
+    public List<T> SQlQuery(String sql) {
+        EntityManager em = new JPAUtil().getEntityManager();
+        Query query = em.createNativeQuery(sql);
+        List<T> lista = null;
+
+        try {
+
+            lista = query.getResultList();
+
+
+        } catch (Exception e) {
+
+            em.close();
+
+        }
 
         em.close();
         return lista;

@@ -52,17 +52,17 @@ public class TestePedido {
 
 
         Pedido pedido;
-        pedido = new Pedido(vendedor, usuario,itens);
+//        pedido = new Pedido(vendedor, usuario,itens);
         
 
 
-        System.out.println(pedido);
+//        System.out.println(pedido);
 
 
-        pedido.setEstado(EstadoPedido.Negado);
+//        pedido.setEstado(EstadoPedido.Negado);
 
 
-        System.out.println(pedido);
+//        System.out.println(pedido);
 
 
 

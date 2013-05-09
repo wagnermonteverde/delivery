@@ -37,6 +37,7 @@ public class DAOProduto extends DAO<Produtos> {
 
             em.close();
             return null;
+            
         }
         em.close();
         return produtos;
