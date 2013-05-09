@@ -4,6 +4,7 @@
  */
 package br.com.starsoft.social.controler.crudsProdutos;
 
+import br.com.starsoft.social.model.beans.Location;
 import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.conf.UrlAplication;
 import br.com.starsoft.social.model.dao.DAO;
@@ -54,7 +55,9 @@ public class PesquisaProdutos extends HttpServlet {
             DAOProduto dao = new DAOProduto(Produtos.class);
             List<Produtos> lista = dao.listaTodos();
             int pag = Integer.parseInt(request.getParameter("pag"));
-            List<Produtos> listaProdutos = dao.buscaPaginada((pag - 1) * 10, pag * 10);
+            Location location = new Location();
+            
+            List<Produtos> listaProdutos = dao.buscaPaginada((pag - 1) * 10, pag * 10,location, busca);
 
 
 
