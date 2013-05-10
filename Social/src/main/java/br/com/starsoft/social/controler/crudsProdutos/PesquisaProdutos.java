@@ -6,6 +6,7 @@ package br.com.starsoft.social.controler.crudsProdutos;
 
 import br.com.starsoft.social.model.beans.Location;
 import br.com.starsoft.social.model.beans.Produtos;
+import br.com.starsoft.social.model.beans.Usuario;
 import br.com.starsoft.social.model.conf.UrlAplication;
 import br.com.starsoft.social.model.dao.DAO;
 import br.com.starsoft.social.model.dao.DAOProduto;
@@ -45,26 +46,37 @@ public class PesquisaProdutos extends HttpServlet {
 
             HttpSession session = request.getSession();
 
+
             String busca = request.getParameter("busca");
-
-
-
-
-
-//            DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
-            DAOProduto dao = new DAOProduto(Produtos.class);
-            List<Produtos> lista = dao.listaTodos();
             int pag = Integer.parseInt(request.getParameter("pag"));
-            Location location = new Location();
-            
-            List<Produtos> listaProdutos = dao.buscaPaginada((pag - 1) * 10, pag * 10,location, busca);
+
+
+            DAOProduto dao = new DAOProduto(Produtos.class);
+
+
+            List<Produtos> lista = dao.listaTodos();
+            Location location = null;
+
+            Usuario usuario = null;
+
+            usuario = (Usuario) session.getAttribute("usuario");
+            location = usuario.getEndereco().getLocation();
+            if (usuario == null) {
+                response.sendRedirect(UrlAplication.getUrlAplicacao() + "login.jsp");
+
+            }
+
+
+
+
+            List<Produtos> listaProdutos = dao.buscaPaginada((pag - 1) * 10, pag * 10, location, busca);
 
 
 
             int size = lista.size();
 
 
-//         
+//         Define o a quantidade de páginas da pesquisa
             int nPag = 0;
             if (size % 10 != 0) {
                 nPag = 1 + size / 10;
@@ -74,6 +86,7 @@ public class PesquisaProdutos extends HttpServlet {
 
 
 
+//          Monta a paginação
 
             String paginacao = "<ul>\n"
                     + "                                                <li><a href=\"PesquisaProdutos?pag=1&busca=" + busca + "\">« Primeira Página</a></li>\n";
@@ -88,7 +101,7 @@ public class PesquisaProdutos extends HttpServlet {
                     } else {
                         paginacao += "                                                <li><a href=\"PesquisaProdutos?pag=" + i + "&busca=" + busca + "\">" + i + "</a></li>\n";
                     }
-                } else if (i >= size-3) {
+                } else if (i >= size - 3) {
                     if (pag == i) {
                         paginacao += "                                                <li class=\"current\">" + i + "</li>\n";
 
@@ -110,7 +123,7 @@ public class PesquisaProdutos extends HttpServlet {
 
 
             }
-            paginacao += "                                                <li><a href=\"PesquisaProdutos?pag="+nPag+"&busca=" + busca + "\">Ultima Página »</a></li>\n"
+            paginacao += "                                                <li><a href=\"PesquisaProdutos?pag=" + nPag + "&busca=" + busca + "\">Ultima Página »</a></li>\n"
                     + "                                            </ul>";
 
 
@@ -123,6 +136,13 @@ public class PesquisaProdutos extends HttpServlet {
             } else {
                 response.sendRedirect(UrlAplication.getUrlAplicacao() + "busca.jsp?isnull=true");
             }
+        } catch (Exception e) {
+            /*
+             Usuario não presente na sessão
+             não é possivel realizar a pesquisa
+             o visitante é redirecionado a pagina de login
+             */
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "login.jsp");
         } finally {
             out.close();
         }

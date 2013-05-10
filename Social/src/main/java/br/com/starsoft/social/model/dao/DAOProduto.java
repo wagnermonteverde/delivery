@@ -56,9 +56,9 @@ public class DAOProduto extends DAO<Produtos> {
                 + " WHERE "
                 + "ACOS( SIN( RADIANS( `latitude` ) ) * SIN( RADIANS(-52.40362) ) + COS( RADIANS( `latitude` ) )"
                 + "* COS( RADIANS(-52.40362)) * COS( RADIANS( `longitude` ) - RADIANS(-24.0504)) ) * 6380 < 10"
-                + ")",
+                + ") and nome like \"%" + busca + "%\"",
                 Produtos.class);
-        
+
         List<Produtos> produtos = null;
 //
 //        for (Produtos produtos1 : produtos) {
@@ -67,7 +67,7 @@ public class DAOProduto extends DAO<Produtos> {
         try {
 
 
-            produtos = query.setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+            produtos = query.setMaxResults(maxResults).setFirstResult(firstResult).getResultList();
 
 
         } catch (Exception e) {

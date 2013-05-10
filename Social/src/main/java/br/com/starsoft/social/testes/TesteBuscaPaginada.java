@@ -14,22 +14,23 @@ import java.util.List;
  * @author henrique
  */
 public class TesteBuscaPaginada {
+
     public static void main(String[] args) {
-        
+
 //            DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
-            DAOProduto dao = new DAOProduto(Produtos.class);
-            List<Produtos> lista = dao.listaTodos();
-            Location location = new Location();
-            
-            List<Produtos> listaProdutos = dao.buscaPaginada(20,30,location, "");
-            
-            for (Produtos produtos : listaProdutos) {
-                System.out.println(produtos.toString()+"\n");
-            
+        DAOProduto dao = new DAOProduto(Produtos.class);
+        List<Produtos> lista = dao.listaTodos();
+        Location location = new Location();
+
+        List<Produtos> listaProdutos = dao.buscaPaginada(21, 36, location, "");
+        int i = 0;
+        for (Produtos produtos : listaProdutos) {
+            i++;
+            System.out.println(i + "  " + produtos.toString() + "\n");
+
         }
 
 
 
     }
-    
 }
