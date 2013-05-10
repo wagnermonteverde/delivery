@@ -109,7 +109,7 @@
                                 <div class="caption">  
                                     <p class="text-info">${vendedores.nomeFantasia}</p>  
                                     <!--<imput align="center" class="btn-success btn" type="submit" value="Viste a Loja">Viste a Loja</imput>-->
-                                    <a  href="ListaProdutosVendedorUser"  align="center" class="btn-success btn" type="submit" value="Viste a Loja">Viste a Loja</a>
+                                    <a  href="ListaProdutoVendedorUserFromLoja?idVendedor=${vendedores.id}"  align="center" class="btn-success btn" type="submit" value="Viste a Loja">Viste a Loja</a>
                                 </div>  
                         </li> 
 

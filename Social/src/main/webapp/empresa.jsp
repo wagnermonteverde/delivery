@@ -107,7 +107,7 @@
                     <!-- left menu starts -->
                     <div class="span2 main-menu-span">
                         <div class="well nav-collapse sidebar-nav">
-                            <img src="http://3.bp.blogspot.com/_fGnv-Lhb0xA/Sy46zh3kNkI/AAAAAAAAAEI/eGZrtFPB2A0/s400/Bob+logo+2.jpg" style="float: left" width="120" class="img-rounded">
+                            <img src="${vend.diretorioImg}${vend.imagemLogo}" style="float: left" width="120" class="img-rounded">
                             <p>Cidade: </p>
                             <p>Reputação: </p>
                         </div><!--/.well -->
@@ -143,6 +143,7 @@
                                                             <img src="${produto.imagem}" style="float: left" width="100" class="img-rounded">
                                                             <h3><c:out value="${produto.nome}" /></h3>
                                                             <p>Preço: R$ <c:out value="${produto.preco}" /></p>
+                                                            <p>Detalhes</p>
                                                         </a>
                                                     </div>
                                                     <div id="<c:out value="${produto.id}" />" class="accordion-body collapse">

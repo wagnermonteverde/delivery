@@ -41,6 +41,9 @@ public class ListaProdutosVendedor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            
+            
+            
             DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
             List<Produtos> listaProdutos = dao.listaTodos();
 
