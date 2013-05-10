@@ -7,11 +7,9 @@ package br.com.starsoft.social.model.dao;
 import br.com.starsoft.social.model.beans.Location;
 import br.com.starsoft.social.model.beans.Produtos;
 import br.com.starsoft.social.model.beans.Usuario;
-import br.com.starsoft.social.model.beans.Vendedor;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
 
 /**
  *
@@ -48,22 +46,19 @@ public class DAOProduto extends DAO<Produtos> {
 
         Usuario u = null;
         EntityManager em = new JPAUtil().getEntityManager();
-//        Query query = em.createQuery("select u from Produtos u", Produtos.class);
+
         Query query = em.createNativeQuery("SELECT * FROM Produtos P WHERE location_id in ( "
                 + " SELECT"
                 + "`id` "
                 + " FROM `Location` "
                 + " WHERE "
-                + "ACOS( SIN( RADIANS( `latitude` ) ) * SIN( RADIANS(-52.40362) ) + COS( RADIANS( `latitude` ) )"
-                + "* COS( RADIANS(-52.40362)) * COS( RADIANS( `longitude` ) - RADIANS(-24.0504)) ) * 6380 < 10"
+                + "ACOS( SIN( RADIANS( `latitude` ) ) * SIN( RADIANS(" + location.getLatitude() + ") ) + COS( RADIANS( `latitude` ) )"
+                + "* COS( RADIANS(" + location.getLatitude() + ")) * COS( RADIANS( `longitude` ) - RADIANS(" + location.getLongitude() + ")) ) * 6380 < 10"
                 + ") and nome like \"%" + busca + "%\"",
                 Produtos.class);
 
         List<Produtos> produtos = null;
-//
-//        for (Produtos produtos1 : produtos) {
-//            System.out.println(produtos1.toString()+"------------------------");
-//        }
+
         try {
 
 
