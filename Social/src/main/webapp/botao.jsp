@@ -10,31 +10,44 @@
     <head>
         <%@include file="imports.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script>
-            //Quando o Documento HTML estiver carregado
-            jQuery(document).ready(function(){
-                //Ao clicar em um elemento do tipo button
-                jQuery("button").click(function(){
-                    //Requisição Ajax
-                    jQuery.ajax({
-                        url: "Botao", //URL de destino
-                        dataType: "html", //Tipo de Retorno
-                        success: function(html){ //Se ocorrer tudo certo
-                           
-                              $("#regTitle").html(html);
-//                            var msg = "Nome: "+html+"" ;
-//                            alert(msg);
-                        }
-                    });
-                });
-            });
-        </script>
+
 
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-         <button>Clique aqui</button>
-         <div name="regTitle" id="regTitle"></div>
+
+    <body>
+        <form action="Botao" id="searchForm">
+            <input type="text" name="s" placeholder="Search..." />
+            <input type="submit" value="Search" />
+        </form>
+        <!-- the result of the search will be rendered inside this div -->
+        <div id="result"></div>
+
+        <script>
+            /* attach a submit handler to the form */
+            $("#searchForm").submit(function(event) {
+ 
+                /* stop form from submitting normally */
+                event.preventDefault();
+ 
+                /* get some values from elements on the page: */
+                var $form = $( this ),
+                term = $form.find( 'input[name="s"]' ).val(),
+                url = $form.attr( 'action' );
+ 
+                /* Send the data using post */
+                var posting = $.post( url, { s: term } );
+ 
+                /* Put the results in a div */
+                posting.done(function( data ) {
+                    var content = $( data ).find( '#content' );
+                    alert("Data Loaded: " + data);
+                    $( "#result" ).html(data);
+                });
+            });
+        </script>
+
+
     </body>
 </html>

@@ -18,17 +18,19 @@ public class ControlerPedidos {
     
    
 
-    public void cadastrarPedido(Usuario usuario, String idVendedor, Map produtos ){
+    public static void cadastrarPedido(Usuario usuario, String idVendedor, Map produtos ){
 
     
         
     }
     
     
-    public void efetuarPedido(Vendedor vendedor, Usuario usuario, Produtos ... produtos ) {
+    public static void efetuarPedido(Vendedor vendedor, Usuario usuario, Produtos ... produtos ) {
 
      
         
     }
+    
+   
     
 }

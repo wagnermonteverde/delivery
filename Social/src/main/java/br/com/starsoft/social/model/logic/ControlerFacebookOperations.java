@@ -30,11 +30,11 @@ public class ControlerFacebookOperations {
 
         Facebook facebook = new FacebookTemplate(token);
       
-        FacebookLink link = new FacebookLink("http://www.utfpr.edu.br/campomourao/","Teste Postagem Link","Teste UTFPR Campo Mourão","Teste aplicação Java Web Postagen de Links");
+        FacebookLink link = new FacebookLink("http://social.wagnermonteverde.cloudbees.net/","NET LANCHE","COMPRE COMIDA PELA INTERNET","LANCHES EM GERAL AQUI MESMO NA SUA CIDADE");
 
         FacebookProfile profile = facebook.userOperations().getUserProfile();
 
-        facebook.feedOperations().postLink("Teste Postagem de links", link);
+        facebook.feedOperations().postLink("NET LANCHE", link);
 
 
     }

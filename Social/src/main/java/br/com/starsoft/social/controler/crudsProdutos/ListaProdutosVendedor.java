@@ -52,9 +52,9 @@ public class ListaProdutosVendedor extends HttpServlet {
             contexto.setAttribute("listaProdutos", listaProdutos);
 //      
              if (!listaProdutos.isEmpty()) {
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "admin/produtos.jsp");
+            response.sendRedirect("admin/produtos.jsp");
             }else{
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "admin/produtos.jsp?isnull=true");
+            response.sendRedirect("admin/produtos.jsp?isnull=true");
             }
 
         } finally {

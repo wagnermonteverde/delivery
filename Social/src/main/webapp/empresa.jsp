@@ -27,6 +27,8 @@
 
         <%@include file="imports.jsp" %>
 
+
+
         <title>Promoção é Aqui</title>
 
     </head>
@@ -59,6 +61,10 @@
                 </li>
 
             </ul>
+
+            <div id="result">
+
+            </div>
 
 
             <!--  acordion-->
@@ -95,7 +101,6 @@
                 </div>
 
             </div>
-
 
 
 
@@ -141,15 +146,28 @@
                                                     <div class="accordion-heading">
                                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<c:out value="${produto.id}" />">
                                                             <img src="${produto.imagem}" style="float: left" width="100" class="img-rounded">
-                                                            <h3><c:out value="${produto.nome}" /></h3>
-                                                            <p>Preço: R$ <c:out value="${produto.preco}" /></p>
-                                                            <p>Detalhes</p>
+                                                            <img src="img/sep.png" style="float: left" class="img-rounded">
+
+                                                            <h3 style="padding-left:1cm;"><c:out value="${produto.nome}" /></h3>
+                                                            <p style="padding-left:1cm;">Preço: R$ <c:out value="${produto.preco}" /></p>
+                                                            <p style="padding-left:1cm;">Detalhes  Pedir</p>
                                                         </a>
                                                     </div>
                                                     <div id="<c:out value="${produto.id}" />" class="accordion-body collapse">
                                                         <div class="accordion-inner">
-                                                            <c:out value="${produto.descricao}" />
-                                                            <p style="text-align: right"><img src="img/botao-comprar.png" alt="Pedir" /></p>
+                                                            <p class="text-info"> <c:out value="${produto.descricao}" /></p>
+                                                            <form action="ControlerPedido" id="searchForm">
+
+                                                                <input type="hidden"name="idvendedor" value="${vend.id}">
+                                                                <input type="hidden" name="idproduto" value="${produto.id}">
+                                                                <input type="hidden" name="idusuario" value="${usuario.id}">
+                                                                <table style="text-align: right">
+                                                                    <tr>
+                                                                        <td><label class="text-info">QUANTIDADE</label></td>
+                                                                        <td style="width:18%" ><input  type="text" class="span3" value="1"></td>
+                                                                        <td style="width:30%"> <input type=image src="img/botao-comprar.png"></p></td>
+                                                                    </tr>
+                                                                </table>                                                                                                                          </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,6 +176,41 @@
                                         </c:forEach>
                                         <c:remove var="listaProdutos"/>
 
+                                        <script>
+                                        
+                                        var msg ="<div class='alert alert-block'><button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+                                            "<h4>Atenção voce tem pedidos em aberto Finalize-os ou continue comprando nesta loja! :)</h4>"+
+                                            "Para realizar pedidos em outra loja você deve finalizar os pedidos da loja atual! </div>"
+                                        
+                                        /* attach a submit handler to the form */
+                                        $("#searchForm").submit(function(event) {
+ 
+                                            /* stop form from submitting normally */
+                                            event.preventDefault();
+ 
+                                            /* get some values from elements on the page: */
+                                            var $form = $( this ),
+                                            idproduto = $form.find( 'input[name="idproduto"]' ).val(),
+                                            idvendedor = $form.find( 'input[name="idvendedor"]' ).val(),
+                                            idusuario = $form.find( 'input[name="idusuario"]' ).val(),
+                                            url = $form.attr( 'action' );
+ 
+                                            if(idusuario==""){
+                                                alert("Atenção! você deve logar no Site antes de fazer um pedido :)");
+                                                return
+                                            }
+                                            /* Send the data using post */
+                                            var posting = $.post( url, { idproduto: idproduto ,idvendedor : idvendedor ,idusuario:idusuario} );
+ 
+                                            /* Put the results in a div */
+                                            posting.done(function( data ) {
+                                                var content = $( data ).find( '#content' );
+                                                alert("Produto adicionado com Sucesso ao seu Pedido !");
+                                                $( "#result" ).html(msg);
+                                                $( "#cart" ).html(data);
+                                            });
+                                        });
+                                        </script>
 
                                         <script language="JavaScript" type="text/javascript">
                                         muda();
@@ -180,7 +233,22 @@
 
                             <div class="box span3">
                                 <div class="box-header well" data-original-title>
-                                    <h3>Futuro Carrinho...</h3>
+                                    <h3 class="text-info">Carrinho<img src="img/cart.png" style="width:30%; height:30%;"></h3>
+                                    <p>Total de Produtos </p>
+                                    <c:choose>
+                                        <c:when test="${pedido==null}">
+                                            <p id="cart">R$ 0.00</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p id="cart">${pedido.total}</p>
+                                        </c:otherwise>
+
+                                    </c:choose>
+
+                                    <c:if test="${usuario!=null}">
+                                        <p><a class="btn btn-warning">Meus Pedidos </a></p>
+                                    </c:if>
+
                                     <div class="box-icon">
                                         <a href="#" class=""></i></a>
                                     </div>
@@ -205,7 +273,7 @@
 
 
                 <footer>
-                     <p>© By Wagner Monteverde & Henrique Bartoski  Software  Email wagnermonteverde@outlook.com &  </p>  
+                    <p>© By Wagner Monteverde & Henrique Bartoski  Software  Email wagnermonteverde@outlook.com &  </p>  
                 </footer>
 
             </div><!--/.fluid-container-->

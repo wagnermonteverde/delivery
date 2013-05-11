@@ -70,9 +70,9 @@ public class ListaProdutosVendedorUser extends HttpServlet {
             }
 
             if (!listaProdutos.isEmpty()) {
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + ancora);
+            response.sendRedirect("empresa.jsp?id=" + id + "#" + ancora);
             }else{
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?isnull=true");
+            response.sendRedirect("empresa.jsp?isnull=true");
             }
                 
         } finally {

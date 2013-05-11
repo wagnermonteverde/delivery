@@ -4,26 +4,50 @@
  */
 package br.com.starsoft.social.model.beans;
 
+import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author henrique
+ * @version wagner
+ * 
  */
-public class Pedido {
+@Entity
+public class Pedido implements Serializable {
+    
+    @Id
     private int id;
-    private int idComprador;
-    private int idLoja;
-    private List<Produtos> produtos;
+    @OneToOne
+    private Usuario Comprador;
+    @OneToOne
+    private Vendedor idVendedor;
+    @OneToMany
+    @JoinColumn(name="id_pedido")
+    private List<ItemPedido> itens;
     private EstadoPedido estado;
+    private Double total;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar dataPedido;
 
-    public Pedido(int id, int idComprador, int idLoja, List<Produtos> produtos, EstadoPedido estado) {
-        this.id = id;
-        this.idComprador = idComprador;
-        this.idLoja = idLoja;
-        this.produtos = produtos;
-        this.estado = estado;
+    public Pedido() {
     }
+
+    public Pedido(Usuario Comprador, Vendedor idVendedor, EstadoPedido estado) {
+        this.Comprador = Comprador;
+        this.idVendedor = idVendedor;
+        this.estado = estado;
+        this.total =0.00;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -33,28 +57,29 @@ public class Pedido {
         this.id = id;
     }
 
-    public int getIdComprador() {
-        return idComprador;
+    
+    public Usuario getComprador() {
+        return Comprador;
     }
 
-    public void setIdComprador(int idComprador) {
-        this.idComprador = idComprador;
+    public void setComprador(Usuario Comprador) {
+        this.Comprador = Comprador;
     }
 
-    public int getIdLoja() {
-        return idLoja;
+    public Vendedor getIdVendedor() {
+        return idVendedor;
     }
 
-    public void setIdLoja(int idLoja) {
-        this.idLoja = idLoja;
+    public void setIdVendedor(Vendedor idVendedor) {
+        this.idVendedor = idVendedor;
     }
 
-    public List<Produtos> getProdutos() {
-        return produtos;
+    public List<ItemPedido> getItens() {
+        return itens;
     }
 
-    public void setProdutos(List<Produtos> produtos) {
-        this.produtos = produtos;
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
     }
 
     public EstadoPedido getEstado() {
@@ -65,10 +90,37 @@ public class Pedido {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return "Pedido{" + "id=" + id + ", idComprador=" + idComprador + ", idLoja=" + idLoja + ", produtos=" + produtos + ", estado=" + estado + '}';
+    public Double getTotal() {
+        return total;
     }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Calendar getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(Calendar dataPedido) {
+        this.dataPedido = dataPedido;
+    }
+    
+    
+    public String retornaTotal() {
+
+        return "30,00";
+    
+    }
+    
+    public void adicionaIten(ItemPedido iten) {
+        System.out.println("---------"); 
+    
+    this.total = + iten.getProduto().getPreco();
+    
+    }
+        
+         
     
     
     
