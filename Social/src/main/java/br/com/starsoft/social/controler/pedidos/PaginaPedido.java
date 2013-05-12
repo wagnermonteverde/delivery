@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,6 +41,7 @@ public class PaginaPedido extends HttpServlet {
         try {
             /* TODO output your page here. You may use following sample code. */
            
+             HttpSession session = request.getSession();
             
             String  idvendedor = request.getParameter("idvendedor");
             String  idproduto = request.getParameter("idproduto");
@@ -52,10 +54,10 @@ public class PaginaPedido extends HttpServlet {
             Produtos produtos = daoProduto.buscaPorId(Integer.parseInt(idproduto));
             
             
-          request.setAttribute("vendedor",vendedor);
-          request.setAttribute("produto",produtos);
+          session.setAttribute("vend",vendedor);
+          session.setAttribute("produto",produtos);
           
-        response.sendRedirect("produto.jsp");
+          response.sendRedirect("produto.jsp");
             
             
             

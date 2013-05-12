@@ -5,8 +5,11 @@
 package br.com.starsoft.social.model.beans;
 
 import java.io.Serializable;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.mail.FetchProfile;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,11 +21,11 @@ import javax.persistence.Temporal;
  *
  * @author henrique
  * @version wagner
- * 
+ *
  */
 @Entity
 public class Pedido implements Serializable {
-    
+
     @Id
     private int id;
     @OneToOne
@@ -30,7 +33,7 @@ public class Pedido implements Serializable {
     @OneToOne
     private Vendedor idVendedor;
     @OneToMany
-    @JoinColumn(name="id_pedido")
+    @JoinColumn(name = "id_pedido")
     private List<ItemPedido> itens;
     private EstadoPedido estado;
     private Double total;
@@ -44,10 +47,10 @@ public class Pedido implements Serializable {
         this.Comprador = Comprador;
         this.idVendedor = idVendedor;
         this.estado = estado;
-        this.total =0.00;
+        this.total = 0.00;
+        this.itens = new ArrayList<ItemPedido>();
+
     }
-    
-    
 
     public int getId() {
         return id;
@@ -57,7 +60,6 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    
     public Usuario getComprador() {
         return Comprador;
     }
@@ -105,24 +107,33 @@ public class Pedido implements Serializable {
     public void setDataPedido(Calendar dataPedido) {
         this.dataPedido = dataPedido;
     }
-    
-    
+
     public String retornaTotal() {
 
         return "30,00";
-    
+
     }
-    
+
     public void adicionaIten(ItemPedido iten) {
-        System.out.println("---------"); 
-    
-    this.total = + iten.getProduto().getPreco();
-    
+        this.itens.add(iten);
+        this.total =valorTotal(iten);
+
     }
-        
-         
-    
-    
-    
-    
+
+    public Double valorTotal(ItemPedido iten) {
+        Double total = 0.0;
+        for (ItemPedido i : this.itens) {
+
+            total += i.getProduto().getPreco();
+
+        }
+
+        return total;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "id=" + id + ", Comprador=" + Comprador + ", idVendedor=" + idVendedor + ", itens=" + itens + ", estado=" + estado + ", total=" + total + ", dataPedido=" + dataPedido + '}';
+    }
 }

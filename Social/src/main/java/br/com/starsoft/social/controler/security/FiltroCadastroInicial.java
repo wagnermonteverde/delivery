@@ -25,7 +25,7 @@ import org.springframework.social.facebook.api.FacebookProfile;
  *
  * @author wagner
  */
-@WebFilter(filterName = "FiltroCadastroInicial", urlPatterns = {"/tumbail","/RedirecionamentoIndex"})
+@WebFilter(filterName = "FiltroCadastroInicial", urlPatterns = {"/RedirecionamentoIndex"})
 public class FiltroCadastroInicial implements Filter {
     
     private static final boolean debug = true;

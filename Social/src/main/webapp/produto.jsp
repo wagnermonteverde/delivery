@@ -67,10 +67,7 @@
                     <a href="tumbail.jsp">Produtos</a>
                     <span class="active">/</span>
                 </li>
-                <li>
-                    <a href="">Lanchonete do Zé</a>
-                    <span class="active">/</span>
-                </li>
+                
                 <li>
                     <a href="#">Produto</a>
                     <span class="active">/</span>
@@ -174,7 +171,7 @@
                                                         <p class="text-info"> <c:out value="${produto.descricao}" /></p>
                                                         <form action="ControlerPedido" id="searchForm">
 
-                                                            <input type="hidden"name="idvendedor" value="${vendedor.id}">
+                                                            <input type="hidden"name="idvendedor" value="${vend.id}">
                                                             <input type="hidden" name="idproduto" value="${produto.id}">
                                                             <input type="hidden" name="idusuario" value="${usuario.id}">
                                                             <table style="text-align: right">

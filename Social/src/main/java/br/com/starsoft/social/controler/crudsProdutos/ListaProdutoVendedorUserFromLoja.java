@@ -66,13 +66,10 @@ public class ListaProdutoVendedorUserFromLoja extends HttpServlet {
 
 
             if (!vendedor.getListaProdutos().isEmpty()) {
-                response.sendRedirect("empresa.jsp");
+                response.sendRedirect("tumbail.jsp");
             } else {
-                response.sendRedirect("empresa.jsp?isnull=true");
+                response.sendRedirect("tumbail.jsp?isnull=true");
             }
-
-
-
 
 
 

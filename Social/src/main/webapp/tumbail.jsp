@@ -69,11 +69,6 @@
                     <a href="tumbail.jsp">Produtos</a>
                     <span class="active">/</span>
                 </li>
-                <li>
-                    <a href="#">Lanchonete do Zé</a>
-                    <span class="active">/</span>
-                </li>
-
             </ul>
 
             <!--Sorry About the Heavy CSS But its neaded for the components make it external for quicker load time :) -->
@@ -188,7 +183,7 @@
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
-                                Carrinho de Compras clique para expandir <span class="text-error">Total R$100,00</span><img src="img/cart.png" style="width:3%; height:3%;">
+                                Carrinho de Compras clique para expandir <span class="text-error">Total R$ ${pedido.total}</span><img src="img/cart.png" style="width:3%; height:3%;">
                             </a>
                         </div>
                         <div id="collapseOne" class="accordion-body collapse ">
@@ -197,12 +192,12 @@
                                 <div class="row-fluid pricing-table pricing-three-column">
                                     <div class="span12 plan">
                                         <div class="plan-name-bronze">
-                                            <h2>Total</h2>
+                                            <h3>Total</h3>
                                             <span>${pedido.total}</span>
                                         </div>
                                         <ul>
-                                            <c:forEach var="produto" items="${pedido.itens}">
-                                            <li class="plan-feature">${pedido.itens.produto.preco} ${pedido.itens.produto.preco}</li>
+                                            <c:forEach var="iten" items="${pedido.itens}">
+                                                <li class="plan-feature text-info">Descrição ${iten.produto.nome} | Quantidade  ${iten.quantidade}  | Preço  ${iten.produto.preco}  <a class="btn-small btn-danger">Deletar</a></li>
                                             </c:forEach>
                                             <li class="plan-feature"></li>
                                             <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select"><i class="icon-white icon-ok"></i>FInalizar Pedido</a></li>
@@ -224,23 +219,9 @@
 
 
             <!-- barra secundaria-->
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <!--                    <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
-                                        <a href="AutenticarTwitter" class="pull-right"><img src="img/twitter.png"></a>-->
-
-                    <ul class="nav">
-
-                        <li>
-                            Lanchonete do Zé
-                        </li>
-                        <li>
-                        </li>
-
-                    </ul>
-
-
-                    <!--  botao dois -->
+            <div class="navbar ">
+                <div class="navbar-inner ">
+                    <button class="btn-large btn-primary" value="${vend.nomeFantasia}">${vend.nomeFantasia}</button>
                 </div>
             </div>
 

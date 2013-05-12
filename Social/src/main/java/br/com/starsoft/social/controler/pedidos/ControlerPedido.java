@@ -16,6 +16,7 @@ import br.com.starsoft.social.model.dao.DAOUsuario;
 import br.com.starsoft.social.model.dao.DAOVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,44 +54,51 @@ public class ControlerPedido extends HttpServlet {
             DAOUsuario daoUsuario = new DAOUsuario(Usuario.class);
             DAOVendedor daoVendedor = new DAOVendedor(Vendedor.class);
             DAO<Pedido> daoPedido = new DAO<Pedido>(Pedido.class);
+            DAO<ItemPedido> daoIten = new DAO<ItemPedido>(ItemPedido.class);
 
-
-
+            List<ItemPedido> produtos = null;
 
 
             String idUser = request.getParameter("idusuario");
             String idProduto = request.getParameter("idproduto");
             String idVendedor = request.getParameter("idvendedor");
 
+            System.out.println(idUser+"------------");
+            System.out.println(idProduto+"----------");
+            System.out.println(idVendedor+"------------");
+
             Produtos produto = daoProduto.buscaPorId(Integer.parseInt(idProduto));
 
+            System.out.println(produto);
+            Integer qtd = Integer.parseInt(idUser);
 
             ItemPedido iten = new ItemPedido(produto, 1);
+            daoIten.adiciona(iten);
+            System.out.println(iten+" PRODUTO");
 
-            Pedido pedido = null;
+            Pedido pedido = (Pedido) session.getAttribute("pedido");
 
 
-
-            if (session.getAttribute("pedido") == null) {
+            if (pedido == null) {
 
 
                 Usuario user = (Usuario) session.getAttribute("usuario");
+                System.out.println(user);
                 Vendedor vendedor = daoVendedor.buscaPorId(Integer.parseInt(idVendedor));
 
                 pedido = new Pedido(user, vendedor, EstadoPedido.EmPreparo);
                 pedido.adicionaIten(iten);
                 session.setAttribute("pedido", pedido);
-
-                out.print("R$ 10.00");
-
+                session.setAttribute("itens", pedido.getItens());
 
             } else {
 
                 pedido = (Pedido) session.getAttribute("pedido");
                 pedido.adicionaIten(iten);
 
-//                out.print("R$ "+pedido.retornaTotal());
-                out.print("R$ 20.00");
+                session.setAttribute("pedido", pedido);
+                session.setAttribute("itens", pedido.getItens());
+
 
             }
 
