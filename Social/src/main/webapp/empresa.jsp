@@ -156,7 +156,7 @@
                                                     <div id="<c:out value="${produto.id}" />" class="accordion-body collapse">
                                                         <div class="accordion-inner">
                                                             <p class="text-info"> <c:out value="${produto.descricao}" /></p>
-                                                            <form action="ControlerPedido" id="searchForm">
+                                                            <!--<form action="ControlerPedido" id="searchForm">-->
 
                                                                 <input type="hidden"name="idvendedor" value="${vend.id}">
                                                                 <input type="hidden" name="idproduto" value="${produto.id}">
@@ -165,9 +165,10 @@
                                                                     <tr>
                                                                         <td><label class="text-info">QUANTIDADE</label></td>
                                                                         <td style="width:18%" ><input  type="text" class="span3" value="1"></td>
-                                                                        <td style="width:30%"> <input type=image src="img/botao-comprar.png"></p></td>
+                                                                        <td style="width:30%"> <a href="PaginaPedido?idvendedor=${vend.id}&idproduto=${produto.id}&idusuario=${usuario.id}">Pedir</a></p></td>
                                                                     </tr>
-                                                                </table>                                                                                                                          </form>
+                                                                </table>  
+                                                            <!--</form>-->
                                                         </div>
                                                     </div>
                                                 </div>

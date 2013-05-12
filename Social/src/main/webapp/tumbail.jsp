@@ -62,7 +62,11 @@
                     <span class="divider">/</span>
                 </li>
                 <li>
-                    <a href="#">Produtos</a>
+                    <a href="tumbail_1.jsp">Lojas</a>
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="tumbail.jsp">Produtos</a>
                     <span class="active">/</span>
                 </li>
                 <li>
@@ -194,10 +198,12 @@
                                     <div class="span12 plan">
                                         <div class="plan-name-bronze">
                                             <h2>Total</h2>
-                                            <span>R$8.99</span>
+                                            <span>${pedido.total}</span>
                                         </div>
                                         <ul>
-                                            <li class="plan-feature">3 Produtos</li>
+                                            <c:forEach var="produto" items="${pedido.itens}">
+                                            <li class="plan-feature">${pedido.itens.produto.preco} ${pedido.itens.produto.preco}</li>
+                                            </c:forEach>
                                             <li class="plan-feature"></li>
                                             <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select"><i class="icon-white icon-ok"></i>FInalizar Pedido</a></li>
                                             <li class="plan-feature"><a href="#" class="btn btn-danger btn-plan-select"><i class="icon-white icon-ok"></i>Cancelar Pedido</a></li>
@@ -220,14 +226,13 @@
             <!-- barra secundaria-->
             <div class="navbar">
                 <div class="navbar-inner">
-                    <a><img src="img/promocao1.jpg"></a>
                     <!--                    <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
                                         <a href="AutenticarTwitter" class="pull-right"><img src="img/twitter.png"></a>-->
 
                     <ul class="nav">
 
                         <li>
-
+                            Lanchonete do Zé
                         </li>
                         <li>
                         </li>
