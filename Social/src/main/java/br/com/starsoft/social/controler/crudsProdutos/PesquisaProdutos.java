@@ -62,7 +62,7 @@ public class PesquisaProdutos extends HttpServlet {
             usuario = (Usuario) session.getAttribute("usuario");
             location = usuario.getEndereco().getLocation();
             if (usuario == null) {
-                response.sendRedirect(UrlAplication.getUrlAplicacao() + "login.jsp");
+                response.sendRedirect(UrlAplication.getUrlAplicacao() + "loginComprador.jsp");
 
             }
 
@@ -142,7 +142,7 @@ public class PesquisaProdutos extends HttpServlet {
              não é possivel realizar a pesquisa
              o visitante é redirecionado a pagina de login
              */
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "login.jsp");
+            response.sendRedirect(UrlAplication.getUrlAplicacao() + "loginComprador.jsp");
         } finally {
             out.close();
         }
