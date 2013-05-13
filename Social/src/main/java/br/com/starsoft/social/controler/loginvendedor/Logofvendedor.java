@@ -35,15 +35,15 @@ public class Logofvendedor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+
+
+            HttpSession session = request.getSession();
+            session.removeAttribute("vendedor");
             
-            
-              HttpSession session = request.getSession();
-              session.removeAttribute("vendedor");
-            
-             
+
             response.sendRedirect("login.jsp");
-            
-        } finally {            
+
+        } finally {
             out.close();
         }
     }

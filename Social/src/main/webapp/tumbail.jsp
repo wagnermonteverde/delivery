@@ -174,8 +174,37 @@
                     font-size: 18px;
                 }
             </style>
+            <c:if test="${pedido!=null}">
+                
 
+            <div class='alert alert-block'>
+                <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                <h4>Atenção voce tem pedidos em aberto Finalize-os ou continue comprando na ${pedido.idVendedor.nomeFantasia}! :)</h4>
+                Para realizar pedidos em outra loja você deve finalizar os pedidos da loja atual!
+            </div>
 
+            </c:if>
+
+            <hr>
+            <div>
+
+                <h3 class="text-info">Você esta na Loja <img src="${vend.diretorioImg}${vend.imagemLogo}" width="70" height="70"> ${vend.nomeFantasia} <img src="${vend.diretorioImg}${vend.imagemLogo}" width="50" height="50"> 
+                    <c:choose>
+                        <c:when test="${usuario==null}">
+                            <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
+                            <!--<a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>-->
+                        </c:when>
+
+                        <c:otherwise>
+                            <form class="navbar-form pull-right" action="tumbail.jsp" method="POST">
+                                <input  name="textinput2" type="search" placeholder="Digite Aqui seu Endereço e veja as lojas perto de você!" class="span3">
+                            </form>
+                        </c:otherwise>
+
+                    </c:choose>
+
+                </h3>
+            </div>
 
             <!--  acordion-->
             <div class="container-fluid">  
@@ -217,14 +246,7 @@
             </div>
 
 
-
-            <!-- barra secundaria-->
-            <div class="navbar ">
-                <div class="navbar-inner ">
-                    <button class="btn-large btn-primary" value="${vend.nomeFantasia}">${vend.nomeFantasia}</button>
-                </div>
-            </div>
-
+            <hr>
 
 
 

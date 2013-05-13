@@ -47,6 +47,16 @@ public class ListaProdutoVendedorUserFromLoja extends HttpServlet {
 
             HttpSession session = request.getSession();
 
+            if (session.getAttribute("pedido") != null) {
+
+                session.removeAttribute("listaProdutos");
+                session.removeAttribute("vend");
+                response.sendRedirect("tumbail.jsp");
+            
+//                return;
+
+            }
+
 
             DAOVendedor dao = new DAOVendedor(Vendedor.class);
 
