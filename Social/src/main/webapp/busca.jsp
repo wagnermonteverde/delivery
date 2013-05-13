@@ -197,7 +197,7 @@
 
                                         </c:forEach>
                                         <c:remove var="listaProdutos"/>
-                                        
+
 
                                         <script language="JavaScript" type="text/javascript">
                                         muda();
@@ -214,10 +214,10 @@
                                         </table> 
 
                                     </div>
-<div id="pages" style="text-align: center">
-                                            <c:out value="${pagination}" escapeXml="false"/>
-                                            <c:remove var="pagination"/>
-                                        </div>
+                                    <div id="pages" style="text-align: center">
+                                        <c:out value="${pagination}" escapeXml="false"/>
+                                        <c:remove var="pagination"/>
+                                    </div>
 
                                 </div>
                             </div><!--/span-->
