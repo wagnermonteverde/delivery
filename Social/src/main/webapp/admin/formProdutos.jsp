@@ -268,8 +268,9 @@
                                         </div>
                                     </div>
                                     <div class="box-content">
-                                        <form class="form-horizontal" action="../ControlerCadastroProdutos" method="post">
+                                        <form class="form-horizontal" action="../ControlerUploadServlet" method="post" enctype="multipart/form-data" accept-charset="ISO-8859-1">
                                             <fieldset>
+                                                 <input type="hidden" name="tipo" value="prod">
                                                 <div class="control-group">
                                                     <label class="control-label" for="selectError">Categoria</label>
                                                     <div class="controls">
@@ -296,7 +297,7 @@
                                                 <div class="control-group">
                                                     <label class="control-label" for="fileInput">Foto</label>
                                                     <div class="controls">
-                                                        <input class="input-file uniform_on" id="fileInput" type="file">
+                                                       <input type="file" name="perfil" accept="image/*">
                                                     </div>
                                                 </div>          
                                                 <div class="control-group">

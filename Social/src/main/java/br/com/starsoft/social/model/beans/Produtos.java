@@ -4,11 +4,14 @@
  */
 package br.com.starsoft.social.model.beans;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -17,8 +20,9 @@ import javax.persistence.Temporal;
  * @author wagner
  */
  @Entity
+
 @Table(name = "Produtos")
-public class Produtos {
+public class Produtos implements Serializable {
 
     @Id
     @GeneratedValue
@@ -26,19 +30,24 @@ public class Produtos {
     private String nome;
     private Categoria categoria;
     private Double preco;
+    private String imagem;
     private String descricao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataInclusao;
+    @OneToOne
+    private Location location;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public Produtos() {
     }
 
-    public Produtos(String nome, Double preco, String descricao, Calendar dataInclusao, Integer quantidade) {
-        this.nome = nome;
-        this.preco = preco;
-        this.descricao = descricao;
-        this.dataInclusao = dataInclusao;
-    }
 
     public Categoria getCategoria() {
         return categoria;
@@ -47,8 +56,17 @@ public class Produtos {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
     
 
+    
     public Integer getId() {
         return id;
     }
@@ -96,6 +114,11 @@ public class Produtos {
         return hash;
     }
 
+
+    public void setDataInclusao(DateFormat dateFormat) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -111,6 +134,9 @@ public class Produtos {
         if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
             return false;
         }
+        if (this.categoria != other.categoria) {
+            return false;
+        }
         if (this.preco != other.preco && (this.preco == null || !this.preco.equals(other.preco))) {
             return false;
         }
@@ -120,17 +146,13 @@ public class Produtos {
         if (this.dataInclusao != other.dataInclusao && (this.dataInclusao == null || !this.dataInclusao.equals(other.dataInclusao))) {
             return false;
         }
-       
         return true;
     }
 
-    public void setDataInclusao(DateFormat dateFormat) {
-        throw new UnsupportedOperationException("Not yet implemented");
+   @Override
+    public String toString() {
+        return "Produtos{" + "id=" + id + ", nome=" + nome + ", categoria=" + categoria + ", preco=" + preco + ", imagem=" + imagem + ", descricao=" + descricao + ", dataInclusao=" + dataInclusao + ", location=" + location + '}';
     }
 
-    @Override
-    public String toString() {
-        return "Produtos{" + "id=" + id + ", nome=" + nome + ", categoria=" + categoria + ", preco=" + preco + ", descricao=" + descricao + ", dataInclusao=" + dataInclusao + '}';
-    }
-    
+ 
 }

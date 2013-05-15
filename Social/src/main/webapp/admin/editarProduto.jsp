@@ -13,7 +13,7 @@
             <c:redirect url="../ListaProdutosVendedor"/>
             <%--
             response.sendRedirect("../ListaProdutosVendedor");
-           --%>
+            --%>
         </c:if>
         <!--
                 Charisma v1.0.0
@@ -246,7 +246,7 @@
 
                     <div>
                         <ul class="breadcrumb">
-                             <li>
+                            <li>
                                 <a href="/index.jsp">Home</a> <span class="divider">/</span>
                             </li>
                             <li>
@@ -273,48 +273,50 @@
                                         </div>
                                     </div>
                                     <div class="box-content">
-                                        <form class="form-horizontal" action="../AtualizaProduto?id=<c:out value="${edit.id}" />" method="post">
-                                            <fieldset>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="selectError">Categoria</label>
-                                                    <div class="controls">
-                                                        <select name="categoria" value="<c:out value="${edit.categoria}" />" id="selectError" data-rel="chosen">
-                                                            <option>Comida</option>
-                                                            <option>Bebida</option>
-                                                        </select>
-                                                    </div>
+                                        <form class="form-horizontal" action="../ControlerUploadServlet"  method="post" enctype="multipart/form-data" accept-charset="ISO-8859-1">
+                                        <fieldset>
+                                            <input type="hidden" name="tipo" value="prod">
+                                            <input type="hidden" name="id" value="${edit.id}">
+                                            <div class="control-group">
+                                                <label class="control-label" for="selectError">Categoria</label>
+                                                <div class="controls">
+                                                    <select name="categoria" value="<c:out value="${edit.categoria}" />" id="selectError" data-rel="chosen">
+                                                        <option>Comida</option>
+                                                        <option>Bebida</option>
+                                                    </select>
                                                 </div>
-                                                <legend>Adicione um novo produto</legend>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="typeahead">Titulo do Produto</label>
-                                                    <div class="controls">
-                                                        <input name="titulo" value="<c:out value="${edit.nome}" />" required type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" data-source='["Pizza","Cachorro Quente", "X Salada", Misto Quente","Pastel"]' />
-                                                    </div>
+                                            </div>
+                                            <legend>Adicione um novo produto</legend>
+                                            <div class="control-group">
+                                                <label class="control-label" for="typeahead">Titulo do Produto</label>
+                                                <div class="controls">
+                                                    <input name="titulo" value="<c:out value="${edit.nome}" />" required type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" data-source='["Pizza","Cachorro Quente", "X Salada", Misto Quente","Pastel"]' />
                                                 </div>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="typeahead">Preço</label>
-                                                    <div class="controls">
-                                                        <input required type="text" value="<c:out value="${edit.preco}" />" name="valor"  onKeyPress="return(MascaraMoeda(this,'.',',',event))">
-                                                    </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="typeahead">Preço</label>
+                                                <div class="controls">
+                                                    <input required type="text" value="<c:out value="${edit.preco}" />" name="valor"  onKeyPress="return(MascaraMoeda(this,'.',',',event))">
                                                 </div>
+                                            </div>
 
-                                                <div class="control-group">
-                                                    <label class="control-label" for="fileInput">Foto</label>
-                                                    <div class="controls">
-                                                        <input class="input-file uniform_on" id="fileInput" type="file">
-                                                    </div>
-                                                </div>          
-                                                <div class="control-group">
-                                                    <label  class="control-label" for="textarea2">Descrição do Produto</label>
-                                                    <div class="controls">
-                                                        <textarea  required name="detalhes" id="textarea2" rows="8" ><c:out value="${edit.descricao}" /></textarea>
-                                                    </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="fileInput">Foto</label>
+                                                <div class="controls">
+                                                    <input class="input-file uniform_on" id="fileInput" type="file">
                                                 </div>
-                                                <div class="form-actions">
-                                                    <button type="submit" class="btn btn-primary">Salvar Produto</button>
-                                                    <button type="reset" class="btn">Limpar</button>
+                                            </div>          
+                                            <div class="control-group">
+                                                <label  class="control-label" for="textarea2">Descrição do Produto</label>
+                                                <div class="controls">
+                                                    <textarea  required name="detalhes" id="textarea2" rows="8" ><c:out value="${edit.descricao}" /></textarea>
                                                 </div>
-                                            </fieldset>
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-primary">Salvar Produto</button>
+                                                <button type="reset" class="btn">Limpar</button>
+                                            </div>
+                                        </fieldset>
                                         </form>   
 
                                     </div>

@@ -55,319 +55,224 @@
 
             <%@include file="header.jsp" %>
 
-            
-             <ul class="breadcrumb">
+
+            <ul class="breadcrumb">
                 <li>
                     <a href="index.jsp">Inicio</a>
                     <span class="divider">/</span>
                 </li>
                 <li>
-                    <a href="#">Produtos</a>
+                    <a href="tumbail_1.jsp">Lojas</a>
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="tumbail.jsp">Produtos</a>
                     <span class="active">/</span>
                 </li>
-                
             </ul>
 
-            <!-- barra secundaria-->
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <a><img src="img/promocao1.jpg"></a>
-<!--                    <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
-                    <a href="AutenticarTwitter" class="pull-right"><img src="img/twitter.png"></a>-->
+            <!--Sorry About the Heavy CSS But its neaded for the components make it external for quicker load time :) -->
+            <style>
+                .pricing-table .plan {
+                    border-radius: 5px;
+                    text-align: center;
+                    background-color: #f3f3f3;
+                    -moz-box-shadow: 0 0 6px 2px #b0b2ab;
+                    -webkit-box-shadow: 0 0 6px 2px #b0b2ab;
+                    box-shadow: 0 0 6px 2px #b0b2ab;
+                }
 
-                    <ul class="nav">
+                .plan:hover {
+                    background-color: #fff;
+                    -moz-box-shadow: 0 0 12px 3px #b0b2ab;
+                    -webkit-box-shadow: 0 0 12px 3px #b0b2ab;
+                    box-shadow: 0 0 12px 3px #b0b2ab;
+                }
 
-                        <li>
+                .plan {
+                    padding: 20px;
+                    color: #ff;
+                    background-color: #5e5f59;
+                    -moz-border-radius: 5px 5px 0 0;
+                    -webkit-border-radius: 5px 5px 0 0;
+                    border-radius: 5px 5px 0 0;
+                }
 
-                        </li>
-                        <li>
-                        </li>
+                .plan-name-bronze {
+                    padding: 20px;
+                    color: #fff;
+                    background-color: #665D1E;
+                    -moz-border-radius: 5px 5px 0 0;
+                    -webkit-border-radius: 5px 5px 0 0;
+                    border-radius: 5px 5px 0 0;
+                }
 
-                    </ul>
+                .plan-name-silver {
+                    padding: 20px;
+                    color: #fff;
+                    background-color: #C0C0C0;
+                    -moz-border-radius: 5px 5px 0 0;
+                    -webkit-border-radius: 5px 5px 0 0;
+                    border-radius: 5px 5px 0 0;
+                }
 
+                .plan-name-gold {
+                    padding: 20px;
+                    color: #fff;
+                    background-color: #FFD700;
+                    -moz-border-radius: 5px 5px 0 0;
+                    -webkit-border-radius: 5px 5px 0 0;
+                    border-radius: 5px 5px 0 0;
+                } 
 
-                    <!--  botao dois -->
-                </div>
+                .pricing-table-bronze  {
+                    padding: 20px;
+                    color: #fff;
+                    background-color: #f89406;
+                    -moz-border-radius: 5px 5px 0 0;
+                    -webkit-border-radius: 5px 5px 0 0;
+                    border-radius: 5px 5px 0 0;
+                }
+
+                .pricing-table .plan .plan-name span {
+                    font-size: 20px;
+                }
+
+                .pricing-table .plan ul {
+                    list-style: none;
+                    margin: 0;
+                    -moz-border-radius: 0 0 5px 5px;
+                    -webkit-border-radius: 0 0 5px 5px;
+                    border-radius: 0 0 5px 5px;
+                }
+
+                .pricing-table .plan ul li.plan-feature {
+                    padding: 15px 10px;
+                    border-top: 1px solid #c5c8c0;
+                }
+
+                .pricing-three-column {
+                    margin: 0 auto;
+                    width: 80%;
+                }
+
+                .pricing-variable-height .plan {
+                    float: none;
+                    margin-left: 2%;
+                    vertical-align: bottom;
+                    display: inline-block;
+                    zoom:1;
+                    *display:inline;
+                }
+
+                .plan-mouseover .plan-name {
+                    background-color: #4e9a06 !important;
+                }
+
+                .btn-plan-select {
+                    padding: 8px 25px;
+                    font-size: 18px;
+                }
+            </style>
+            <c:if test="${pedido!=null}">
+                
+
+            <div class='alert alert-block'>
+                <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                <h4>Atenção voce tem pedidos em aberto Finalize-os ou continue comprando na ${pedido.idVendedor.nomeFantasia}! :)</h4>
+                Para realizar pedidos em outra loja você deve finalizar os pedidos da loja atual!
             </div>
 
+            </c:if>
+
+            <hr>
+            <div>
+
+                <h3 class="text-info">Você esta na Loja <img src="${vend.diretorioImg}${vend.imagemLogo}" width="70" height="70"> ${vend.nomeFantasia} <img src="${vend.diretorioImg}${vend.imagemLogo}" width="50" height="50"> 
+                    <c:choose>
+                        <c:when test="${usuario==null}">
+                            <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
+                            <!--<a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>-->
+                        </c:when>
+
+                        <c:otherwise>
+                            <form class="navbar-form pull-right" action="tumbail.jsp" method="POST">
+                                <input  name="textinput2" type="search" placeholder="Digite Aqui seu Endereço e veja as lojas perto de você!" class="span3">
+                            </form>
+                        </c:otherwise>
+
+                    </c:choose>
+
+                </h3>
+            </div>
+
+            <!--  acordion-->
+            <div class="container-fluid">  
+                <div class="accordion" id="accordion1">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                                Carrinho de Compras clique para expandir <span class="text-error">Total R$ ${pedido.total}</span><img src="img/cart.png" style="width:3%; height:3%;">
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse ">
+                            <div class="accordion-inner">
+
+                                <div class="row-fluid pricing-table pricing-three-column">
+                                    <div class="span12 plan">
+                                        <div class="plan-name-bronze">
+                                            <h3>Total</h3>
+                                            <span>${pedido.total}</span>
+                                        </div>
+                                        <ul>
+                                            <c:forEach var="iten" items="${pedido.itens}">
+                                                <li class="plan-feature text-info">Descrição ${iten.produto.nome} | Quantidade  ${iten.quantidade}  | Preço  ${iten.produto.preco}  <a class="btn-small btn-danger">Deletar</a></li>
+                                            </c:forEach>
+                                            <li class="plan-feature"></li>
+                                            <li class="plan-feature"><a href="#" class="btn btn-primary btn-plan-select"><i class="icon-white icon-ok"></i>FInalizar Pedido</a></li>
+                                            <li class="plan-feature"><a href="#" class="btn btn-danger btn-plan-select"><i class="icon-white icon-ok"></i>Cancelar Pedido</a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <hr>
 
 
 
             <!-- teste-->
 
             <ul class="thumbnails">  
+                <c:if test="${!empty param.isnull}" >
+                    <h4>Este vendedor ainda não possui produtos cadastrados</h4>
+                </c:if>
+                <c:forEach items="${listaProdutos}" var="produto" >
 
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example1" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example2" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example3" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example4" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example5" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
+                    <li class="span2">  
+                        <div class="thumbnail">  
+                            <img src="${produto.imagem}" alt="product 1">  
+                            <div class="caption">  
+                                <p>${produto.nome}</br>R$ ${produto.preco}</p>  
+                                <p><a href="PaginaPedido?idvendedor=${vend.id}&idproduto=${produto.id}&dusuario=${usuario.id}" class="btn-small btn-success">Detalhes</a> </p>    
+                            </div>  
+                        </div>  
+                    </li>  
 
+                </c:forEach>
             </ul> 
 
 
             <hr>  
-            <ul class="thumbnails">  
-
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example1" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example2" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example3" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example4" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example5" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-
-            </ul> 
-
-
-            <hr>  
-            <ul class="thumbnails">  
-
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example1" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example2" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example3" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example4" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example5" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-
-            </ul> 
-
-
-            <hr>  
-            <ul class="thumbnails">  
-
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example1" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example2" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example3" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example4" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example5" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-
-            </ul> 
-
-
-            <hr>  
-            <ul class="thumbnails">  
-
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example1" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example2" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example3" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example4" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example5" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-                <li class="span2">  
-                    <div class="thumbnail">  
-                        <img src="img/pizza.jpg" alt="product 1">  
-                        <div class="caption">  
-                            <p>Moda da Casa</br>R$ 29,90.</p>  
-                            <p><a data-toggle="modal" href="#example" class="btn-small btn-success">Detalhes</a>. <a data-toggle="modal" href="#example" id="example6" class="btn-small btn-danger" rel="popover" data-content=" Adicione o produto ao seu carrinho!" data-original-title="Compre agora!">+<i class="active icon-shopping-cart"></i></a> </p>                        </div>  
-                    </div>  
-                </li>  
-
-            </ul> 
-
 
             <hr>  
 

@@ -28,6 +28,9 @@
         </style>
 
         <%@include file="imports.jsp" %>
+        
+        
+        <meta property="og:image" content="http://social.wagnermonteverde.cloudbees.net/img/logo.png"/>
 
 
         <title>Net Lanche</title>
@@ -60,44 +63,44 @@
                     <a  href="#">Inicio</a>
                     <span class="active">/</span>
                 </li>
-                
+
             </ul>
 
 
             <!--  acordion-->
             <!--<div class="container-fluid">-->  
-                <div class="accordion" id="accordion2">
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle btn-success" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                Esta com Fome Faça Login E procure a comida mais perto de você com Nossa Busca por endereço
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="accordion-body collapse in">
-                            <div class="accordion-inner">
-                                <img src="img/Ulogo3.png" alt="Delivery ta na mesa!" width="" height="80">
-                                <img src="img/lema1.png" alt="Delivery ta na mesa!" width="" height="80">
-                                
-                                
-                                <c:choose>
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle btn-success" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            Esta com Fome Faça Login E procure a comida mais perto de você com Nossa Busca por endereço
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <img src="img/Ulogo3.png" alt="Delivery ta na mesa!" width="" height="80">
+                            <img src="img/lema1.png" alt="Delivery ta na mesa!" width="" height="80">
 
-                                    <c:when test="${usuario==null}">
-                                        <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
-                                        <!--<a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>-->
-                                    </c:when>
 
-                                    <c:otherwise>
-                                        <form class="navbar-form pull-right" action="tumbail.jsp" method="POST">
-                                            <input  name="textinput2" type="search" placeholder="Digite Aqui seu Endereço e veja as lojas perto de você!" class="span5">
-                                        </form>
-                                    </c:otherwise>
+                            <c:choose>
 
-                                </c:choose>
-                            </div>
+                                <c:when test="${usuario==null}">
+                                    <a href="AutenticarFacebook" class="pull-right"><img src="img/facebook.png"></a>
+                                    <!--<a href="AutenticarTwitter"class="pull-right"><img src="img/twitter.png"></a>-->
+                                </c:when>
+
+                                <c:otherwise>
+                                    <form class="navbar-form pull-right" action="tumbail_1.jsp" method="POST">
+                                        <input  name="textinput2" type="search" placeholder="Digite Aqui seu Endereço e veja as lojas perto de você!" class="span5">
+                                    </form>
+                                </c:otherwise>
+
+                            </c:choose>
                         </div>
                     </div>
-
                 </div>
+
+            </div>
 
             <!--</div>-->
 

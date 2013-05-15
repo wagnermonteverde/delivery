@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,12 +40,16 @@ public class ListaProdutosVendedorUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            
+            
+             HttpSession session = request.getSession();
+            
+            
             /* TODO output your page here. You may use following sample code. */
             DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
             List<Produtos> listaProdutos = dao.listaTodos();
 
-            ServletContext contexto = this.getServletContext();
-            contexto.setAttribute("listaProdutos", listaProdutos);
+            session.setAttribute("listaProdutos", listaProdutos);
             //
             int id = 0;
             int ancora = -1;
@@ -64,8 +69,12 @@ public class ListaProdutosVendedorUser extends HttpServlet {
             } catch (Exception e) {
             }
 
-
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "empresa.jsp?id=" + id + "#" + ancora);
+            if (!listaProdutos.isEmpty()) {
+            response.sendRedirect("empresa.jsp?id=" + id + "#" + ancora);
+            }else{
+            response.sendRedirect("empresa.jsp?isnull=true");
+            }
+                
         } finally {
             out.close();
         }

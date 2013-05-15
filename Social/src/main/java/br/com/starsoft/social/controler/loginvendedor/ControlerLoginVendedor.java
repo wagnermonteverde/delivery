@@ -4,6 +4,9 @@
  */
 package br.com.starsoft.social.controler.loginvendedor;
 
+import br.com.starsoft.social.model.beans.Estado;
+import br.com.starsoft.social.model.beans.Vendedor;
+import br.com.starsoft.social.model.dao.DAOEstado;
 import br.com.starsoft.social.model.logic.ControlerCadastroVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -63,9 +66,28 @@ public class ControlerLoginVendedor extends HttpServlet {
                     session.removeAttribute("erro");
                 }
 
+                
+                Vendedor vendedor =controlerCadastroVendedor.retornaVendedor(mail);
 
-                session.setAttribute("vendedor", controlerCadastroVendedor.retornaVendedor(mail));
+                session.setAttribute("vendedor",vendedor);
+                
+                DAOEstado dao = new DAOEstado(Estado.class);
+
+                Estado estado = dao.consultaPorUf(vendedor.getEndereco().getUf());
+                
+
+                session.setAttribute("estado", estado );
+                
+                
+                if (vendedor.getImagemLogo()==null) {
+                    
+                response.sendRedirect("uploadimgempresa.jsp");
+                
+                }else{
+                
                 response.sendRedirect("admin/index.jsp");
+                
+                }
 
 
             } else {

@@ -4,23 +4,27 @@
  */
 package br.com.starsoft.social.controler.crudsProdutos;
 
-import br.com.starsoft.social.model.beans.Categoria;
-import br.com.starsoft.social.model.logic.ControlerCRUDProdutos;
+import br.com.starsoft.social.model.beans.PessoaFisica;
+import br.com.starsoft.social.model.beans.Produtos;
+import br.com.starsoft.social.model.beans.Vendedor;
 import br.com.starsoft.social.model.conf.UrlAplication;
+import br.com.starsoft.social.model.dao.DAOVendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author henrique
+ * @author wagner
  */
-@WebServlet(name = "AtualizaProduto", urlPatterns = {"/AtualizaProduto"})
-public class AtualizaProduto extends HttpServlet {
+@WebServlet(name = "ListaProdutoVendedorUserFromLoja", urlPatterns = {"/ListaProdutoVendedorUserFromLoja"})
+public class ListaProdutoVendedorUserFromLoja extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -37,18 +41,48 @@ public class AtualizaProduto extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            String preco = (String) request.getParameter("valor");
-            String categoria = (String) request.getParameter("categoria");
-            Categoria categoria1 = null;
-            if (categoria.equalsIgnoreCase("bebida")) {
-                categoria1 = categoria1.Bebida;
-            } else {
-                categoria1 = categoria1.Comida;
-            }
-            int id = Integer.parseInt(request.getParameter("id"));
-            ControlerCRUDProdutos.atualizaProdutos(id, (String) request.getParameter("titulo"), preco.replace(",", "."), (String) request.getParameter("detalhes"), categoria1);
 
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "ListaProdutosVendedor");
+
+
+
+            HttpSession session = request.getSession();
+
+            if (session.getAttribute("pedido") != null) {
+
+                session.removeAttribute("listaProdutos");
+                session.removeAttribute("vend");
+                response.sendRedirect("tumbail.jsp");
+            
+//                return;
+
+            }
+
+
+            DAOVendedor dao = new DAOVendedor(Vendedor.class);
+
+
+            String id = request.getParameter("idVendedor");
+
+
+            Vendedor vendedor = dao.buscaPorId(Integer.parseInt(id));
+
+
+            List<Produtos> listaProdutos = vendedor.getListaProdutos();
+
+
+            session.setAttribute("listaProdutos", listaProdutos);
+            session.setAttribute("vend", vendedor);
+
+
+
+            if (!vendedor.getListaProdutos().isEmpty()) {
+                response.sendRedirect("tumbail.jsp");
+            } else {
+                response.sendRedirect("tumbail.jsp?isnull=true");
+            }
+
+
+
         } finally {
             out.close();
         }

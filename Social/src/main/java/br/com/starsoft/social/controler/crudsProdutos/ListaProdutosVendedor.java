@@ -41,13 +41,21 @@ public class ListaProdutosVendedor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            
+            
+            
             DAO<Produtos> dao = new DAO<Produtos>(Produtos.class);
             List<Produtos> listaProdutos = dao.listaTodos();
 
             ServletContext contexto = this.getServletContext();
+            
             contexto.setAttribute("listaProdutos", listaProdutos);
 //      
-            response.sendRedirect(UrlAplication.getUrlAplicacao() + "admin/produtos.jsp");
+             if (!listaProdutos.isEmpty()) {
+            response.sendRedirect("admin/produtos.jsp");
+            }else{
+            response.sendRedirect("admin/produtos.jsp?isnull=true");
+            }
 
         } finally {
             out.close();

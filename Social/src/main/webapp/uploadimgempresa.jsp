@@ -81,11 +81,11 @@
                 </li>
             </ul>
 
-
+            <h1>Escola uma Imagem para ser se Logotipo</h1>
 
 
             <form  name="fotoPerfil" method="POST" action="ControlerUploadServlet"  enctype="multipart/form-data">
-                <input type="hidden" name="perfil" value="perfil">
+                <input type="hidden" name="tipo" value="perfil">
                 <input type="file" name="perfil" accept="image/*">
                 <input type="submit">
             </form>

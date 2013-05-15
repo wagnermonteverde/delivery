@@ -6,6 +6,7 @@ package br.com.starsoft.social.controler.loginFacebook;
 
 import br.com.starsoft.social.model.beans.Endereco;
 import br.com.starsoft.social.model.logic.ControlerCadastroUser;
+import br.com.starsoft.social.model.logic.ControlerFacebookOperations;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -107,11 +108,21 @@ public class ControlerLogin extends HttpServlet {
             if (controlercadastro.verificaCadastrado(profile.getEmail())) {
 
                 session.setAttribute("usuario", controlercadastro.RetornaUsuarioCadastrado(profile, facebook, (String) session.getAttribute("token")));
-                 
+
             } else {
+
                 session.setAttribute("usuario", controlercadastro.cadastrobasico(profile, facebook, (String) session.getAttribute("token")));
-               
+
+                ControlerFacebookOperations controlerFacebookOperations = new ControlerFacebookOperations();
+   
+                String token = (String) session.getAttribute("token");
+                
+                controlerFacebookOperations.postaLinkFacebook(token, "");
+
+
             }
+            
+            
 
             /*  
              * 

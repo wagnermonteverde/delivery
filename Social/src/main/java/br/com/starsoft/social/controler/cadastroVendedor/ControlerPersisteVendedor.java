@@ -54,19 +54,7 @@ public class ControlerPersisteVendedor extends HttpServlet {
             ControlerCadastroVendedor controlerCadastroVendedor = new ControlerCadastroVendedor();
             controlerCadastroVendedor.cadastraVendedor(request,context);
 
-
             response.sendRedirect("login.jsp");
-
-
-
-
-
-
-
-
-
-
-
 
 
 
